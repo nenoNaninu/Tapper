@@ -1,0 +1,127 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>10</LangVersion>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="PrimitiveClassesAnswer - Copy.cs" />
+        <Compile Remove="PrimitiveClassesTest - Copy.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Build" Version="17.0.0" ExcludeAssets="runtime" />
+        <PackageReference Include="Microsoft.Build.Locator" Version="1.4.1" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.1.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="CollectionClassesAnswer.cs">
+            <DependentUpon>CollectionClassesAnswer.tt</DependentUpon>
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+        </None>
+        <None Include="CollectionClassesTest.cs">
+            <DependentUpon>CollectionClassesTest.tt</DependentUpon>
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+        </None>
+        <None Include="PrimitiveClassesTest.cs">
+            <DependentUpon>PrimitiveClassesTest.tt</DependentUpon>
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+        </None>
+        <None Include="PrimitiveClassesAnswer.cs">
+            <DependentUpon>PrimitiveClassesAnswer.tt</DependentUpon>
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+        <PackageReference Include="xunit" Version="2.4.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector" Version="3.1.0">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Tapper\Tapper.csproj" />
+        <ProjectReference Include="..\Tapper.Test.SourceTypes\Tapper.Test.SourceTypes.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="DictionaryClassesAnswer.tt">
+            <LastGenOutput>DictionaryClassesAnswer.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+        <None Update="DictionaryClassesTest.tt">
+            <LastGenOutput>DictionaryClassesTest.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+        <None Update="CollectionClassesAnswer.tt">
+            <LastGenOutput>CollectionClassesAnswer.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+        <None Update="CollectionClassesTest.tt">
+            <LastGenOutput>CollectionClassesTest.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+        <None Update="PrimitiveClassesTest.tt">
+            <LastGenOutput>PrimitiveClassesTest.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+        <None Update="PrimitiveClassesAnswer.tt">
+            <LastGenOutput>PrimitiveClassesAnswer.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="CollectionClassesAnswer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>CollectionClassesAnswer.tt</DependentUpon>
+        </Compile>
+        <Compile Update="CollectionClassesTest.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>CollectionClassesTest.tt</DependentUpon>
+        </Compile>
+        <Compile Update="DictionaryClassesAnswer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>DictionaryClassesAnswer.tt</DependentUpon>
+        </Compile>
+        <Compile Update="DictionaryClassesTest.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>DictionaryClassesTest.tt</DependentUpon>
+        </Compile>
+        <Compile Update="PrimitiveClassesAnswer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>PrimitiveClassesAnswer.tt</DependentUpon>
+        </Compile>
+        <Compile Update="PrimitiveClassesTest.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>PrimitiveClassesTest.tt</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,56 @@
+name: build-and-test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  DOTNET_VERSION: "6.0.x"
+  DOTNET_NOLOGO: true
+
+jobs:
+  build-and-test:
+    name: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: |
+            ${{ env.DOTNET_VERSION }}
+            3.1.x
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build Tapper.csproj
+        run: dotnet build ./src/Tapper/Tapper.csproj --no-restore
+
+      - name: Test
+        run: dotnet test --no-restore
+
+      - name: Build Tapper.Generator.csproj
+        run: dotnet build ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore
+
+      - name: Generate Code
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/
+
+      - name: Launch test server
+        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore &
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Yarn install
+        run: yarn --cwd ./tests/TypeScriptTest/ install
+
+      - name: Yarn Test
+        run: yarn --cwd ./tests/TypeScriptTest/ test

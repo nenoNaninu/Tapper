@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Tapper</RootNamespace>
+        <LangVersion>10</LangVersion>
+
+        <!-- NuGet -->
+        <PackageId>Tapper.Attributes</PackageId>
+        <AssemblyName>Tapper.Attributes</AssemblyName>
+        <Title>Tapper.Attributes</Title>
+        <Description>A Tool Transpiling C# Type to TypeScript Type.</Description>
+        <Authors>nenoNaninu</Authors>
+        <RepositoryUrl>https://github.com/nenoNaninu/Tapper</RepositoryUrl>
+        <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>typescript</PackageTags>
+        <Copyright>(c) nenoNaninu</Copyright>
+    </PropertyGroup>
+
+</Project>

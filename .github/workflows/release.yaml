@@ -1,0 +1,44 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+*"
+
+env:
+  DOTNET_VERSION: "6.0.x"
+  DOTNET_NOLOGO: true
+
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: "Get version from git tag"
+        run: echo "Version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: "dotnet pack Tapper"
+        run: dotnet pack -c Release --output $GITHUB_WORKSPACE/artifacts -p:Version=$Version ./src/Tapper/Tapper.csproj
+
+      - name: "dotnet pack Tapper.Analyzer"
+        run: dotnet pack -c Release --output $GITHUB_WORKSPACE/artifacts -p:Version=$Version ./src/Tapper.Analyzer/Tapper.Analyzer.csproj
+
+      - name: "dotnet pack Tapper.Attributes"
+        run: dotnet pack -c Release --output $GITHUB_WORKSPACE/artifacts -p:Version=$Version ./src/Tapper.Attributes/Tapper.Attributes.csproj
+
+      - name: "dotnet pack Tapper.Generator"
+        run: dotnet pack -c Release --output $GITHUB_WORKSPACE/artifacts -p:Version=$Version ./src/Tapper.Generator/Tapper.Generator.csproj
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Packages
+          path: artifacts
+
+      - name: "dotnet nuget push"
+        run: dotnet nuget push "$GITHUB_WORKSPACE/artifacts/*.nupkg" --skip-duplicate -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json

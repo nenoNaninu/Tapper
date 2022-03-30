@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>10</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Tapper.Attributes\Tapper.Attributes.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="DictionaryClasses.tt">
+            <LastGenOutput>DictionaryClasses.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+        <None Update="CollectionClasses.tt">
+            <LastGenOutput>CollectionClasses.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+        <None Update="PrimitiveClasses.tt">
+            <Generator>TextTemplatingFileGenerator</Generator>
+            <LastGenOutput>PrimitiveClasses.cs</LastGenOutput>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="CollectionClasses.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>CollectionClasses.tt</DependentUpon>
+        </Compile>
+        <Compile Update="DictionaryClasses.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>DictionaryClasses.tt</DependentUpon>
+        </Compile>
+        <Compile Update="PrimitiveClasses.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>PrimitiveClasses.tt</DependentUpon>
+        </Compile>
+        <Compile Update="PrimitiveClasses.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>PrimitiveClasses.tt</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+</Project>

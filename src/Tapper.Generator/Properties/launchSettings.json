@@ -1,0 +1,20 @@
+{
+    "profiles": {
+        "Tapper.Generator": {
+            "commandName": "Project",
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\sandbox\\SampleTypes\\SampleTypes.csproj --output out"
+        },
+        "Tapper.Generator2": {
+            "commandName": "Project",
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Test.SourceTypes\\Tapper.Test.SourceTypes.csproj --output out2"
+        },
+        "Tapper.Generator2Camel": {
+            "commandName": "Project",
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Test.SourceTypes\\Tapper.Test.SourceTypes.csproj --output out2_camle --naming-style camelcase"
+        },
+        "Tapper.Generator3": {
+            "commandName": "Project",
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests.Server\\Tapper.Tests.Server.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated"
+        }
+    }
+}

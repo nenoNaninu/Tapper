@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+
+        <!-- NuGet -->
+        <PackageId>Tapper</PackageId>
+        <AssemblyName>Tapper</AssemblyName>
+        <Title>Tapper</Title>
+        <Description>A Tool Transpiling C# Type to TypeScript Type.</Description>
+        <Authors>nenoNaninu</Authors>
+        <RepositoryUrl>https://github.com/nenoNaninu/Tapper</RepositoryUrl>
+        <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>typescript</PackageTags>
+        <Copyright>(c) nenoNaninu</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Tapper.Attributes\Tapper.Attributes.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <None Include="TypeMappers\CollectionTypeTypeMappers.cs">
+            <DependentUpon>CollectionTypeTypeMappers.tt</DependentUpon>
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+        </None>
+        <None Include="TypeMappers\DictionalyTypeMappers.cs">
+            <DependentUpon>DictionalyTypeMappers.tt</DependentUpon>
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+        </None>
+        <None Include="TypeMappers\PrimitiveTypeMappers.cs">
+            <DependentUpon>PrimitiveTypeMappers.tt</DependentUpon>
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="TypeMappers\CollectionTypeTypeMappers.tt">
+            <LastGenOutput>CollectionTypeTypeMappers.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+        <None Update="TypeMappers\DictionalyTypeMappers.tt">
+            <LastGenOutput>DictionalyTypeMappers.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+        <None Update="TypeMappers\PrimitiveTypeMappers.tt">
+            <LastGenOutput>PrimitiveTypeMappers.cs</LastGenOutput>
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="TypeMappers\CollectionTypeTypeMappers.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>CollectionTypeTypeMappers.tt</DependentUpon>
+        </Compile>
+        <Compile Update="TypeMappers\DictionalyTypeMappers.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>DictionalyTypeMappers.tt</DependentUpon>
+        </Compile>
+        <Compile Update="TypeMappers\PrimitiveTypeMappers.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>PrimitiveTypeMappers.tt</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    </ItemGroup>
+
+</Project>

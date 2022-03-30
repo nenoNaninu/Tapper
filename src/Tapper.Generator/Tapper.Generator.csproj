@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Tapper</RootNamespace>
+        <PackAsTool>true</PackAsTool>
+        <ToolCommandName>tapper</ToolCommandName>
+
+        <!-- NuGet -->
+        <PackageId>Tapper.Generator</PackageId>
+        <AssemblyName>Tapper.Generator</AssemblyName>
+        <Title>Tapper.Generator</Title>
+        <Description>A Tool Transpiling C# Type to TypeScript Type.</Description>
+        <Authors>nenoNaninu</Authors>
+        <RepositoryUrl>https://github.com/nenoNaninu/Tapper</RepositoryUrl>
+        <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>typescript</PackageTags>
+        <Copyright>(c) nenoNaninu</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ConsoleAppFramework" Version="4.0.6" />
+        <PackageReference Include="Microsoft.Build" Version="17.0.0" ExcludeAssets="runtime" />
+        <PackageReference Include="Microsoft.Build.Locator" Version="1.4.1" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.1.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Tapper.Attributes\Tapper.Attributes.csproj" />
+        <ProjectReference Include="..\Tapper\Tapper.csproj" />
+    </ItemGroup>
+</Project>
