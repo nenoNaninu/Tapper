@@ -27,7 +27,6 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     public void AddHeader(IGrouping<INamespaceSymbol, INamedTypeSymbol> types, ref CodeWriter writer)
     {
         writer.Append($"/* eslint-disable */{_newLine}");
-        //writer.Append($"// @ts-nocheck{_newLine}");
 
         var diffrentNamespaceTypes = types
             .SelectMany(static x => x.GetPublicFieldsAndProperties().IgnoreStatic())

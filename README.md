@@ -5,7 +5,7 @@ Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and m
 
 ## Table of Contents
 - [Packages](#packages)
-  - [Install .NET Tool](#install-net-tool)
+  - [Install Using .NET Tool](#install-using-net-tool)
 - [Getting Started](#getting-started)
 - [Transpilation Rules](#transpilation-rules)
   - [Built-in Supported Types](#built-in-supported-types)
@@ -23,7 +23,7 @@ Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and m
 - Tapper.Analyzer
 - Tapper.Generator (.NET Tool)
 
-### Install .NET Tool
+### Install Using .NET Tool
 
 Use `Tapper.Generator`(CLI Tool) to generate TypeScript type from C# type. 
 `Tapper.Generator` can be easily installed using .NET Global Tools.
@@ -299,7 +299,7 @@ Also, in that case, set `--naming-style` to `none`.
 
 ```cs
 [MessagePackObject(true)]
-public class Sample
+public class SampleType
 {
     public Guid Id { get; set; }
     public int Value { get; set; }
