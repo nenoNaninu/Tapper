@@ -313,4 +313,4 @@ Tapper has some rules. You can easily follow those rules by adding `Tapper.Analy
 - If the fields and property types contained in the type to which `[TranspilationSource]` applies are user-defined types, you must also apply `[TranspilationSource]` to those types.
 - You cannot apply `[TranspilationSource]` to Generic type.
 
-![](https://i.imgur.com/scnzrhd.png)
+![](https://user-images.githubusercontent.com/27144255/161054234-9e9000a7-7958-48ea-bc04-a4255aa49e3e.png)
