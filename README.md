@@ -19,9 +19,9 @@ Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and m
 
 ## Packages
 
-- Tapper.Attributes
-- Tapper.Analyzer
-- Tapper.Generator (.NET Tool)
+- [Tapper.Attributes](https://www.nuget.org/packages/Tapper.Attributes/)
+- [Tapper.Analyzer](https://www.nuget.org/packages/Tapper.Analyzer/)
+- [Tapper.Generator](https://www.nuget.org/packages/Tapper.Generator/) (.NET Tool)
 
 ### Install Using .NET Tool
 
