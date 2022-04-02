@@ -3,6 +3,8 @@
 Tapper is a library/CLI tool to generate TypeScript type definitions (type, enum) from C# type definitions (class, struct, record, enum).
 Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and make TypeScript code easily follow changes in C# code.
 
+![teaser](https://user-images.githubusercontent.com/27144255/161368393-a85552c8-ba18-4376-a84e-28f411be16f7.png)
+
 ## Table of Contents
 - [Packages](#packages)
   - [Install Using .NET Tool](#install-using-net-tool)
@@ -164,7 +166,7 @@ namespace Space1
     public class CustomType1
     {
         public int Value;
-        public Guid Name;
+        public Guid Id;
     }
 
     namespace Sub
@@ -212,7 +214,7 @@ export type CustomType1 = {
   /** Transpied from int */
   Value: number;
   /** Transpied from System.Guid */
-  Name: string;
+  Id: string;
 }
 ```
 
