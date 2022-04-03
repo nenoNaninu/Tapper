@@ -8,7 +8,7 @@
         <PackageId>Tapper</PackageId>
         <AssemblyName>Tapper</AssemblyName>
         <Title>Tapper</Title>
-        <Description>A Tool Transpiling C# Type to TypeScript Type.</Description>
+        <Description>A Tool Transpiling C# Type into TypeScript Type.</Description>
         <Authors>nenoNaninu</Authors>
         <RepositoryUrl>https://github.com/nenoNaninu/Tapper</RepositoryUrl>
         <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>

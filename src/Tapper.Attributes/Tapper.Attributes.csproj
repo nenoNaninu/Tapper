@@ -10,7 +10,7 @@
         <PackageId>Tapper.Attributes</PackageId>
         <AssemblyName>Tapper.Attributes</AssemblyName>
         <Title>Tapper.Attributes</Title>
-        <Description>A Tool Transpiling C# Type to TypeScript Type.</Description>
+        <Description>A Tool Transpiling C# Type into TypeScript Type.</Description>
         <Authors>nenoNaninu</Authors>
         <RepositoryUrl>https://github.com/nenoNaninu/Tapper</RepositoryUrl>
         <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
