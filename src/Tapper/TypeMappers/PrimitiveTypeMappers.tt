@@ -11,7 +11,6 @@
         { typeof(bool), "boolean" },
         { typeof(byte), "number" },
         { typeof(sbyte), "number" },
-        { typeof(char), "number" },
         { typeof(decimal), "number" },
         { typeof(double), "number" },
         { typeof(float), "number" },
@@ -35,6 +34,33 @@ using System;
 using Microsoft.CodeAnalysis;
 
 namespace Tapper.TypeMappers;
+
+public class CharTypeMapper : ITypeMapper
+{
+    public ITypeSymbol Assign { get; }
+
+    public CharTypeMapper(Compilation compilation)
+    {
+        Assign = compilation.GetTypeByMetadataName("System.Char")!;
+    }
+
+    public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
+    {
+        if (SymbolEqualityComparer.Default.Equals(typeSymbol, Assign))
+        {
+            if (options.SerializerOption is SerializerOption.MessagePack)
+            {
+                return "number";
+            }
+            else
+            {
+                return "string";
+            }
+        }
+
+        throw new InvalidOperationException($"CharTypeMapper is not support {typeSymbol.ToDisplayString()}.");
+    }
+}
 
 <# foreach(var type in primitiveTypeMap){ #>
 public class <#= type.Key.Name #>TypeMapper : ITypeMapper
@@ -63,11 +89,12 @@ public static class PrimitiveTypeMappers
 {
     public static ITypeMapper[] Create(Compilation compilation)
     {
-        var mappers = new ITypeMapper[<#= primitiveTypeMap.Count #>];
+        var mappers = new ITypeMapper[<#= primitiveTypeMap.Count + 1 #>];
 
 <# foreach(var (it, index) in primitiveTypeMap.Select((x, index) => (x, index))){ #>
         mappers[<#= index #>] = new <#= it.Key.Name #>TypeMapper(compilation);
 <# } #>
+        mappers[<#= primitiveTypeMap.Count #>] = new CharTypeMapper(compilation);
 
         return mappers;
     }

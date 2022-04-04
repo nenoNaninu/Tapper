@@ -11,7 +11,7 @@
         { typeof(bool), "boolean" },
         { typeof(byte), "number" },
         { typeof(sbyte), "number" },
-        { typeof(char), "number" },
+        { typeof(char), "string" },
         { typeof(decimal), "number" },
         { typeof(double), "number" },
         { typeof(float), "number" },

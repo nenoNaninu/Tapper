@@ -7,6 +7,33 @@ using Microsoft.CodeAnalysis;
 
 namespace Tapper.TypeMappers;
 
+public class CharTypeMapper : ITypeMapper
+{
+    public ITypeSymbol Assign { get; }
+
+    public CharTypeMapper(Compilation compilation)
+    {
+        Assign = compilation.GetTypeByMetadataName("System.Char")!;
+    }
+
+    public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
+    {
+        if (SymbolEqualityComparer.Default.Equals(typeSymbol, Assign))
+        {
+            if (options.SerializerOption is SerializerOption.MessagePack)
+            {
+                return "number";
+            }
+            else
+            {
+                return "string";
+            }
+        }
+
+        throw new InvalidOperationException($"CharTypeMapper is not support {typeSymbol.ToDisplayString()}.");
+    }
+}
+
 public class BooleanTypeMapper : ITypeMapper
 {
     public ITypeSymbol Assign { get; }
@@ -64,26 +91,6 @@ public class SByteTypeMapper : ITypeMapper
         }
 
         throw new InvalidOperationException($"SByteTypeMapper is not support {typeSymbol.ToDisplayString()}.");
-    }
-}
-
-public class CharTypeMapper : ITypeMapper
-{
-    public ITypeSymbol Assign { get; }
-
-    public CharTypeMapper(Compilation compilation)
-    {
-        Assign = compilation.GetTypeByMetadataName("System.Char")!;
-    }
-
-    public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
-    {
-        if (SymbolEqualityComparer.Default.Equals(typeSymbol, Assign))
-        {
-            return "number";
-        }
-
-        throw new InvalidOperationException($"CharTypeMapper is not support {typeSymbol.ToDisplayString()}.");
     }
 }
 
@@ -357,20 +364,20 @@ public static class PrimitiveTypeMappers
         mappers[0] = new BooleanTypeMapper(compilation);
         mappers[1] = new ByteTypeMapper(compilation);
         mappers[2] = new SByteTypeMapper(compilation);
-        mappers[3] = new CharTypeMapper(compilation);
-        mappers[4] = new DecimalTypeMapper(compilation);
-        mappers[5] = new DoubleTypeMapper(compilation);
-        mappers[6] = new SingleTypeMapper(compilation);
-        mappers[7] = new Int32TypeMapper(compilation);
-        mappers[8] = new UInt32TypeMapper(compilation);
-        mappers[9] = new Int64TypeMapper(compilation);
-        mappers[10] = new UInt64TypeMapper(compilation);
-        mappers[11] = new Int16TypeMapper(compilation);
-        mappers[12] = new UInt16TypeMapper(compilation);
-        mappers[13] = new ObjectTypeMapper(compilation);
-        mappers[14] = new StringTypeMapper(compilation);
-        mappers[15] = new UriTypeMapper(compilation);
-        mappers[16] = new GuidTypeMapper(compilation);
+        mappers[3] = new DecimalTypeMapper(compilation);
+        mappers[4] = new DoubleTypeMapper(compilation);
+        mappers[5] = new SingleTypeMapper(compilation);
+        mappers[6] = new Int32TypeMapper(compilation);
+        mappers[7] = new UInt32TypeMapper(compilation);
+        mappers[8] = new Int64TypeMapper(compilation);
+        mappers[9] = new UInt64TypeMapper(compilation);
+        mappers[10] = new Int16TypeMapper(compilation);
+        mappers[11] = new UInt16TypeMapper(compilation);
+        mappers[12] = new ObjectTypeMapper(compilation);
+        mappers[13] = new StringTypeMapper(compilation);
+        mappers[14] = new UriTypeMapper(compilation);
+        mappers[15] = new GuidTypeMapper(compilation);
+        mappers[16] = new CharTypeMapper(compilation);
 
         return mappers;
     }

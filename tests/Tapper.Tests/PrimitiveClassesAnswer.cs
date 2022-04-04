@@ -35,7 +35,7 @@ export type ClassIncludePrimitiveFieldSystemSByte = {
         Dict[nameof(ClassIncludePrimitiveFieldSystemChar)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemChar */
 export type ClassIncludePrimitiveFieldSystemChar = {
   /** Transpied from char */
-  FieldOfSystemChar: number;
+  FieldOfSystemChar: string;
 }
 ";
         Dict[nameof(ClassIncludePrimitiveFieldSystemDecimal)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemDecimal */
@@ -144,7 +144,7 @@ export type ClassIncludePrimitivePropertySystemSByte = {
         Dict["ClassIncludePrimitivePropertySystemChar"] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemChar */
 export type ClassIncludePrimitivePropertySystemChar = {
   /** Transpied from char */
-  PropertyOfSystemChar: number;
+  PropertyOfSystemChar: string;
 }
 ";
         Dict["ClassIncludePrimitivePropertySystemDecimal"] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemDecimal */
