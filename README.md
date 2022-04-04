@@ -101,7 +101,7 @@ When transpiling class, struct, and record, only `public` fields and properties 
 | bool |  boolean  |
 | byte |  number  |
 | sbyte |  number  |
-| char |  number  | 
+| char |  string or number  | JSON: `string`, MessagePack `number`. |
 | decimal |  number |
 | double |  number |
 | float |  number |
@@ -115,7 +115,7 @@ When transpiling class, struct, and record, only `public` fields and properties 
 | string |  string  |
 | Uri |  string  |
 | Guid |  string  | Compatible with TypeScript's `crypto.randomUUID()`. | 
-| DateTime | (Date \| string) or Date | If the serializer option is Json, it is transpiled to `(Date \| string)`; if the serializer option is MessagePack, it is transpiled to `Date`. |
+| DateTime | (Date \| string) or Date | Json: `(Date \| string)`,  MessagePack: `Date`. |
 | System.Nullable\<T\>| (T \| undefined) |
 | T[] | T[] | 
 | System.Array | any[] | ❌ System.Text.Json |
