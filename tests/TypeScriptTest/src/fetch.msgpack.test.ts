@@ -1,5 +1,5 @@
-import { fetchType2, fetchType3, fetchType4 } from './fetch.msgpack'
-import { MyEnum, Type2, Type3, Type4 } from './generated/Tapper.Tests.Server.Models'
+import { fetchType2, fetchType3, fetchType4, fetchType5 } from './fetch.msgpack'
+import { MyEnum, Type2, Type3, Type4, Type5 } from './generated/msgpack/Tapper.Tests.Server.Models'
 
 test('fetch1.msgpack', async () => {
     const res = await fetchType2();
@@ -29,6 +29,15 @@ test('fetch4.msgpack', async () => {
     {
         MyEnum: MyEnum.Four,
         Value: 7
+    }
+    expect(res).toEqual(gt);
+});
+
+test('fetch5.msgpack', async () => {
+    const res = await fetchType5();
+    const gt: Type5 =
+    {
+        Value: 83
     }
     expect(res).toEqual(gt);
 });

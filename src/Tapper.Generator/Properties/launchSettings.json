@@ -14,7 +14,11 @@
         },
         "Tapper.Generator3": {
             "commandName": "Project",
-            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests.Server\\Tapper.Tests.Server.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated"
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests.Server\\Tapper.Tests.Server.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated\\json"
+        },
+        "Tapper.Generator4": {
+            "commandName": "Project",
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests.Server\\Tapper.Tests.Server.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated\\msgpack --serializer messagepack "
         }
     }
 }

@@ -58,3 +58,7 @@ public enum MyEnum
 
 [TranspilationSource]
 public record Type4(MyEnum MyEnum, float Value);
+
+
+[TranspilationSource]
+public record Type5(char Value);

@@ -1,4 +1,4 @@
-import { MyEnum, Type2, Type3, Type4 } from './generated/Tapper.Tests.Server.Models';
+import { MyEnum, Type2, Type3, Type4, Type5 } from './generated/json/Tapper.Tests.Server.Models';
 import { randomUUID } from 'crypto';
 import fetch from 'node-fetch';
 
@@ -52,3 +52,18 @@ export const fetchType4 = async () => {
 
     return await response.json() as Type3;
 }
+
+export const fetchType5 = async () => {
+    const obj: Type5 = {
+        Value: "R"
+    };
+
+    const response = await fetch("http://localhost:5100/tapper/test5", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    return await response.json() as Type5;
+}
+

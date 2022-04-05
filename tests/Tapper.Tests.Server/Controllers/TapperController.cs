@@ -76,4 +76,15 @@ public class TapperController : ControllerBase
 
         return null;
     }
+
+    [HttpPost]
+    public Type5? Test5(Type5 type4)
+    {
+        if (type4.Value == 'R')
+        {
+            return new Type5('S');
+        }
+
+        return null;
+    }
 }
