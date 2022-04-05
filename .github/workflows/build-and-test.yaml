@@ -40,8 +40,11 @@ jobs:
       - name: Build Tapper.Generator.csproj
         run: dotnet build ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore
 
-      - name: Generate Code
-        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/
+      - name: Generate Code (json)
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json/
+
+      - name: Generate Code (msgpack)
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/msgpack --serializer messagepack
 
       - name: Launch test server
         run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore &
