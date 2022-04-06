@@ -1,6 +1,6 @@
 # Tapper
 
-Tapper is a library/CLI tool to transpile C# Type(class, struct, record, enum) into TypeScript Type(type, enum).
+Tapper is a library/CLI tool to transpile C# type(class, struct, record, enum) into TypeScript type(type, enum).
 Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and make TypeScript code easily follow changes in C# code.
 
 ![teaser](https://user-images.githubusercontent.com/27144255/161368393-a85552c8-ba18-4376-a84e-28f411be16f7.png)
@@ -264,7 +264,7 @@ export type NastingNamespaceType = {
 
 ### Naming Style
 
-You can select `camelCase`, `PascalCase`, or `none` for the property name of the generated TypeScript Type.
+You can select `camelCase`, `PascalCase`, or `none` for the property name of the generated TypeScript type.
 For `none`, the property name in C# is used.
 The default is `none`.
 
