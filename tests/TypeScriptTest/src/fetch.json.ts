@@ -40,7 +40,7 @@ export const fetchType3 = async () => {
 
 export const fetchType4 = async () => {
     const obj: Type4 = {
-        MyEnum : MyEnum.One,
+        MyEnum: MyEnum.One,
         Value: 99
     };
 
