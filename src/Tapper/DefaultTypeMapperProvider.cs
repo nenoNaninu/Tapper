@@ -15,7 +15,7 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
 
     public DefaultTypeMapperProvider(Compilation compilation)
     {
-        _arrayTypeMapper = new ArrayTypeMapper();
+        _arrayTypeMapper = new ArrayTypeMapper(compilation);
         _tupleTypeMapper = new TupleTypeMapper();
 
         var dateTimeTypeMapper = new DateTimeTypeMapper(compilation);

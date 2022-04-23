@@ -118,6 +118,7 @@ When transpiling class, struct, and record, only `public` fields and properties 
 | Guid |  string  | Compatible with TypeScript's `crypto.randomUUID()`. | 
 | DateTime | (Date \| string) or Date | Json: `(Date \| string)`,  MessagePack: `Date`. |
 | System.Nullable\<T\>| (T \| undefined) |
+| byte[] | string or Uint8Array | JSON: `string` (base64), MessagePack `Uint8Array`. |
 | T[] | T[] | 
 | System.Array | any[] | ❌ System.Text.Json |
 | ArraySegment\<T\> | T[] | ❌ System.Text.Json |

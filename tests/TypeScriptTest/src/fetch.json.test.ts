@@ -1,5 +1,5 @@
-import { fetchType2, fetchType3, fetchType4, fetchType5 } from './fetch.json'
-import { MyEnum, Type2, Type3, Type4, Type5 } from './generated/json/Tapper.Tests.Server.Models'
+import { fetchType2, fetchType3, fetchType4, fetchType5, fetchType6 } from './fetch.json'
+import { MyEnum, Type2, Type3, Type4, Type5, Type6 } from './generated/json/Tapper.Tests.Server.Models'
 
 test('fetch1.json', async () => {
     const res = await fetchType2();
@@ -42,3 +42,16 @@ test('fetch5.json', async () => {
     }
     expect(res).toEqual(gt);
 });
+
+test('fetch6.json', async () => {
+    const res = await fetchType6();
+
+    const gt: Type6 =
+    {
+        Binary: Buffer.from([99, 7, 0]).toString("base64")
+    }
+
+    expect(res).toEqual(gt);
+});
+
+

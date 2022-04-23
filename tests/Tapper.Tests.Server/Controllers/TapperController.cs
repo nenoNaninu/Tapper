@@ -78,11 +78,25 @@ public class TapperController : ControllerBase
     }
 
     [HttpPost]
-    public Type5? Test5(Type5 type4)
+    public Type5? Test5(Type5 type5)
     {
-        if (type4.Value == 'R')
+        if (type5.Value == 'R')
         {
             return new Type5('S');
+        }
+
+        return null;
+    }
+
+    [HttpPost]
+    public Type6? Test6(Type6 type6)
+    {
+        if (type6.Binary.Length == 3
+            && type6.Binary[0] == 0
+            && type6.Binary[1] == 7
+            && type6.Binary[2] == 99)
+        {
+            return new Type6(new byte[] { 99, 7, 0 });
         }
 
         return null;
