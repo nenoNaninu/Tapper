@@ -1,5 +1,5 @@
-import { fetchType2, fetchType3, fetchType4, fetchType5 } from './fetch.msgpack'
-import { MyEnum, Type2, Type3, Type4, Type5 } from './generated/msgpack/Tapper.Tests.Server.Models'
+import { fetchType2, fetchType3, fetchType4, fetchType5, fetchType6 } from './fetch.msgpack'
+import { MyEnum, Type2, Type3, Type4, Type5, Type6 } from './generated/msgpack/Tapper.Tests.Server.Models'
 
 test('fetch1.msgpack', async () => {
     const res = await fetchType2();
@@ -39,5 +39,20 @@ test('fetch5.msgpack', async () => {
     {
         Value: 83
     }
+    expect(res).toEqual(gt);
+});
+
+test('fetch6.msgpack', async () => {
+    const res = await fetchType6();
+
+    if (res.Binary instanceof Uint8Array) {
+        res.Binary = new Uint8Array(res.Binary)
+    }
+
+    const gt: Type6 =
+    {
+        Binary: new Uint8Array([99, 7, 0])
+    }
+
     expect(res).toEqual(gt);
 });

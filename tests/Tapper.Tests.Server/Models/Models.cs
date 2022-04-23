@@ -62,3 +62,7 @@ public record Type4(MyEnum MyEnum, float Value);
 
 [TranspilationSource]
 public record Type5(char Value);
+
+
+[TranspilationSource]
+public record Type6(byte[] Binary);
