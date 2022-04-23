@@ -82,25 +82,3 @@ export const fetchType6 = async () => {
 
     return ret;
 }
-
-// Base64 => Uint8Array
-class Base64Encoder extends TextEncoder{
-    constructor(){
-        super();
-    }
-
-    encode(text : string){
-        return super.encode(atob(text));
-    }
-}
-
-// Uint8Array => Base64
-class Base64Decoder extends TextDecoder{
-    constructor(){
-        super();
-    }
-
-    decode(buffer : Uint8Array){
-        return btoa(super.decode(buffer));
-    }
-}

@@ -53,5 +53,3 @@ test('fetch6.json', async () => {
 
     expect(res).toEqual(gt);
 });
-
-
