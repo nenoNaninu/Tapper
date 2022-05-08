@@ -59,4 +59,9 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
 
         throw new InvalidOperationException($"{type.ToDisplayString()} is not supported.");
     }
+
+    public void AddTypeMapper(ITypeMapper typeMapper)
+    {
+        _mappers[typeMapper.Assign] = typeMapper;
+    }
 }
