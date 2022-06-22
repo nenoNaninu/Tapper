@@ -36,6 +36,7 @@ public class HeaderTest
 
         var code = writer.ToString();
         var gt = @"/* eslint-disable */
+/* tslint:disable */
 import { CustomType } from './Tapper.Test.SourceTypes.Space1';
 import { CustomType2, CustomType3 } from './Tapper.Test.SourceTypes.Space1.Sub';
 import { CustomType4 } from './Tapper.Test.SourceTypes.Space2';
