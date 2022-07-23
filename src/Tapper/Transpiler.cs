@@ -13,12 +13,12 @@ public class Transpiler
     private readonly ILogger _logger;
     private readonly ICodeGenerator _codeGenerator;
 
-    public Transpiler(Compilation compilation, string newLine, int indent, SerializerOption serializerOption, NamingStyle namingStyle, ILogger logger)
+    public Transpiler(Compilation compilation, string newLine, int indent, SerializerOption serializerOption, NamingStyle namingStyle, EnumNamingStyle enumNamingStyle, ILogger logger)
     {
         _newLine = newLine;
         _logger = logger;
 
-        _codeGenerator = new TypeScriptCodeGenerator(compilation, newLine, indent, serializerOption, namingStyle, logger);
+        _codeGenerator = new TypeScriptCodeGenerator(compilation, newLine, indent, serializerOption, namingStyle, enumNamingStyle, logger);
 
         _targetTypes = compilation.GetSourceTypes();
         _targetTypeLookupTable = _targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
