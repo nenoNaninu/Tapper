@@ -25,10 +25,10 @@ public class App : ConsoleAppBase
         [Option("p", "Path to the project file (XXX.csproj)")] string project,
         [Option("o", "Output directory")] string output,
         [Option("eol", "lf / crlf / cr")] string newLine = "lf",
-        [Option("i", "Indent size")] int indent = 2,
+        [Option("i", "Indent size")] int indent = 4,
         [Option("s", "Json / MessagePack : The output type will be suitable for the selected serializer.")] string serializer = "json",
-        [Option("n", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string namingStyle = "none",
-        [Option("en", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string enumNamingStyle = "none")
+        [Option("n", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string namingStyle = "camelCase",
+        [Option("en", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string enumNamingStyle = "PascalCase")
     {
         newLine = newLine switch
         {
