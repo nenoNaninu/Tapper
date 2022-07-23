@@ -80,13 +80,13 @@ The contents of the generated code is as follows.
 /** Transpied from SampleNamespace.SampleType */
 export type SampleType = {
   /** Transpied from System.Collections.Generic.List<int>? */
-  List?: number[];
+  list?: number[];
   /** Transpied from int */
-  Value: number;
+  value: number;
   /** Transpied from System.Guid */
-  Id: string;
+  id: string;
   /** Transpied from System.DateTime */
-  DateTime: (Date | string);
+  dateTime: (Date | string);
 }
 ```
 
@@ -214,9 +214,9 @@ The following TypeScript code is generated.
 /** Transpied from Space1.CustomType1 */
 export type CustomType1 = {
   /** Transpied from int */
-  Value: number;
+  value: number;
   /** Transpied from System.Guid */
-  Id: string;
+  id: string;
 }
 ```
 
@@ -238,9 +238,9 @@ export enum MyEnum {
 /** Transpied from Space2.CustomType3 */
 export type CustomType3 = {
   /** Transpied from float */
-  Value: number;
+  value: number;
   /** Transpied from System.DateTime */
-  Name: (Date | string);
+  name: (Date | string);
 }
 ```
 
@@ -254,11 +254,11 @@ import { CustomType3 } from './Space2';
 /** Transpied from Space3.NastingNamespaceType */
 export type NastingNamespaceType = {
   /** Transpied from Space1.CustomType1? */
-  Value?: CustomType1;
+  value?: CustomType1;
   /** Transpied from Space1.Sub.MyEnum */
-  MyEnumValue: MyEnum;
+  myEnumValue: MyEnum;
   /** Transpied from System.Collections.Generic.List<Space2.CustomType3> */
-  List: CustomType3[];
+  list: CustomType3[];
 }
 ```
 
@@ -268,10 +268,10 @@ export type NastingNamespaceType = {
 
 You can select `camelCase`, `PascalCase`, or `none` for the property name of the generated TypeScript type.
 For `none`, the property name in C# is used.
-The default is `none`.
+The default is the standard naming style for TypeScript.
 
 ```
-tapper --project path/to/Xxx.csproj --output outdir --naming-style camelCase
+tapper --project path/to/Xxx.csproj --output outdir --naming-style camelCase --enum-naming-style PascalCase
 ```
 
 ### Serializer
@@ -282,7 +282,7 @@ You can specify which one to use by passing the `--serializer` option.
 The default is `json`.
 
 ```
-tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack
+tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none --enum-naming-style none
 ```
 
 Also, it is supposed that the following serializers are used.
@@ -299,7 +299,7 @@ Also, it is supposed that the following serializers are used.
 
 If you use [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp) for the serializer, be careful how you apply the `[MessagePackObject]` Attribute. 
 It is recommended to use `[MessagePackObject(true)]`. 
-Also, in that case, set `--naming-style` to `none`.
+Also, in that case, set `--naming-style` to `none` and `--enum-naming-style` to `none` .
 
 ```cs
 [MessagePackObject(true)]
