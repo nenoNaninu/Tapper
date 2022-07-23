@@ -23,7 +23,7 @@ public class NestedNamespaceTest
     public void Test1()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
 
         var type = typeof(NastingNamespaceType);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

@@ -27,7 +27,8 @@ public class App : ConsoleAppBase
         [Option("eol", "lf / crlf / cr")] string newLine = "lf",
         [Option("i", "Indent size")] int indent = 2,
         [Option("s", "Json / MessagePack : The output type will be suitable for the selected serializer.")] string serializer = "json",
-        [Option("n", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string namingStyle = "none")
+        [Option("n", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string namingStyle = "none",
+        [Option("en", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string enumNamingStyle = "none")
     {
         newLine = newLine switch
         {
@@ -37,28 +38,32 @@ public class App : ConsoleAppBase
             _ => throw new ArgumentException($"{newLine} is not supported.")
         };
 
-
         _logger.Log(LogLevel.Information, "Start loading the csproj of {path}.", Path.GetFullPath(project));
 
         output = Path.GetFullPath(output);
 
         if (!Enum.TryParse<SerializerOption>(serializer, true, out var serializerOption))
         {
-            _logger.Log(LogLevel.Information, "Only json or messagepack can be selected for serializer. {type} is not supported.", serializer);
+            _logger.Log(LogLevel.Error, "Only json or messagepack can be selected for serializer. {type} is not supported.", serializer);
             return;
         }
 
         if (!Enum.TryParse<NamingStyle>(namingStyle, true, out var style))
         {
-            _logger.Log(LogLevel.Information, "The naming style can only be selected from None, CamelCase, or PascalCase. {style} is not supported.", namingStyle);
+            _logger.Log(LogLevel.Error, "The naming style can only be selected from None, CamelCase, or PascalCase. {style} is not supported.", namingStyle);
             return;
+        }
+
+        if (!Enum.TryParse<EnumNamingStyle>(enumNamingStyle, true, out var enumStyle))
+        {
+            _logger.Log(LogLevel.Error, "The enum naming style can only be selected from None, CamelCase, or PascalCase. {style} is not supported.", enumNamingStyle);
         }
 
         try
         {
             var compilation = await this.CreateCompilationAsync(project);
 
-            await TranspileCore(compilation, output, newLine, indent, serializerOption, style);
+            await TranspileCore(compilation, output, newLine, indent, serializerOption, style, enumStyle);
 
             _logger.Log(LogLevel.Information, "======== Transpilation is completed. ========");
             _logger.Log(LogLevel.Information, "Please check the output folder: {output}", output);
@@ -88,9 +93,16 @@ public class App : ConsoleAppBase
         return compilation;
     }
 
-    private async Task TranspileCore(Compilation compilation, string outputDir, string newLine, int indent, SerializerOption serializerOption, NamingStyle namingStyle)
+    private async Task TranspileCore(
+        Compilation compilation,
+        string outputDir,
+        string newLine,
+        int indent,
+        SerializerOption serializerOption,
+        NamingStyle namingStyle,
+        EnumNamingStyle enumNamingStyle)
     {
-        var transpiler = new Transpiler(compilation, newLine, indent, serializerOption, namingStyle, _logger);
+        var transpiler = new Transpiler(compilation, newLine, indent, serializerOption, namingStyle, enumNamingStyle, _logger);
 
         var generatedSourceCodes = transpiler.Transpile();
 

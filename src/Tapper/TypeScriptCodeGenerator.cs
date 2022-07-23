@@ -14,9 +14,16 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     private readonly INamedTypeSymbol _nullableStructTypeSymbol;
     private readonly ITranspilationOptions _transpilationOptions;
 
-    public TypeScriptCodeGenerator(Compilation compilation, string newLine, int indent, SerializerOption serializerOption, NamingStyle namingStyle, ILogger _)
+    public TypeScriptCodeGenerator(
+        Compilation compilation,
+        string newLine,
+        int indent,
+        SerializerOption serializerOption,
+        NamingStyle namingStyle,
+        EnumNamingStyle enumNamingStyle,
+        ILogger _)
     {
-        _transpilationOptions = new TranspilationOptions(new DefaultTypeMapperProvider(compilation), serializerOption, namingStyle);
+        _transpilationOptions = new TranspilationOptions(new DefaultTypeMapperProvider(compilation), serializerOption, namingStyle, enumNamingStyle);
 
         _sourceTypes = compilation.GetSourceTypes();
         _nullableStructTypeSymbol = compilation.GetTypeByMetadataName("System.Nullable`1")!;
@@ -68,7 +75,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
 
         foreach (var member in members.OfType<IFieldSymbol>())
         {
-            writer.Append($"{_indent}{Transform(member.Name, _transpilationOptions.NamingStyle)} = {member.ConstantValue},{_newLine}");
+            writer.Append($"{_indent}{Transform(member.Name, _transpilationOptions.EnumNamingStyle)} = {member.ConstantValue},{_newLine}");
         }
 
         writer.Append('}');
@@ -164,6 +171,16 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         {
             NamingStyle.PascalCase => $"{char.ToUpper(text[0])}{text[1..]}",
             NamingStyle.CamelCase => $"{char.ToLower(text[0])}{text[1..]}",
+            _ => text,
+        };
+    }
+
+    private static string Transform(string text, EnumNamingStyle enumNamingStyle)
+    {
+        return enumNamingStyle switch
+        {
+            EnumNamingStyle.PascalCase => $"{char.ToUpper(text[0])}{text[1..]}",
+            EnumNamingStyle.CamelCase => $"{char.ToLower(text[0])}{text[1..]}",
             _ => text,
         };
     }
