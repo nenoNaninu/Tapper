@@ -4,8 +4,8 @@ import fetch from 'node-fetch';
 
 export const fetchType2 = async () => {
     const obj: Type2 = {
-        DateTime: new Date("2021-06-04"),
-        Uri: "http://example.com/1",
+        dateTime: new Date("2021-06-04"),
+        uri: "http://example.com/1",
     }
 
     const response = await fetch("http://localhost:5100/tapper/test1", {
@@ -16,15 +16,17 @@ export const fetchType2 = async () => {
 
     const data = await response.json() as Type2;
 
-    return { Uri: data.Uri, DateTime: typeof data.DateTime === 'string' ? new Date(data.DateTime) : data.DateTime };
+    data.dateTime = typeof data.dateTime === 'string' ? new Date(data.dateTime) : data.dateTime;
+
+    return data;
 }
 
 
 export const fetchType3 = async () => {
     const obj: Type3 = {
-        CustomTypeList: [
-            { Id: randomUUID(), Name: "nana", Value: 15 },
-            { Id: randomUUID(), Name: "junna", Value: 25 }
+        customTypeList: [
+            { id: randomUUID(), name: "nana", value: 15 },
+            { id: randomUUID(), name: "junna", value: 25 }
         ]
     }
 
@@ -40,8 +42,8 @@ export const fetchType3 = async () => {
 
 export const fetchType4 = async () => {
     const obj: Type4 = {
-        MyEnum: MyEnum.One,
-        Value: 99
+        myEnum: MyEnum.One,
+        value: 99
     };
 
     const response = await fetch("http://localhost:5100/tapper/test4", {
@@ -55,7 +57,7 @@ export const fetchType4 = async () => {
 
 export const fetchType5 = async () => {
     const obj: Type5 = {
-        Value: "R"
+        value: "R"
     };
 
     const response = await fetch("http://localhost:5100/tapper/test5", {
@@ -69,7 +71,7 @@ export const fetchType5 = async () => {
 
 export const fetchType6 = async () => {
     const obj: Type6 = {
-        Binary: Buffer.from([0, 7, 99]).toString("base64")
+        binary: Buffer.from([0, 7, 99]).toString("base64")
     }
 
     const response = await fetch("http://localhost:5100/tapper/test6", {

@@ -44,7 +44,7 @@ jobs:
         run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json/
 
       - name: Generate Code (msgpack)
-        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/msgpack --serializer messagepack
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/msgpack --serializer messagepack --naming-style none --enum-naming-style none
 
       - name: Launch test server
         run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore &
