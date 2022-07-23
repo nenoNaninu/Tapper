@@ -10,12 +10,12 @@ builder.Services.AddControllers(options =>
 {
     options.InputFormatters.Add(new MessagePackInputFormatter(ContractlessStandardResolver.Options));
     options.OutputFormatters.Add(new MessagePackOutputFormatter(ContractlessStandardResolver.Options));
-})
-.AddJsonOptions(options =>
-{
-    options.JsonSerializerOptions.PropertyNamingPolicy = null;
-    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
 });
+//.AddJsonOptions(options =>
+//{
+//    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+//    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+//});
 
 builder.Services.AddHttpLogging(logging =>
 {
