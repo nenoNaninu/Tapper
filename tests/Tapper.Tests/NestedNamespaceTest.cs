@@ -33,15 +33,15 @@ public class NestedNamespaceTest
         codeGenerator.AddType(typeSymbol, ref writer);
 
         var code = writer.ToString();
-        var gt = @"/** Transpied from Tapper.Test.SourceTypes.Space3.NastingNamespaceType */
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.Space3.NastingNamespaceType */
 export type NastingNamespaceType = {
-  /** Transpied from Tapper.Test.SourceTypes.Space1.CustomType? */
+  /** Transpiled from Tapper.Test.SourceTypes.Space1.CustomType? */
   Value?: CustomType;
-  /** Transpied from Tapper.Test.SourceTypes.Space1.Sub.CustomType2 */
+  /** Transpiled from Tapper.Test.SourceTypes.Space1.Sub.CustomType2 */
   Name: CustomType2;
-  /** Transpied from Tapper.Test.SourceTypes.Space1.Sub.CustomType3? */
+  /** Transpiled from Tapper.Test.SourceTypes.Space1.Sub.CustomType3? */
   Name2?: CustomType3;
-  /** Transpied from System.Collections.Generic.List<Tapper.Test.SourceTypes.Space2.CustomType4> */
+  /** Transpiled from System.Collections.Generic.List<Tapper.Test.SourceTypes.Space2.CustomType4> */
   List: CustomType4[];
 }
 ";

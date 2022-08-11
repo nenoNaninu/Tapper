@@ -67,18 +67,18 @@ public static class PrimitiveTypeTranspilationAnswer
     static PrimitiveTypeTranspilationAnswer()
     {
 <# foreach(var type in PrimitiveTypeMap){ #>
-        Dict[nameof(ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #>)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #> */
+        Dict[nameof(ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #>)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #> */
 export type ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #> = {
-  /** Transpied from <#= PrimitiveTypeNameMap[type.Key] #><#= type.Key.IsClass ? "?" : "" #> */
+  /** Transpiled from <#= PrimitiveTypeNameMap[type.Key] #><#= type.Key.IsClass ? "?" : "" #> */
   FieldOf<#= type.Key.FullName.Replace(".", null) #><#= type.Key.IsClass ? "?" : "" #>: <#= type.Value #>;
 }
 ";
 <# } #>
 
 <# foreach(var type in PrimitiveTypeMap){ #>
-        Dict["ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #>"] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #> */
+        Dict["ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #>"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #> */
 export type ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #> = {
-  /** Transpied from <#= PrimitiveTypeNameMap[type.Key] #><#= type.Key.IsClass ? "?" : "" #> */
+  /** Transpiled from <#= PrimitiveTypeNameMap[type.Key] #><#= type.Key.IsClass ? "?" : "" #> */
   PropertyOf<#= type.Key.FullName.Replace(".", null) #><#= type.Key.IsClass ? "?" : "" #>: <#= type.Value #>;
 }
 ";
