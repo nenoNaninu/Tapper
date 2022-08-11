@@ -77,15 +77,15 @@ The contents of the generated code is as follows.
 ```ts
 /* eslint-disable */
 
-/** Transpied from SampleNamespace.SampleType */
+/** Transpiled from SampleNamespace.SampleType */
 export type SampleType = {
-  /** Transpied from System.Collections.Generic.List<int>? */
+  /** Transpiled from System.Collections.Generic.List<int>? */
   list?: number[];
-  /** Transpied from int */
+  /** Transpiled from int */
   value: number;
-  /** Transpied from System.Guid */
+  /** Transpiled from System.Guid */
   id: string;
-  /** Transpied from System.DateTime */
+  /** Transpiled from System.DateTime */
   dateTime: (Date | string);
 }
 ```
@@ -211,11 +211,11 @@ The following TypeScript code is generated.
 - Space1.ts
 
 ```ts
-/** Transpied from Space1.CustomType1 */
+/** Transpiled from Space1.CustomType1 */
 export type CustomType1 = {
-  /** Transpied from int */
+  /** Transpiled from int */
   value: number;
-  /** Transpied from System.Guid */
+  /** Transpiled from System.Guid */
   id: string;
 }
 ```
@@ -223,7 +223,7 @@ export type CustomType1 = {
 - Space1.Sub.ts
 
 ```ts
-/** Transpied from Space1.Sub.MyEnum */
+/** Transpiled from Space1.Sub.MyEnum */
 export enum MyEnum {
   Zero = 0,
   One = 1,
@@ -235,11 +235,11 @@ export enum MyEnum {
 - Space2.ts
 
 ```ts
-/** Transpied from Space2.CustomType3 */
+/** Transpiled from Space2.CustomType3 */
 export type CustomType3 = {
-  /** Transpied from float */
+  /** Transpiled from float */
   value: number;
-  /** Transpied from System.DateTime */
+  /** Transpiled from System.DateTime */
   name: (Date | string);
 }
 ```
@@ -251,13 +251,13 @@ import { CustomType1 } from './Space1';
 import { MyEnum } from './Space1.Sub';
 import { CustomType3 } from './Space2';
 
-/** Transpied from Space3.NastingNamespaceType */
+/** Transpiled from Space3.NastingNamespaceType */
 export type NastingNamespaceType = {
-  /** Transpied from Space1.CustomType1? */
+  /** Transpiled from Space1.CustomType1? */
   value?: CustomType1;
-  /** Transpied from Space1.Sub.MyEnum */
+  /** Transpiled from Space1.Sub.MyEnum */
   myEnumValue: MyEnum;
-  /** Transpied from System.Collections.Generic.List<Space2.CustomType3> */
+  /** Transpiled from System.Collections.Generic.List<Space2.CustomType3> */
   list: CustomType3[];
 }
 ```
