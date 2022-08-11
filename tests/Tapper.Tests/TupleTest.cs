@@ -28,9 +28,9 @@ public class TupleTest
         codeGenerator.AddType(typeSymbol, ref writer);
 
         var code = writer.ToString();
-        var gt = @"/** Transpied from Tapper.Test.SourceTypes.Tuple.SimpleTupleClass */
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.Tuple.SimpleTupleClass */
 export type SimpleTupleClass = {
-  /** Transpied from (int, string) */
+  /** Transpiled from (int, string) */
   TapluField: [number, string];
 }
 ";
@@ -55,9 +55,9 @@ export type SimpleTupleClass = {
         codeGenerator.AddType(typeSymbol, ref writer);
 
         var code = writer.ToString();
-        var gt = @"/** Transpied from Tapper.Test.SourceTypes.Tuple.TupleClassIncludeNullable */
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.Tuple.TupleClassIncludeNullable */
 export type TupleClassIncludeNullable = {
-  /** Transpied from (int?, System.Guid, System.DateTime) */
+  /** Transpiled from (int?, System.Guid, System.DateTime) */
   TapluField: [(number | undefined), string, (Date | string)];
 }
 ";
@@ -82,9 +82,9 @@ export type TupleClassIncludeNullable = {
         codeGenerator.AddType(typeSymbol, ref writer);
 
         var code = writer.ToString();
-        var gt = @"/** Transpied from Tapper.Test.SourceTypes.Tuple.TupleClassNullableField */
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.Tuple.TupleClassNullableField */
 export type TupleClassNullableField = {
-  /** Transpied from (int?, System.Guid, System.DateTime) */
+  /** Transpiled from (int?, System.Guid, System.DateTime) */
   TapluField?: [(number | undefined), string, (Date | string)];
 }
 ";
@@ -108,11 +108,11 @@ export type TupleClassNullableField = {
         codeGenerator.AddType(typeSymbol, ref writer);
 
         var code = writer.ToString();
-        var gt = @"/** Transpied from Tapper.Test.SourceTypes.Tuple.TupleClassIncludeCustomType */
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.Tuple.TupleClassIncludeCustomType */
 export type TupleClassIncludeCustomType = {
-  /** Transpied from (int?, Tapper.Test.SourceTypes.Tuple.CustomType, System.DateTime) */
+  /** Transpiled from (int?, Tapper.Test.SourceTypes.Tuple.CustomType, System.DateTime) */
   TapluField?: [(number | undefined), CustomType, (Date | string)];
-  /** Transpied from (int, Tapper.Test.SourceTypes.Tuple.CustomType?, System.DateTime?) */
+  /** Transpiled from (int, Tapper.Test.SourceTypes.Tuple.CustomType?, System.DateTime?) */
   TapluPropery: [number, (CustomType | undefined), ((Date | string) | undefined)];
 }
 ";

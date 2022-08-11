@@ -42,18 +42,18 @@ public static class DictionaryTypeTranspilationAnswer
     static DictionaryTypeTranspilationAnswer()
     {
 <# foreach(var type in _dictionaryTypeMap){ #>
-        Dict[nameof(ClassIncludeDictionaryField<#= Format(type.Key) #>)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeDictionaryField<#= Format(type.Key) #> */
+        Dict[nameof(ClassIncludeDictionaryField<#= Format(type.Key) #>)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryField<#= Format(type.Key) #> */
 export type ClassIncludeDictionaryField<#= Format(type.Key) #> = {
-  /** Transpied from <#= _dictonaryType[type.Key] #> */
+  /** Transpiled from <#= _dictonaryType[type.Key] #> */
   FieldOf<#= Format(type.Key) #>: <#= type.Value #>;
 }
 ";
 <# } #>
 
 <# foreach(var type in _dictionaryTypeMap){ #>
-        Dict[nameof(ClassIncludeDictionaryProperty<#= Format(type.Key) #>)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeDictionaryProperty<#= Format(type.Key) #> */
+        Dict[nameof(ClassIncludeDictionaryProperty<#= Format(type.Key) #>)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryProperty<#= Format(type.Key) #> */
 export type ClassIncludeDictionaryProperty<#= Format(type.Key) #> = {
-  /** Transpied from <#= _dictonaryType[type.Key] #> */
+  /** Transpiled from <#= _dictonaryType[type.Key] #> */
   PropertyOf<#= Format(type.Key) #>: <#= type.Value #>;
 }
 ";

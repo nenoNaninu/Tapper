@@ -14,160 +14,160 @@ public static class CollectionTypeTranspilationAnswer
 
     static CollectionTypeTranspilationAnswer()
     {
-        Dict[nameof(ClassIncludeCollectionFieldArray)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldArray */
+        Dict[nameof(ClassIncludeCollectionFieldArray)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldArray */
 export type ClassIncludeCollectionFieldArray = {
-  /** Transpied from System.Array */
+  /** Transpiled from System.Array */
   FieldOfArray: any[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldArraySegmentint)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldArraySegmentint */
+        Dict[nameof(ClassIncludeCollectionFieldArraySegmentint)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldArraySegmentint */
 export type ClassIncludeCollectionFieldArraySegmentint = {
-  /** Transpied from System.ArraySegment<int> */
+  /** Transpiled from System.ArraySegment<int> */
   FieldOfArraySegmentint: number[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldListfloat)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldListfloat */
+        Dict[nameof(ClassIncludeCollectionFieldListfloat)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldListfloat */
 export type ClassIncludeCollectionFieldListfloat = {
-  /** Transpied from System.Collections.Generic.List<float> */
+  /** Transpiled from System.Collections.Generic.List<float> */
   FieldOfListfloat: number[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldLinkedListstring)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldLinkedListstring */
+        Dict[nameof(ClassIncludeCollectionFieldLinkedListstring)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldLinkedListstring */
 export type ClassIncludeCollectionFieldLinkedListstring = {
-  /** Transpied from System.Collections.Generic.LinkedList<string> */
+  /** Transpiled from System.Collections.Generic.LinkedList<string> */
   FieldOfLinkedListstring: string[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldQueueGuid)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldQueueGuid */
+        Dict[nameof(ClassIncludeCollectionFieldQueueGuid)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldQueueGuid */
 export type ClassIncludeCollectionFieldQueueGuid = {
-  /** Transpied from System.Collections.Generic.Queue<System.Guid> */
+  /** Transpiled from System.Collections.Generic.Queue<System.Guid> */
   FieldOfQueueGuid: string[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldStackUri)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldStackUri */
+        Dict[nameof(ClassIncludeCollectionFieldStackUri)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldStackUri */
 export type ClassIncludeCollectionFieldStackUri = {
-  /** Transpied from System.Collections.Generic.Stack<System.Uri> */
+  /** Transpiled from System.Collections.Generic.Stack<System.Uri> */
   FieldOfStackUri: string[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldHashSetDateTime)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldHashSetDateTime */
+        Dict[nameof(ClassIncludeCollectionFieldHashSetDateTime)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldHashSetDateTime */
 export type ClassIncludeCollectionFieldHashSetDateTime = {
-  /** Transpied from System.Collections.Generic.HashSet<System.DateTime> */
+  /** Transpiled from System.Collections.Generic.HashSet<System.DateTime> */
   FieldOfHashSetDateTime: (Date | string)[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldIEnumerablebool)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldIEnumerablebool */
+        Dict[nameof(ClassIncludeCollectionFieldIEnumerablebool)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldIEnumerablebool */
 export type ClassIncludeCollectionFieldIEnumerablebool = {
-  /** Transpied from System.Collections.Generic.IEnumerable<bool> */
+  /** Transpiled from System.Collections.Generic.IEnumerable<bool> */
   FieldOfIEnumerablebool: boolean[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldIReadOnlyCollectionbyte)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldIReadOnlyCollectionbyte */
+        Dict[nameof(ClassIncludeCollectionFieldIReadOnlyCollectionbyte)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldIReadOnlyCollectionbyte */
 export type ClassIncludeCollectionFieldIReadOnlyCollectionbyte = {
-  /** Transpied from System.Collections.Generic.IReadOnlyCollection<byte> */
+  /** Transpiled from System.Collections.Generic.IReadOnlyCollection<byte> */
   FieldOfIReadOnlyCollectionbyte: number[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldIReadOnlyListobject)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldIReadOnlyListobject */
+        Dict[nameof(ClassIncludeCollectionFieldIReadOnlyListobject)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldIReadOnlyListobject */
 export type ClassIncludeCollectionFieldIReadOnlyListobject = {
-  /** Transpied from System.Collections.Generic.IReadOnlyList<object> */
+  /** Transpiled from System.Collections.Generic.IReadOnlyList<object> */
   FieldOfIReadOnlyListobject: any[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldICollectionstring)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldICollectionstring */
+        Dict[nameof(ClassIncludeCollectionFieldICollectionstring)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldICollectionstring */
 export type ClassIncludeCollectionFieldICollectionstring = {
-  /** Transpied from System.Collections.Generic.ICollection<string> */
+  /** Transpiled from System.Collections.Generic.ICollection<string> */
   FieldOfICollectionstring: string[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldIListbool)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldIListbool */
+        Dict[nameof(ClassIncludeCollectionFieldIListbool)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldIListbool */
 export type ClassIncludeCollectionFieldIListbool = {
-  /** Transpied from System.Collections.Generic.IList<bool> */
+  /** Transpiled from System.Collections.Generic.IList<bool> */
   FieldOfIListbool: boolean[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionFieldISetsbyte)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldISetsbyte */
+        Dict[nameof(ClassIncludeCollectionFieldISetsbyte)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionFieldISetsbyte */
 export type ClassIncludeCollectionFieldISetsbyte = {
-  /** Transpied from System.Collections.Generic.ISet<sbyte> */
+  /** Transpiled from System.Collections.Generic.ISet<sbyte> */
   FieldOfISetsbyte: number[];
 }
 ";
 
-        Dict[nameof(ClassIncludeCollectionPropertyArray)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyArray */
+        Dict[nameof(ClassIncludeCollectionPropertyArray)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyArray */
 export type ClassIncludeCollectionPropertyArray = {
-  /** Transpied from System.Array */
+  /** Transpiled from System.Array */
   PropertyOfArray: any[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyArraySegmentint)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyArraySegmentint */
+        Dict[nameof(ClassIncludeCollectionPropertyArraySegmentint)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyArraySegmentint */
 export type ClassIncludeCollectionPropertyArraySegmentint = {
-  /** Transpied from System.ArraySegment<int> */
+  /** Transpiled from System.ArraySegment<int> */
   PropertyOfArraySegmentint: number[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyListfloat)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyListfloat */
+        Dict[nameof(ClassIncludeCollectionPropertyListfloat)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyListfloat */
 export type ClassIncludeCollectionPropertyListfloat = {
-  /** Transpied from System.Collections.Generic.List<float> */
+  /** Transpiled from System.Collections.Generic.List<float> */
   PropertyOfListfloat: number[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyLinkedListstring)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyLinkedListstring */
+        Dict[nameof(ClassIncludeCollectionPropertyLinkedListstring)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyLinkedListstring */
 export type ClassIncludeCollectionPropertyLinkedListstring = {
-  /** Transpied from System.Collections.Generic.LinkedList<string> */
+  /** Transpiled from System.Collections.Generic.LinkedList<string> */
   PropertyOfLinkedListstring: string[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyQueueGuid)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyQueueGuid */
+        Dict[nameof(ClassIncludeCollectionPropertyQueueGuid)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyQueueGuid */
 export type ClassIncludeCollectionPropertyQueueGuid = {
-  /** Transpied from System.Collections.Generic.Queue<System.Guid> */
+  /** Transpiled from System.Collections.Generic.Queue<System.Guid> */
   PropertyOfQueueGuid: string[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyStackUri)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyStackUri */
+        Dict[nameof(ClassIncludeCollectionPropertyStackUri)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyStackUri */
 export type ClassIncludeCollectionPropertyStackUri = {
-  /** Transpied from System.Collections.Generic.Stack<System.Uri> */
+  /** Transpiled from System.Collections.Generic.Stack<System.Uri> */
   PropertyOfStackUri: string[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyHashSetDateTime)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyHashSetDateTime */
+        Dict[nameof(ClassIncludeCollectionPropertyHashSetDateTime)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyHashSetDateTime */
 export type ClassIncludeCollectionPropertyHashSetDateTime = {
-  /** Transpied from System.Collections.Generic.HashSet<System.DateTime> */
+  /** Transpiled from System.Collections.Generic.HashSet<System.DateTime> */
   PropertyOfHashSetDateTime: (Date | string)[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyIEnumerablebool)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyIEnumerablebool */
+        Dict[nameof(ClassIncludeCollectionPropertyIEnumerablebool)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyIEnumerablebool */
 export type ClassIncludeCollectionPropertyIEnumerablebool = {
-  /** Transpied from System.Collections.Generic.IEnumerable<bool> */
+  /** Transpiled from System.Collections.Generic.IEnumerable<bool> */
   PropertyOfIEnumerablebool: boolean[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyIReadOnlyCollectionbyte)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyIReadOnlyCollectionbyte */
+        Dict[nameof(ClassIncludeCollectionPropertyIReadOnlyCollectionbyte)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyIReadOnlyCollectionbyte */
 export type ClassIncludeCollectionPropertyIReadOnlyCollectionbyte = {
-  /** Transpied from System.Collections.Generic.IReadOnlyCollection<byte> */
+  /** Transpiled from System.Collections.Generic.IReadOnlyCollection<byte> */
   PropertyOfIReadOnlyCollectionbyte: number[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyIReadOnlyListobject)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyIReadOnlyListobject */
+        Dict[nameof(ClassIncludeCollectionPropertyIReadOnlyListobject)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyIReadOnlyListobject */
 export type ClassIncludeCollectionPropertyIReadOnlyListobject = {
-  /** Transpied from System.Collections.Generic.IReadOnlyList<object> */
+  /** Transpiled from System.Collections.Generic.IReadOnlyList<object> */
   PropertyOfIReadOnlyListobject: any[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyICollectionstring)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyICollectionstring */
+        Dict[nameof(ClassIncludeCollectionPropertyICollectionstring)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyICollectionstring */
 export type ClassIncludeCollectionPropertyICollectionstring = {
-  /** Transpied from System.Collections.Generic.ICollection<string> */
+  /** Transpiled from System.Collections.Generic.ICollection<string> */
   PropertyOfICollectionstring: string[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyIListbool)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyIListbool */
+        Dict[nameof(ClassIncludeCollectionPropertyIListbool)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyIListbool */
 export type ClassIncludeCollectionPropertyIListbool = {
-  /** Transpied from System.Collections.Generic.IList<bool> */
+  /** Transpiled from System.Collections.Generic.IList<bool> */
   PropertyOfIListbool: boolean[];
 }
 ";
-        Dict[nameof(ClassIncludeCollectionPropertyISetsbyte)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyISetsbyte */
+        Dict[nameof(ClassIncludeCollectionPropertyISetsbyte)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionPropertyISetsbyte */
 export type ClassIncludeCollectionPropertyISetsbyte = {
-  /** Transpied from System.Collections.Generic.ISet<sbyte> */
+  /** Transpiled from System.Collections.Generic.ISet<sbyte> */
   PropertyOfISetsbyte: number[];
 }
 ";

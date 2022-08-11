@@ -70,7 +70,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     {
         var members = typeSymbol.GetPublicFieldsAndProperties().IgnoreStatic().ToArray();
 
-        writer.Append($"/** Transpied from {typeSymbol.ToDisplayString()} */{_newLine}");
+        writer.Append($"/** Transpiled from {typeSymbol.ToDisplayString()} */{_newLine}");
         writer.Append($"export enum {typeSymbol.Name} {{{_newLine}");
 
         foreach (var member in members.OfType<IFieldSymbol>())
@@ -86,7 +86,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     {
         var members = typeSymbol.GetPublicFieldsAndProperties().IgnoreStatic().ToArray();
 
-        writer.Append($"/** Transpied from {typeSymbol.ToDisplayString()} */{_newLine}");
+        writer.Append($"/** Transpiled from {typeSymbol.ToDisplayString()} */{_newLine}");
         writer.Append($"export type {typeSymbol.Name} = {{{_newLine}");
 
         foreach (var member in members)
@@ -99,7 +99,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
             }
 
             // Add jdoc comment
-            writer.Append($"{_indent}/** Transpied from {memberTypeSymbol.ToDisplayString()} */{_newLine}");
+            writer.Append($"{_indent}/** Transpiled from {memberTypeSymbol.ToDisplayString()} */{_newLine}");
             writer.Append($"{_indent}{Transform(member.Name, _transpilationOptions.NamingStyle)}{(isNullable ? "?" : string.Empty)}: {TypeMapper.MapTo(memberTypeSymbol, _transpilationOptions)};{_newLine}");
         }
 

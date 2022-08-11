@@ -14,40 +14,40 @@ public static class DictionaryTypeTranspilationAnswer
 
     static DictionaryTypeTranspilationAnswer()
     {
-        Dict[nameof(ClassIncludeDictionaryFieldDictionaryintstring)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeDictionaryFieldDictionaryintstring */
+        Dict[nameof(ClassIncludeDictionaryFieldDictionaryintstring)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryFieldDictionaryintstring */
 export type ClassIncludeDictionaryFieldDictionaryintstring = {
-  /** Transpied from System.Collections.Generic.Dictionary<int, string> */
+  /** Transpiled from System.Collections.Generic.Dictionary<int, string> */
   FieldOfDictionaryintstring: { [key: number]: string };
 }
 ";
-        Dict[nameof(ClassIncludeDictionaryFieldIDictionaryfloatGuid)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeDictionaryFieldIDictionaryfloatGuid */
+        Dict[nameof(ClassIncludeDictionaryFieldIDictionaryfloatGuid)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryFieldIDictionaryfloatGuid */
 export type ClassIncludeDictionaryFieldIDictionaryfloatGuid = {
-  /** Transpied from System.Collections.Generic.IDictionary<float, System.Guid> */
+  /** Transpiled from System.Collections.Generic.IDictionary<float, System.Guid> */
   FieldOfIDictionaryfloatGuid: { [key: number]: string };
 }
 ";
-        Dict[nameof(ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime */
+        Dict[nameof(ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime */
 export type ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime = {
-  /** Transpied from System.Collections.Generic.IReadOnlyDictionary<string, System.DateTime> */
+  /** Transpiled from System.Collections.Generic.IReadOnlyDictionary<string, System.DateTime> */
   FieldOfIReadOnlyDictionarystringDateTime: { [key: string]: (Date | string) };
 }
 ";
 
-        Dict[nameof(ClassIncludeDictionaryPropertyDictionaryintstring)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeDictionaryPropertyDictionaryintstring */
+        Dict[nameof(ClassIncludeDictionaryPropertyDictionaryintstring)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryPropertyDictionaryintstring */
 export type ClassIncludeDictionaryPropertyDictionaryintstring = {
-  /** Transpied from System.Collections.Generic.Dictionary<int, string> */
+  /** Transpiled from System.Collections.Generic.Dictionary<int, string> */
   PropertyOfDictionaryintstring: { [key: number]: string };
 }
 ";
-        Dict[nameof(ClassIncludeDictionaryPropertyIDictionaryfloatGuid)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeDictionaryPropertyIDictionaryfloatGuid */
+        Dict[nameof(ClassIncludeDictionaryPropertyIDictionaryfloatGuid)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryPropertyIDictionaryfloatGuid */
 export type ClassIncludeDictionaryPropertyIDictionaryfloatGuid = {
-  /** Transpied from System.Collections.Generic.IDictionary<float, System.Guid> */
+  /** Transpiled from System.Collections.Generic.IDictionary<float, System.Guid> */
   PropertyOfIDictionaryfloatGuid: { [key: number]: string };
 }
 ";
-        Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime)] = @"/** Transpied from Tapper.Tests.SourceTypes.ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime */
+        Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime */
 export type ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime = {
-  /** Transpied from System.Collections.Generic.IReadOnlyDictionary<string, System.DateTime> */
+  /** Transpiled from System.Collections.Generic.IReadOnlyDictionary<string, System.DateTime> */
   PropertyOfIReadOnlyDictionarystringDateTime: { [key: string]: (Date | string) };
 }
 ";

@@ -33,7 +33,7 @@ public class EnumTest
         codeGenerator.AddType(typeSymbol, ref writer);
 
         var code = writer.ToString();
-        var gt = @"/** Transpied from Tapper.Test.SourceTypes.Enum1 */
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.Enum1 */
 export enum Enum1 {
   None = 0,
   Value1 = 1,
@@ -60,7 +60,7 @@ export enum Enum1 {
         codeGenerator.AddType(typeSymbol, ref writer);
 
         var code = writer.ToString();
-        var gt = @"/** Transpied from Tapper.Test.SourceTypes.Enum2 */
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.Enum2 */
 export enum Enum2 {
   None = 4,
   Value1 = 8,
