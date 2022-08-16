@@ -104,6 +104,17 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         }
 
         writer.Append('}');
+
+        if (typeSymbol.BaseType != null &&
+            typeSymbol.BaseType.IsType &&
+            typeSymbol.BaseType.MetadataName != typeof(object).Name)
+        {
+            if (_sourceTypes.Contains(typeSymbol.BaseType, SymbolEqualityComparer.Default))
+            {
+                writer.Append($" & {typeSymbol.BaseType.Name};");
+            }
+        }
+
         writer.Append(_newLine);
     }
 
