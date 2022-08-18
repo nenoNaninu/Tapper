@@ -105,9 +105,9 @@ public class TypeScriptCodeGenerator : ICodeGenerator
 
         writer.Append('}');
 
-        if (typeSymbol.BaseType != null &&
+        if (typeSymbol.BaseType is not null &&
             typeSymbol.BaseType.IsType &&
-            typeSymbol.BaseType.MetadataName != typeof(object).Name)
+            typeSymbol.BaseType.SpecialType != SpecialType.System_Object)
         {
             if (_sourceTypes.Contains(typeSymbol.BaseType, SymbolEqualityComparer.Default))
             {
