@@ -3,23 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tapper;
 
-namespace Tapper.Test.SourceTypes;
-
-[TranspilationSource]
-public class InheritanceClass0
+namespace Tapper.Test.SourceTypes
 {
-    public int Value0 { get; set; }
+
+    [TranspilationSource]
+    public class InheritanceClass0
+    {
+        public int Value0 { get; set; }
+    }
+
+    [TranspilationSource]
+    public class InheritanceClass1 : InheritanceClass0
+    {
+        public string InheritanceString1 { get; set; } = "";
+    }
+
+    [TranspilationSource]
+    public class InheritanceClass2 : InheritanceClass0
+    {
+        public string? InheritanceString2 { get; set; } = null;
+    }
 }
 
-[TranspilationSource]
-public class InheritanceClass1 : InheritanceClass0
+namespace Space1
 {
-    public string InheritanceString1 { get; set; } = "";
+    [TranspilationSource]
+    public class CustomType1
+    {
+        public float Value;
+        public DateTime DateTime;
+    }
 }
 
-[TranspilationSource]
-public class InheritanceClass2 : InheritanceClass0
+namespace Space2
 {
-    public string? InheritanceString2 { get; set; } = null;
+    using Space1;
+
+    [TranspilationSource]
+    public class CustomType2 : CustomType1
+    {
+        public float Value2;
+        public DateTime DateTime2;
+    }
 }

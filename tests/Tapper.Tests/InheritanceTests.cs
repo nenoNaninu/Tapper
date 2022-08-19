@@ -100,4 +100,33 @@ export type InheritanceClass2 = {
 
         Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
     }
+
+    [Fact]
+    public void Test3()
+    {
+        var compilation = CompilationSingleton.Compilation;
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+
+        var type = typeof(Space2.CustomType2);
+        var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
+
+        var writer = new CodeWriter();
+
+        codeGenerator.AddType(typeSymbol, ref writer);
+
+        var code = writer.ToString();
+        var gt = @"/** Transpiled from Space2.CustomType2 */
+export type CustomType2 = {
+  /** Transpiled from float */
+  Value2: number;
+  /** Transpiled from System.DateTime */
+  DateTime2: (Date | string);
+} & CustomType1;
+";
+
+        _output.WriteLine(code);
+        _output.WriteLine(gt);
+
+        Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
+    }
 }

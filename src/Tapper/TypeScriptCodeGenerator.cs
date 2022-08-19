@@ -37,12 +37,16 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         writer.Append($"/* eslint-disable */{_newLine}");
         writer.Append($"/* tslint:disable */{_newLine}");
 
-        var diffrentNamespaceTypes = types
-            .SelectMany(static x => x.GetPublicFieldsAndProperties().IgnoreStatic())
+        var memberTypes = types.SelectMany(static x => x.GetPublicFieldsAndProperties().IgnoreStatic());
+        var baseTypes = types.Where(static x => x.BaseType is not null && x.BaseType.IsType && !x.BaseType.SpecialType.Equals(SpecialType.System_Object)).Select(static x => x.BaseType!);
+
+        var diffrentNamespaceTypes = memberTypes
             .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol)
+            .Concat(baseTypes)
             .OfType<INamedTypeSymbol>()
             .Where(x => !SymbolEqualityComparer.Default.Equals(x.ContainingNamespace, types.Key)
-                && _sourceTypes.Contains(x, SymbolEqualityComparer.Default))
+                && _sourceTypes.Contains(x, SymbolEqualityComparer.Default)
+            )
             .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default)
             .ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
 
