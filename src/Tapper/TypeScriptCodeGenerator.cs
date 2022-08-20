@@ -37,9 +37,17 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         writer.Append($"/* eslint-disable */{_newLine}");
         writer.Append($"/* tslint:disable */{_newLine}");
 
-        var diffrentNamespaceTypes = types
+        var memberTypes = types
             .SelectMany(static x => x.GetPublicFieldsAndProperties().IgnoreStatic())
-            .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol)
+            .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol);
+        var baseTypes = types
+            .Where(static x => x.BaseType is not null
+                && x.BaseType.IsType
+                && x.BaseType.SpecialType != SpecialType.System_Object)
+            .Select(static x => x.BaseType!);
+
+        var diffrentNamespaceTypes = memberTypes
+            .Concat(baseTypes)
             .OfType<INamedTypeSymbol>()
             .Where(x => !SymbolEqualityComparer.Default.Equals(x.ContainingNamespace, types.Key)
                 && _sourceTypes.Contains(x, SymbolEqualityComparer.Default))
@@ -104,6 +112,17 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         }
 
         writer.Append('}');
+
+        if (typeSymbol.BaseType is not null &&
+            typeSymbol.BaseType.IsType &&
+            typeSymbol.BaseType.SpecialType != SpecialType.System_Object)
+        {
+            if (_sourceTypes.Contains(typeSymbol.BaseType, SymbolEqualityComparer.Default))
+            {
+                writer.Append($" & {typeSymbol.BaseType.Name};");
+            }
+        }
+
         writer.Append(_newLine);
     }
 

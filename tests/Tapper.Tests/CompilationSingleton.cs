@@ -45,6 +45,10 @@ public class CompilationSingleton
             File.ReadAllText("../../../../Tapper.Test.SourceTypes/TupleClasses.cs"),
             options);
 
+        var inheritanceSyntax = CSharpSyntaxTree.ParseText(
+            File.ReadAllText("../../../../Tapper.Test.SourceTypes/InheritanceClasses.cs"),
+            options);
+
         var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
             .WithNullableContextOptions(NullableContextOptions.Enable);
 
@@ -67,6 +71,7 @@ public class CompilationSingleton
                 enumSyntax,
                 nestedNamespaceSyntax,
                 tupleSyntax,
+                inheritanceSyntax,
             },
             references: references,
             options: compilationOptions);
