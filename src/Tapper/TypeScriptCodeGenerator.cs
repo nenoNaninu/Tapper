@@ -41,7 +41,6 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         var baseTypes = types.Where(static x => x.BaseType is not null && x.BaseType.IsType && !x.BaseType.SpecialType.Equals(SpecialType.System_Object)).Select(static x => x.BaseType!);
 
         var diffrentNamespaceTypes = memberTypes
-            .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol)
             .Concat(baseTypes)
             .OfType<INamedTypeSymbol>()
             .Where(x => !SymbolEqualityComparer.Default.Equals(x.ContainingNamespace, types.Key)
