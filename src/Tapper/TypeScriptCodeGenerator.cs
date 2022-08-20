@@ -40,7 +40,11 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         var memberTypes = types
             .SelectMany(static x => x.GetPublicFieldsAndProperties().IgnoreStatic())
             .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol);
-        var baseTypes = types.Where(static x => x.BaseType is not null && x.BaseType.IsType && !x.BaseType.SpecialType.Equals(SpecialType.System_Object)).Select(static x => x.BaseType!);
+        var baseTypes = types
+            .Where(static x => x.BaseType is not null
+                && x.BaseType.IsType
+                && x.BaseType.SpecialType != SpecialType.System_Object)
+            .Select(static x => x.BaseType!);
 
         var diffrentNamespaceTypes = memberTypes
             .Concat(baseTypes)
