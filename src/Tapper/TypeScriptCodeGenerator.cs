@@ -50,8 +50,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
             .Concat(baseTypes)
             .OfType<INamedTypeSymbol>()
             .Where(x => !SymbolEqualityComparer.Default.Equals(x.ContainingNamespace, types.Key)
-                && _sourceTypes.Contains(x, SymbolEqualityComparer.Default)
-            )
+                && _sourceTypes.Contains(x, SymbolEqualityComparer.Default))
             .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default)
             .ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
 
