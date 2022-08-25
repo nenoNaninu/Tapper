@@ -21,6 +21,7 @@ public class Transpiler
         _codeGenerator = new TypeScriptCodeGenerator(compilation, newLine, indent, serializerOption, namingStyle, enumNamingStyle, logger);
 
         _targetTypes = compilation.GetSourceTypes();
+
         _targetTypeLookupTable = _targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
     }
 

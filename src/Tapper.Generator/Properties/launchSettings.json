@@ -19,6 +19,10 @@
         "Tapper.Generator4": {
             "commandName": "Project",
             "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests.Server\\Tapper.Tests.Server.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated\\msgpack --serializer messagepack --naming-style none --enum-naming-style none"
+        },
+        "Tapper.Generator5": {
+            "commandName": "Project",
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Test.SourceTypes.References\\Tapper.Test.SourceTypes.References.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated\\json"
         }
     }
 }

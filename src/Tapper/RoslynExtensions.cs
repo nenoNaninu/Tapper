@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
+using System.Threading;
 using Microsoft.CodeAnalysis;
 
 namespace Tapper;
@@ -29,6 +31,24 @@ public static class RoslynExtensions
         return NamedTypeSymbols;
     }
 
+    private static INamedTypeSymbol[]? ReferencedTypeSymbols;
+
+    public static IEnumerable<INamedTypeSymbol> GetReferencedTypeSymbols(this Compilation compilation, INamedTypeSymbol[] targetTypes)
+    {
+        if (ReferencedTypeSymbols is not null)
+        {
+            return ReferencedTypeSymbols;
+        }
+
+        var referencedTypesCollector = new ReferencedTypeCollector(targetTypes);
+        referencedTypesCollector.Visit(compilation.GlobalNamespace);
+
+        ReferencedTypeSymbols = referencedTypesCollector.GetReferencedTypes()
+            .ToArray();
+
+        return ReferencedTypeSymbols;
+    }
+
     private static INamedTypeSymbol[]? TargetTypes;
 
     public static INamedTypeSymbol[] GetSourceTypes(this Compilation compilation)
@@ -52,6 +72,12 @@ public static class RoslynExtensions
 
                 return attributes.Any(x => SymbolEqualityComparer.Default.Equals(x.AttributeClass, annotationSymbol));
             })
+            .ToArray();
+
+        TargetTypes = TargetTypes
+            .Concat(compilation.GetReferencedTypeSymbols(TargetTypes))
+            .Distinct(SymbolEqualityComparer.Default)
+            .OfType<INamedTypeSymbol>()
             .ToArray();
 
         return TargetTypes;

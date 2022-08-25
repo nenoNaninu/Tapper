@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
@@ -116,7 +117,8 @@ public class TypeScriptCodeGenerator : ICodeGenerator
 
         if (typeSymbol.BaseType is not null &&
             typeSymbol.BaseType.IsType &&
-            typeSymbol.BaseType.SpecialType != SpecialType.System_Object)
+            typeSymbol.BaseType.SpecialType != SpecialType.System_Object &&
+            typeSymbol.BaseType.SpecialType != SpecialType.System_ValueType)
         {
             if (_sourceTypes.Contains(typeSymbol.BaseType, SymbolEqualityComparer.Default))
             {

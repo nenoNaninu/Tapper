@@ -101,4 +101,21 @@ public class TapperController : ControllerBase
 
         return null;
     }
+
+    [HttpPost]
+    public Type7? Test7(Type7 type7)
+    {
+        if (type7?.ReferencesType?.InheritanceClass0?.Value0 == 1337)
+        {
+            return new Type7(new Test.SourceTypes.References.ReferencesType
+            {
+                InheritanceClass0 = new Test.SourceTypes.InheritanceClass0
+                {
+                    Value0 = 1337
+                }
+            });
+        }
+
+        return null;
+    }
 }

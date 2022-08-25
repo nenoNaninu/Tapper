@@ -82,7 +82,7 @@ public class IReadOnlyDictionary2TypeMapper : ITypeMapper
     }
 }
 
-public static class DictionalyTypeMappers
+public static class DictionaryTypeMappers
 {
     public static ITypeMapper[] Create(Compilation compilation)
     {
