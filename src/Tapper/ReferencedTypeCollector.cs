@@ -28,7 +28,8 @@ internal class ReferencedTypeCollector : SymbolVisitor
         var memberTypes = types
             .SelectMany(static x => x.GetPublicFieldsAndProperties().IgnoreStatic()
                 .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol))
-            .Where(static x => x.SpecialType == SpecialType.None && !x.IsUnmanagedType)
+            .OfType<INamedTypeSymbol>()
+            .Where(static x => x.SpecialType == SpecialType.None && !x.IsUnmanagedType && !x.IsGenericType)
             .Distinct(SymbolEqualityComparer.Default)
             .OfType<INamedTypeSymbol>()
             .ToArray();
