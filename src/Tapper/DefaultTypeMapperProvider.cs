@@ -23,7 +23,7 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
 
         var primitiveTypeMappers = PrimitiveTypeMappers.Create(compilation);
         var collectionTypeTypeMappers = CollectionTypeTypeMappers.Create(compilation);
-        var dictionalyTypeMappers = DictionalyTypeMappers.Create(compilation);
+        var dictionalyTypeMappers = DictionaryTypeMappers.Create(compilation);
 
         var sourceTypeMapper = compilation.GetSourceTypes()
             .Select(static x => new SourceTypeMapper(x));

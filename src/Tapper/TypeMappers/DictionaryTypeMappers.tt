@@ -49,7 +49,7 @@ public class <#= type.Name.Replace("`", null) #>TypeMapper : ITypeMapper
 }
 
 <# } #>
-public static class DictionalyTypeMappers
+public static class DictionaryTypeMappers
 {
     public static ITypeMapper[] Create(Compilation compilation)
     {

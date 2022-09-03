@@ -33,8 +33,8 @@
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
         </None>
-        <None Include="TypeMappers\DictionalyTypeMappers.cs">
-            <DependentUpon>DictionalyTypeMappers.tt</DependentUpon>
+        <None Include="TypeMappers\DictionaryTypeMappers.cs">
+            <DependentUpon>DictionaryTypeMappers.tt</DependentUpon>
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
         </None>
@@ -50,8 +50,8 @@
             <LastGenOutput>CollectionTypeTypeMappers.cs</LastGenOutput>
             <Generator>TextTemplatingFileGenerator</Generator>
         </None>
-        <None Update="TypeMappers\DictionalyTypeMappers.tt">
-            <LastGenOutput>DictionalyTypeMappers.cs</LastGenOutput>
+        <None Update="TypeMappers\DictionaryTypeMappers.tt">
+            <LastGenOutput>DictionaryTypeMappers.cs</LastGenOutput>
             <Generator>TextTemplatingFileGenerator</Generator>
         </None>
         <None Update="TypeMappers\PrimitiveTypeMappers.tt">
@@ -70,6 +70,11 @@
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>DictionalyTypeMappers.tt</DependentUpon>
+        </Compile>
+        <Compile Update="TypeMappers\DictionaryTypeMappers.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>DictionaryTypeMappers.tt</DependentUpon>
         </Compile>
         <Compile Update="TypeMappers\PrimitiveTypeMappers.cs">
             <DesignTime>True</DesignTime>
