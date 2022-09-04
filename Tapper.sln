@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapper.Tests.Analyzer", "te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapper.Tests.Server", "tests\Tapper.Tests.Server\Tapper.Tests.Server.csproj", "{A6E38AD0-2AFB-48A8-8EF9-FB4F31F33072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapper.Test.SourceTypes.Reference", "tests\Tapper.Test.SourceTypes.Reference\Tapper.Test.SourceTypes.Reference.csproj", "{8BC6C3C1-7EC3-4B52-ADF8-1614BD6F43DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapper.Test.SourceTypes.Reference", "tests\Tapper.Test.SourceTypes.Reference\Tapper.Test.SourceTypes.Reference.csproj", "{8BC6C3C1-7EC3-4B52-ADF8-1614BD6F43DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

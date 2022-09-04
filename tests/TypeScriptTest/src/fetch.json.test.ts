@@ -61,9 +61,12 @@ test('fetch7.json', async () => {
     {
         referencedType: 
         {
-            inheritanceClass0: 
+            customType2:
             {
-                value0: 1337
+                value: 1337,
+                value2: 12.02,
+                dateTime: new Date('2022-02-06T00:00:00.000Z'),
+                dateTime2: new Date('2022-09-04T00:00:00.000Z')
             }
         }
     }

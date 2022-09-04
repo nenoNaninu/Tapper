@@ -88,8 +88,11 @@ export const fetchType6 = async () => {
 export const fetchType7 = async () => {
     const obj: Type7 = {
         referencedType: { 
-            inheritanceClass0: { 
-                value0: 1337
+            customType2: {
+                value: 1337,
+                value2: 12.02,
+                dateTime: new Date('2021-06-04T00:00:00.000Z'),
+                dateTime2: new Date('2021-10-06T00:00:00.000Z')
             }
         }
     }
@@ -101,6 +104,9 @@ export const fetchType7 = async () => {
     });
 
     const ret = await response.json() as Type7;
+
+    ret.referencedType.customType2!.dateTime = typeof ret.referencedType.customType2?.dateTime === 'string' ? new Date(ret.referencedType.customType2?.dateTime) : <Date>ret.referencedType.customType2?.dateTime;
+    ret.referencedType.customType2!.dateTime2 = typeof ret.referencedType.customType2?.dateTime2 === 'string' ? new Date(ret.referencedType.customType2?.dateTime2) : <Date>ret.referencedType.customType2?.dateTime2;
 
     return ret;
 }
