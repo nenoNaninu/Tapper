@@ -32,8 +32,8 @@ namespace Space1
     [TranspilationSource]
     public class CustomType1
     {
-        public float Value;
-        public DateTime DateTime;
+        public float Value { get; set; }
+        public DateTime DateTime { get; set; }
     }
 }
 
@@ -44,7 +44,7 @@ namespace Space2
     [TranspilationSource]
     public class CustomType2 : CustomType1
     {
-        public float Value2;
-        public DateTime DateTime2;
+        public float Value2 { get; set; }
+        public DateTime DateTime2 { get; set; }
     }
 }

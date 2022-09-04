@@ -63,8 +63,11 @@ test('fetch7.msgpack', async () => {
     const gt: Type7 =
     {
         ReferencedType: {
-            InheritanceClass0: {
-                Value0: 1337
+            CustomType2: {
+                Value: 1337,
+                Value2: 12.02,
+                DateTime: new Date('2022-02-06T00:00:00.000Z'),
+                DateTime2: new Date('2022-09-04T00:00:00.000Z')
             }
         }
     }
