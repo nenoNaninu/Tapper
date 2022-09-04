@@ -112,8 +112,11 @@ export const fetchType6 = async () => {
 export const fetchType7 = async () => {
     const obj: Type7 = {
         ReferencedType: {
-            InheritanceClass0: {
-                Value0: 1337
+            CustomType2: {
+                Value: 1337,
+                Value2: 12.02,
+                DateTime: new Date('2021-06-04T00:00:00.000Z'),
+                DateTime2: new Date('2021-10-06T00:00:00.000Z')
             }
         }
     }
@@ -130,5 +133,6 @@ export const fetchType7 = async () => {
     const buf = await response.buffer()
     const ret = decode<Type7>(buf) as Type7;
 
+    ret.ReferencedType.CustomType2!.Value2 = parseFloat(ret.ReferencedType.CustomType2?.Value2.toFixed(2)!);
     return ret;
 }

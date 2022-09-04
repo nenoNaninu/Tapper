@@ -18,13 +18,15 @@ public class CompilationSingleton
     public static readonly Compilation Compilation;
 
     private static Compilation? CompilationWithExternalReferences;
-    private static readonly SyntaxTree AttributeSyntaxTree;
+    private static readonly CSharpCompilationOptions CompilationOptions;
+    private static readonly MetadataReference[] References;
+    private static readonly SyntaxTree[] SyntaxTrees;
 
     static CompilationSingleton()
     {
         var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp10);
 
-        AttributeSyntaxTree = CSharpSyntaxTree.ParseText(
+        var attributeSyntaxTree = CSharpSyntaxTree.ParseText(
              File.ReadAllText("../../../../../src/Tapper.Attributes/TranspilationSourceAttribute.cs"),
              options);
 
@@ -56,22 +58,20 @@ public class CompilationSingleton
             File.ReadAllText("../../../../Tapper.Test.SourceTypes/InheritanceClasses.cs"),
             options);
 
-        var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
+        CompilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
             .WithNullableContextOptions(NullableContextOptions.Enable);
 
         // x: System.Core.dll (why?)
-        var references = new MetadataReference[]
+        References = new MetadataReference[]
         {
             MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
             MetadataReference.CreateFromFile(typeof(Uri).Assembly.Location),
             MetadataReference.CreateFromFile(typeof(LinkedList<>).Assembly.Location),
         };
 
-        var compilation = CSharpCompilation.Create(
-            assemblyName: null,
-            syntaxTrees: new[]
+        SyntaxTrees = new[]
             {
-                AttributeSyntaxTree,
+                attributeSyntaxTree,
                 primitiveSyntax,
                 collectionSyntax,
                 dictionarySyntax,
@@ -79,9 +79,13 @@ public class CompilationSingleton
                 nestedNamespaceSyntax,
                 tupleSyntax,
                 inheritanceSyntax,
-            },
-            references: references,
-            options: compilationOptions);
+            };
+
+        var compilation = CSharpCompilation.Create(
+            assemblyName: null,
+            syntaxTrees: SyntaxTrees,
+            references: References,
+            options: CompilationOptions);
 
         Compilation = compilation;
     }
@@ -99,6 +103,8 @@ public class CompilationSingleton
         var projectPath = "../../../../Tapper.Test.SourceTypes.Reference/Tapper.Test.SourceTypes.Reference.csproj";
 
         var msBuildProject = await workspace.OpenProjectAsync(projectPath, logger, null);
+        msBuildProject = msBuildProject.AddMetadataReferences(References);
+        msBuildProject = msBuildProject.WithCompilationOptions(CompilationOptions);
 
         var compilation = await msBuildProject.GetCompilationAsync();
 
@@ -107,7 +113,7 @@ public class CompilationSingleton
             throw new InvalidOperationException("Failed to get compilation.");
         }
 
-        compilation = compilation.AddSyntaxTrees(AttributeSyntaxTree);
+        compilation = compilation.AddSyntaxTrees(SyntaxTrees);
 
         return CompilationWithExternalReferences = compilation;
 

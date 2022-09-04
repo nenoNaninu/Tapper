@@ -1,6 +1,8 @@
 using System.Buffers;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Space2;
+using Tapper.Test.SourceTypes;
 using Tapper.Tests.Server.Models;
 
 namespace Tapper.Tests.Server.Controllers;
@@ -105,15 +107,27 @@ public class TapperController : ControllerBase
     [HttpPost]
     public Type7? Test7(Type7 type7)
     {
-        if (type7.ReferencedType?.InheritanceClass0?.Value0 == 1337)
+        if (type7.ReferencedType.CustomType2 is CustomType2 customType2)
         {
-            return new Type7(new Test.SourceTypes.Reference.ReferencedType
+            if (customType2.Value == 1337 &&
+                customType2.Value2 == 12.02f)
             {
-                InheritanceClass0 = new Test.SourceTypes.InheritanceClass0
+                var result1 = customType2.DateTime.Year == 2021 && customType2.DateTime.Month == 6 && customType2.DateTime.Day == 4;
+                var result2 = customType2.DateTime2.Year == 2021 && customType2.DateTime2.Month == 10 && customType2.DateTime2.Day == 6;
+                if (result1 && result2)
                 {
-                    Value0 = 1337
+                    return new Type7(new Test.SourceTypes.Reference.ReferencedType
+                    {
+                        CustomType2 = new CustomType2
+                        {
+                            Value = 1337,
+                            Value2 = 12.02f,
+                            DateTime = new DateTime(2022, 02, 06, 0, 0, 0, DateTimeKind.Utc),
+                            DateTime2 = new DateTime(2022, 09, 04, 0, 0, 0, DateTimeKind.Utc)
+                        }
+                    });
                 }
-            });
+            }
         }
 
         return null;
