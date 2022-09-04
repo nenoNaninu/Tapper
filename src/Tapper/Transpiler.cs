@@ -7,11 +7,12 @@ namespace Tapper;
 
 public class Transpiler
 {
-    private readonly INamedTypeSymbol[] _targetTypes;
-    private readonly ILookup<INamespaceSymbol, INamedTypeSymbol> _targetTypeLookupTable;
+    private INamedTypeSymbol[] _targetTypes;
     private readonly string _newLine;
     private readonly ILogger _logger;
     private readonly ICodeGenerator _codeGenerator;
+
+    public ITranspilationOptions TranspilationOptions => _codeGenerator.TranspilationOptions;
 
     public Transpiler(Compilation compilation, string newLine, int indent, SerializerOption serializerOption, NamingStyle namingStyle, EnumNamingStyle enumNamingStyle, ILogger logger)
     {
@@ -21,14 +22,23 @@ public class Transpiler
         _codeGenerator = new TypeScriptCodeGenerator(compilation, newLine, indent, serializerOption, namingStyle, enumNamingStyle, logger);
 
         _targetTypes = compilation.GetSourceTypes();
-        _targetTypeLookupTable = _targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
     }
 
+    public void AddTargetTypes(INamedTypeSymbol[] targetTypes)
+    {
+        _targetTypes = _targetTypes
+            .Concat(targetTypes)
+            .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default)
+            .ToArray();
+
+        _codeGenerator.AddSourceTypes(_targetTypes);
+    }
     public IReadOnlyList<GeneratedSourceCode> Transpile()
     {
         var outputScripts = new List<GeneratedSourceCode>();
+        var targetTypeLookupTable = _targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
 
-        foreach (var group in _targetTypeLookupTable)
+        foreach (var group in targetTypeLookupTable)
         {
             var writer = new CodeWriter();
 

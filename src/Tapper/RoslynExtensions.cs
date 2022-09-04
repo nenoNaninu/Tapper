@@ -29,6 +29,24 @@ public static class RoslynExtensions
         return NamedTypeSymbols;
     }
 
+    private static INamedTypeSymbol[]? ReferencedTypeSymbols;
+
+    public static IEnumerable<INamedTypeSymbol> GetReferencedTypeSymbols(this Compilation compilation, INamedTypeSymbol[] targetTypes, INamedTypeSymbol? attributeSymbol, bool skipNullCheck = false)
+    {
+        if (!skipNullCheck && ReferencedTypeSymbols is not null)
+        {
+            return ReferencedTypeSymbols;
+        }
+
+        var referencedTypesCollector = new ReferencedTypeCollector(targetTypes, attributeSymbol);
+        referencedTypesCollector.Visit(compilation.GlobalNamespace);
+
+        ReferencedTypeSymbols = referencedTypesCollector.GetReferencedTypes()
+            .ToArray();
+
+        return ReferencedTypeSymbols;
+    }
+
     private static INamedTypeSymbol[]? TargetTypes;
 
     public static INamedTypeSymbol[] GetSourceTypes(this Compilation compilation)
@@ -41,17 +59,12 @@ public static class RoslynExtensions
         var annotationSymbol = compilation.GetTypeByMetadataName("Tapper.TranspilationSourceAttribute");
 
         TargetTypes = compilation.GetNamedTypeSymbols()
-            .Where(x =>
-            {
-                var attributes = x.GetAttributes();
+            .Where(x => x.IsAttributeAnnotated(annotationSymbol))
+            .ToArray();
 
-                if (attributes.IsEmpty)
-                {
-                    return false;
-                }
-
-                return attributes.Any(x => SymbolEqualityComparer.Default.Equals(x.AttributeClass, annotationSymbol));
-            })
+        TargetTypes = TargetTypes
+            .Concat(compilation.GetReferencedTypeSymbols(TargetTypes, annotationSymbol))
+            .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default)
             .ToArray();
 
         return TargetTypes;
@@ -162,5 +175,19 @@ public static class RoslynExtensions
         {
             yield return typeSymbol;
         }
+    }
+    public static bool IsAttributeAnnotated(this INamedTypeSymbol source, INamedTypeSymbol? attributeSymbol)
+    {
+        return source.GetAttributes()
+            .Any(x => SymbolEqualityComparer.Default.Equals(x.AttributeClass, attributeSymbol));
+    }
+    public static IEnumerable<INamedTypeSymbol> GetBaseTypes(this IEnumerable<ITypeSymbol> types)
+    {
+        return types.Where(static x => x.BaseType is not null &&
+            x.BaseType.SpecialType != SpecialType.System_Object &&
+            x.BaseType.SpecialType != SpecialType.System_Enum &&
+            x.BaseType.SpecialType != SpecialType.System_ValueType)
+            .Select(static x => x.BaseType!)
+            .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default);
     }
 }

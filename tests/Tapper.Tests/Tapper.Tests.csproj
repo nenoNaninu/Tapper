@@ -57,7 +57,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\Tapper\Tapper.csproj" />
-        <ProjectReference Include="..\Tapper.Test.SourceTypes\Tapper.Test.SourceTypes.csproj" />
+        <ProjectReference Include="..\Tapper.Test.SourceTypes.Reference\Tapper.Test.SourceTypes.Reference.csproj" />
     </ItemGroup>
 
     <ItemGroup>

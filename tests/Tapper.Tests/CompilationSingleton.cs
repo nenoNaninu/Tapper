@@ -2,8 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
+using Microsoft.Build.Framework;
+using Microsoft.Build.Logging;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.MSBuild;
 using Tapper.TypeMappers;
 using Xunit;
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
@@ -13,13 +17,16 @@ public class CompilationSingleton
 {
     public static readonly Compilation Compilation;
 
+    private static Compilation? CompilationWithExternalReferences;
+    private static readonly SyntaxTree AttributeSyntaxTree;
+
     static CompilationSingleton()
     {
         var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp10);
 
-        var attributeSyntaxTree = CSharpSyntaxTree.ParseText(
-            File.ReadAllText("../../../../../src/Tapper.Attributes/TranspilationSourceAttribute.cs"),
-            options);
+        AttributeSyntaxTree = CSharpSyntaxTree.ParseText(
+             File.ReadAllText("../../../../../src/Tapper.Attributes/TranspilationSourceAttribute.cs"),
+             options);
 
         var primitiveSyntax = CSharpSyntaxTree.ParseText(
             File.ReadAllText("../../../../Tapper.Test.SourceTypes/PrimitiveClasses.cs"),
@@ -64,7 +71,7 @@ public class CompilationSingleton
             assemblyName: null,
             syntaxTrees: new[]
             {
-                attributeSyntaxTree,
+                AttributeSyntaxTree,
                 primitiveSyntax,
                 collectionSyntax,
                 dictionarySyntax,
@@ -77,5 +84,32 @@ public class CompilationSingleton
             options: compilationOptions);
 
         Compilation = compilation;
+    }
+
+    public static async Task<Compilation> GetCompilationWithExternalReferences()
+    {
+        if (CompilationWithExternalReferences is not null)
+        {
+            return CompilationWithExternalReferences;
+        }
+
+        var logger = new ConsoleLogger(LoggerVerbosity.Quiet);
+        using var workspace = MSBuildWorkspace.Create();
+        workspace.LoadMetadataForReferencedProjects = true;
+        var projectPath = "../../../../Tapper.Test.SourceTypes.Reference/Tapper.Test.SourceTypes.Reference.csproj";
+
+        var msBuildProject = await workspace.OpenProjectAsync(projectPath, logger, null);
+
+        var compilation = await msBuildProject.GetCompilationAsync();
+
+        if (compilation is null)
+        {
+            throw new InvalidOperationException("Failed to get compilation.");
+        }
+
+        compilation = compilation.AddSyntaxTrees(AttributeSyntaxTree);
+
+        return CompilationWithExternalReferences = compilation;
+
     }
 }
