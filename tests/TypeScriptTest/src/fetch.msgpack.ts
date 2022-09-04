@@ -1,4 +1,4 @@
-import { MyEnum, Type2, Type3, Type4, Type5, Type6 } from './generated/msgpack/Tapper.Tests.Server.Models';
+import { MyEnum, Type2, Type3, Type4, Type5, Type6, Type7 } from './generated/msgpack/Tapper.Tests.Server.Models';
 import { randomUUID } from 'crypto';
 import { encode, decode } from "@msgpack/msgpack";
 import fetch from 'node-fetch';
@@ -105,6 +105,30 @@ export const fetchType6 = async () => {
 
     const buf = await response.buffer()
     const ret = decode<Type6>(buf) as Type6;
+
+    return ret;
+}
+
+export const fetchType7 = async () => {
+    const obj: Type7 = {
+        ReferencedType: {
+            InheritanceClass0: {
+                Value0: 1337
+            }
+        }
+    }
+
+    const response = await fetch("http://localhost:5100/tapper/test7", {
+        method: "POST",
+        body: encode(obj),
+        headers: {
+            'Content-Type': 'application/x-msgpack',
+            'Accept': 'application/x-msgpack'
+        },
+    });
+
+    const buf = await response.buffer()
+    const ret = decode<Type7>(buf) as Type7;
 
     return ret;
 }

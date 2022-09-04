@@ -29,13 +29,14 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3" PrivateAssets="all">
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.1.0" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
         <Compile Include="..\Tapper\RoslynExtensions.cs" LinkBase="" />
+        <Compile Include="..\Tapper\ReferencedTypeCollector.cs" LinkBase="" />
     </ItemGroup>
 
 </Project>
