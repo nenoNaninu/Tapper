@@ -40,6 +40,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         var memberTypes = types
             .SelectMany(static x => x.GetPublicFieldsAndProperties().IgnoreStatic())
             .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol);
+
         var baseTypes = types
             .Where(static x => x.BaseType is not null
                 && x.BaseType.IsType
