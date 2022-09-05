@@ -26,7 +26,7 @@
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.1.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
     </ItemGroup>
-    
+
     <ItemGroup>
         <None Include="TypeMappers\CollectionTypeTypeMappers.cs">
             <DependentUpon>CollectionTypeTypeMappers.tt</DependentUpon>
@@ -66,15 +66,10 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>CollectionTypeTypeMappers.tt</DependentUpon>
         </Compile>
-        <Compile Update="TypeMappers\DictionalyTypeMappers.cs">
+        <Compile Update="TypeMappers\DictionaryTypeMappers.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
-            <DependentUpon>DictionalyTypeMappers.tt</DependentUpon>
-        </Compile>
-        <Compile Update="TypeMappers\DictionaryTypeMappers.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>DictionaryTypeMappers.tt</DependentUpon>
+            <DependentUpon>DictionaryTypeMappers.tt</DependentUpon>
         </Compile>
         <Compile Update="TypeMappers\PrimitiveTypeMappers.cs">
             <DesignTime>True</DesignTime>
