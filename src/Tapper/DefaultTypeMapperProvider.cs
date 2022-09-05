@@ -23,14 +23,14 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
 
         var primitiveTypeMappers = PrimitiveTypeMappers.Create(compilation);
         var collectionTypeTypeMappers = CollectionTypeTypeMappers.Create(compilation);
-        var dictionalyTypeMappers = DictionalyTypeMappers.Create(compilation);
+        var dictionaryTypeMappers = DictionaryTypeMappers.Create(compilation);
 
         var sourceTypeMapper = compilation.GetSourceTypes()
             .Select(static x => new SourceTypeMapper(x));
 
         var typeMappers = sourceTypeMapper.Concat(primitiveTypeMappers)
             .Concat(collectionTypeTypeMappers)
-            .Concat(dictionalyTypeMappers)
+            .Concat(dictionaryTypeMappers)
             .Concat(new ITypeMapper[] { dateTimeTypeMapper, nullableStructTypeMapper });
 
         _mappers = typeMappers.ToDictionary<ITypeMapper, ITypeSymbol>(x => x.Assign, SymbolEqualityComparer.Default);
