@@ -26,8 +26,8 @@ public class CompilationSingleton
         var options = CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp10);
 
         var attributeSyntaxTree = CSharpSyntaxTree.ParseText(
-             File.ReadAllText("../../../../../src/Tapper.Attributes/TranspilationSourceAttribute.cs"),
-             options);
+            File.ReadAllText("../../../../../src/Tapper.Attributes/TranspilationSourceAttribute.cs"),
+            options);
 
         var primitiveSyntax = CSharpSyntaxTree.ParseText(
             File.ReadAllText("../../../../Tapper.Test.SourceTypes/PrimitiveClasses.cs"),
