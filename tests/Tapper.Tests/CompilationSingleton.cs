@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Build.Framework;
@@ -10,6 +11,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.MSBuild;
 using Tapper.TypeMappers;
 using Xunit;
+
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
 
 namespace Tapper.Tests;
@@ -17,10 +19,7 @@ public class CompilationSingleton
 {
     public static readonly Compilation Compilation;
 
-    private static Compilation? CompilationWithExternalReferences;
-    private static readonly CSharpCompilationOptions CompilationOptions;
-    private static readonly MetadataReference[] References;
-    private static readonly SyntaxTree[] SyntaxTrees;
+    public static readonly Compilation CompilationWithExternalReferences;
 
     static CompilationSingleton()
     {
@@ -58,18 +57,19 @@ public class CompilationSingleton
             File.ReadAllText("../../../../Tapper.Test.SourceTypes/InheritanceClasses.cs"),
             options);
 
-        CompilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
+        var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
             .WithNullableContextOptions(NullableContextOptions.Enable);
 
         // x: System.Core.dll (why?)
-        References = new MetadataReference[]
+        var references = new MetadataReference[]
         {
             MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
             MetadataReference.CreateFromFile(typeof(Uri).Assembly.Location),
             MetadataReference.CreateFromFile(typeof(LinkedList<>).Assembly.Location),
         };
 
-        SyntaxTrees = new[]
+
+        var syntaxTrees = new[]
             {
                 attributeSyntaxTree,
                 primitiveSyntax,
@@ -83,39 +83,24 @@ public class CompilationSingleton
 
         var compilation = CSharpCompilation.Create(
             assemblyName: null,
-            syntaxTrees: SyntaxTrees,
-            references: References,
-            options: CompilationOptions);
+            syntaxTrees: syntaxTrees,
+            references: references,
+            options: compilationOptions);
 
         Compilation = compilation;
-    }
 
-    public static async Task<Compilation> GetCompilationWithExternalReferences()
-    {
-        if (CompilationWithExternalReferences is not null)
-        {
-            return CompilationWithExternalReferences;
-        }
+        var reference = Compilation.ToMetadataReference();
 
-        var logger = new ConsoleLogger(LoggerVerbosity.Quiet);
-        using var workspace = MSBuildWorkspace.Create();
-        workspace.LoadMetadataForReferencedProjects = true;
-        var projectPath = "../../../../Tapper.Test.SourceTypes.Reference/Tapper.Test.SourceTypes.Reference.csproj";
+        var referenceSyntax = CSharpSyntaxTree.ParseText(
+            File.ReadAllText("../../../../Tapper.Test.SourceTypes.Reference/ReferencedClasses.cs"),
+            options);
 
-        var msBuildProject = await workspace.OpenProjectAsync(projectPath, logger, null);
-        msBuildProject = msBuildProject.AddMetadataReferences(References);
-        msBuildProject = msBuildProject.WithCompilationOptions(CompilationOptions);
+        var referenceCompilation = CSharpCompilation.Create(
+            assemblyName: null,
+            syntaxTrees: new[] { referenceSyntax },
+            references: references.Concat(new[] { reference }),
+            options: compilationOptions);
 
-        var compilation = await msBuildProject.GetCompilationAsync();
-
-        if (compilation is null)
-        {
-            throw new InvalidOperationException("Failed to get compilation.");
-        }
-
-        compilation = compilation.AddSyntaxTrees(SyntaxTrees);
-
-        return CompilationWithExternalReferences = compilation;
-
+        CompilationWithExternalReferences = referenceCompilation;
     }
 }
