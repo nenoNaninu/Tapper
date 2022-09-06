@@ -21,21 +21,26 @@ internal class ReferencedTypeCollector : SymbolVisitor
 
     public ImmutableArray<INamedTypeSymbol> GetReferencedTypes() => _referencedTypes.ToImmutableArray();
 
-    private static IEnumerable<INamedTypeSymbol> GetMembers(IEnumerable<INamedTypeSymbol> memberTypes)
+    private static IEnumerable<INamedTypeSymbol> GetReferenceTree(IEnumerable<INamedTypeSymbol> types)
     {
-        var membersMemberTypes = memberTypes.SelectMany(static x => x.GetPublicFieldsAndProperties()
+        var baseTypes = types.GetBaseTypesAndSelfFiltered();
+
+        var membersMemberTypes = baseTypes.SelectMany(static x => x.GetPublicFieldsAndProperties()
             .IgnoreStatic()
                 .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol))
             .OfType<INamedTypeSymbol>()
             .Where(static x => x.SpecialType == SpecialType.None)
             .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default);
 
-        if (memberTypes.All(x => membersMemberTypes.Contains(x, SymbolEqualityComparer.Default)))
+        var checkTypes = baseTypes.Concat(membersMemberTypes)
+            .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default);
+
+        if (checkTypes.All(x => types.Contains(x, SymbolEqualityComparer.Default)))
         {
-            return membersMemberTypes;
+            return checkTypes;
         }
 
-        return membersMemberTypes.Concat(GetMembers(membersMemberTypes))
+        return checkTypes.Concat(GetReferenceTree(checkTypes))
             .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default);
     }
 
@@ -46,17 +51,12 @@ internal class ReferencedTypeCollector : SymbolVisitor
             return false;
         }
 
-        var baseTypes = types.GetBaseTypesAndSelfFiltered();
+        var checkTypes = GetReferenceTree(types);
 
-        var memberTypes = GetMembers(baseTypes);
-
-        var checkTypes = baseTypes.Concat(memberTypes)
-            .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default);
-
-        var isMemberReference = checkTypes
+        var isReference = checkTypes
             .Contains(type, SymbolEqualityComparer.Default);
 
-        if (isMemberReference)
+        if (isReference)
         {
             return true;
         }
