@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -185,18 +186,45 @@ public static class RoslynExtensions
             yield return typeSymbol;
         }
     }
+
     public static bool IsAttributeAnnotated(this INamedTypeSymbol source, INamedTypeSymbol? attributeSymbol)
     {
         return source.GetAttributes()
             .Any(x => SymbolEqualityComparer.Default.Equals(x.AttributeClass, attributeSymbol));
     }
-    public static IEnumerable<INamedTypeSymbol> GetBaseTypes(this IEnumerable<ITypeSymbol> types)
+
+
+    private static readonly Func<INamedTypeSymbol, bool> BaseTypeFilter = static x => x is not null &&
+                x.SpecialType != SpecialType.System_Object &&
+                x.SpecialType != SpecialType.System_Enum &&
+                x.SpecialType != SpecialType.System_ValueType;
+
+    public static IEnumerable<INamedTypeSymbol> GetBaseTypesAndSelfFiltered(this IEnumerable<INamedTypeSymbol> types)
     {
-        return types.Where(static x => x.BaseType is not null &&
-            x.BaseType.SpecialType != SpecialType.System_Object &&
-            x.BaseType.SpecialType != SpecialType.System_Enum &&
-            x.BaseType.SpecialType != SpecialType.System_ValueType)
-            .Select(static x => x.BaseType!)
+        return types.GetBaseTypesAndSelf(BaseTypeFilter);
+    }
+
+    public static IEnumerable<INamedTypeSymbol> GetBaseTypesAndSelf(this IEnumerable<INamedTypeSymbol> types, Func<INamedTypeSymbol, bool>? takeWhilePredicate = null)
+    {
+        return types.SelectMany(y =>
+            y.GetBaseTypesAndThis(takeWhilePredicate))
             .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default);
     }
+
+    public static IEnumerable<INamedTypeSymbol> GetBaseTypesAndThisFiltered(this INamedTypeSymbol type)
+    {
+        return type.GetBaseTypesAndThis(BaseTypeFilter);
+    }
+
+    public static IEnumerable<INamedTypeSymbol> GetBaseTypesAndThis(this INamedTypeSymbol type, Func<INamedTypeSymbol, bool>? takeWhilePredicate = null)
+    {
+        var current = type;
+        while (current != null &&
+            (takeWhilePredicate == null || takeWhilePredicate(current)))
+        {
+            yield return current;
+            current = current.BaseType;
+        }
+    }
+
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.FindSymbols;
 
 namespace Tapper;
 
@@ -20,22 +21,39 @@ internal class ReferencedTypeCollector : SymbolVisitor
 
     public ImmutableArray<INamedTypeSymbol> GetReferencedTypes() => _referencedTypes.ToImmutableArray();
 
-    private static bool RecursiveReferences(INamedTypeSymbol type, IEnumerable<INamedTypeSymbol> types)
+    private static IEnumerable<INamedTypeSymbol> GetMembers(IEnumerable<INamedTypeSymbol> memberTypes)
+    {
+        var membersMemberTypes = memberTypes.SelectMany(static x => x.GetPublicFieldsAndProperties()
+            .IgnoreStatic()
+                .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol))
+            .OfType<INamedTypeSymbol>()
+            .Where(static x => x.SpecialType == SpecialType.None)
+            .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default);
+
+        if (memberTypes.All(x => membersMemberTypes.Contains(x, SymbolEqualityComparer.Default)))
+        {
+            return membersMemberTypes;
+        }
+
+        return membersMemberTypes.Concat(GetMembers(membersMemberTypes))
+            .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default);
+    }
+
+    private static bool References(IEnumerable<INamedTypeSymbol> types, INamedTypeSymbol type)
     {
         if (!types.Any())
         {
             return false;
         }
 
-        var memberTypes = types
-            .SelectMany(static x =>
-            x.GetPublicFieldsAndProperties().IgnoreStatic()
-                .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol))
-            .OfType<INamedTypeSymbol>()
-            .Where(static x => x.SpecialType == SpecialType.None)
+        var baseTypes = types.GetBaseTypesAndSelfFiltered();
+
+        var memberTypes = GetMembers(baseTypes);
+
+        var checkTypes = baseTypes.Concat(memberTypes)
             .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default);
 
-        var isMemberReference = memberTypes
+        var isMemberReference = checkTypes
             .Contains(type, SymbolEqualityComparer.Default);
 
         if (isMemberReference)
@@ -45,7 +63,7 @@ internal class ReferencedTypeCollector : SymbolVisitor
 
         if (type.IsGenericType)
         {
-            if (memberTypes
+            if (checkTypes
                     .Where(static x => x.IsGenericType)
                     .Select(static x => x.ConstructedFrom)
                     .Contains(type.ConstructedFrom, SymbolEqualityComparer.Default))
@@ -54,20 +72,7 @@ internal class ReferencedTypeCollector : SymbolVisitor
             }
         }
 
-        var skipRecursion = false;
-        if (memberTypes.All(x => types.Contains(x, SymbolEqualityComparer.Default)))
-        {
-            skipRecursion = true;
-        }
-
-        var baseTypes = types.GetBaseTypes();
-
-        var isBaseTypeReference = baseTypes.Any(x => SymbolEqualityComparer.Default.Equals(x, type) ||
-            (x.IsGenericType && type.IsGenericType &&
-                SymbolEqualityComparer.Default.Equals(x.ConstructedFrom, type.ConstructedFrom)));
-
-        return isBaseTypeReference || (!skipRecursion && RecursiveReferences(type, memberTypes)) || RecursiveReferences(type, baseTypes);
-
+        return false;
     }
 
     public override void VisitAssembly(IAssemblySymbol symbol)
@@ -114,8 +119,12 @@ internal class ReferencedTypeCollector : SymbolVisitor
 
         if (!type.IsAttributeAnnotated(_attributeSymbol) ||
             type.SpecialType != SpecialType.None ||
-            !type.IsAccessibleOutsideOfAssembly() ||
-            !RecursiveReferences(type, _targetTypes) ||
+            !type.IsAccessibleOutsideOfAssembly())
+        {
+            return;
+        }
+
+        if (!References(_targetTypes, type) ||
             !_referencedTypes.Add(type))
         {
             return;

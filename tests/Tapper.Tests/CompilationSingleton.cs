@@ -17,9 +17,27 @@ using Xunit;
 namespace Tapper.Tests;
 public class CompilationSingleton
 {
-    public static readonly Compilation Compilation;
+    private static readonly Compilation InternalCompilation;
+    public static Compilation Compilation
+    {
+        get
+        {
+            RoslynExtensions.ClearCached();
+            return InternalCompilation;
+        }
+    }
 
-    public static readonly Compilation CompilationWithExternalReferences;
+    private static readonly Compilation InternalCompilationWithExternalReferences;
+
+    public static Compilation CompilationWithExternalReferences
+    {
+        get
+        {
+            RoslynExtensions.ClearCached();
+            return InternalCompilationWithExternalReferences;
+        }
+    }
+
 
     static CompilationSingleton()
     {
@@ -87,7 +105,7 @@ public class CompilationSingleton
             references: references,
             options: compilationOptions);
 
-        Compilation = compilation;
+        InternalCompilation = compilation;
 
         var reference = Compilation.ToMetadataReference();
 
@@ -101,6 +119,6 @@ public class CompilationSingleton
             references: references.Concat(new[] { reference }),
             options: compilationOptions);
 
-        CompilationWithExternalReferences = referenceCompilation;
+        InternalCompilationWithExternalReferences = referenceCompilation;
     }
 }

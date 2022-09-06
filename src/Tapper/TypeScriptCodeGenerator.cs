@@ -56,7 +56,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
             .SelectMany(static x => x.GetPublicFieldsAndProperties().IgnoreStatic())
             .SelectMany(RoslynExtensions.GetRelevantTypesFromMemberSymbol);
 
-        var baseTypes = types.GetBaseTypes();
+        var baseTypes = types.GetBaseTypesAndSelfFiltered();
 
         var diffrentNamespaceTypes = memberTypes
             .Concat(baseTypes)

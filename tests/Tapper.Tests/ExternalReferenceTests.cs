@@ -16,15 +16,9 @@ public class ExternalReferenceTests
 {
     private readonly ITestOutputHelper _output;
 
-    //static ExternalReferenceTests()
-    //{
-    //    MSBuildLocator.RegisterDefaults();
-    //}
-
     public ExternalReferenceTests(ITestOutputHelper output)
     {
         _output = output;
-        RoslynExtensions.ClearCached();
     }
 
     [Fact]
