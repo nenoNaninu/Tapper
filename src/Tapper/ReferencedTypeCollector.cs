@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis;
 
 namespace Tapper;
 
-internal class ReferencedTypeCollector : SymbolVisitor
+public class ReferencedTypeCollector : SymbolVisitor
 {
     private readonly INamedTypeSymbol[] _targetTypes;
     private readonly INamedTypeSymbol? _attributeSymbol;

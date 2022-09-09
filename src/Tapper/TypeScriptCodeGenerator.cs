@@ -11,7 +11,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
 {
     private readonly string _newLine;
     private readonly string _indent;
-    private INamedTypeSymbol[] _sourceTypes;
+    private readonly INamedTypeSymbol[] _sourceTypes;
     private readonly INamedTypeSymbol _nullableStructTypeSymbol;
     private readonly ITranspilationOptions _transpilationOptions;
 
@@ -32,18 +32,6 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         _nullableStructTypeSymbol = compilation.GetTypeByMetadataName("System.Nullable`1")!;
         _newLine = newLine;
         _indent = new string(' ', indent);
-    }
-
-    public void AddSourceTypes(IEnumerable<INamedTypeSymbol> sourceTypes)
-    {
-        foreach (var targetType in sourceTypes)
-        {
-            var sourceMapper = new SourceTypeMapper(targetType);
-            TranspilationOptions.TypeMapperProvider.AddTypeMapper(sourceMapper);
-        }
-        _sourceTypes = _sourceTypes.Concat(sourceTypes)
-            .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default)
-            .ToArray();
     }
 
     public void AddHeader(IGrouping<INamespaceSymbol, INamedTypeSymbol> types, ref CodeWriter writer)
@@ -215,6 +203,4 @@ public class TypeScriptCodeGenerator : ICodeGenerator
             _ => text,
         };
     }
-
-
 }
