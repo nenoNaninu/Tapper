@@ -4,18 +4,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Microsoft.CodeAnalysis;
 
-[assembly: InternalsVisibleTo("Tapper.Tests")]
-
 namespace Tapper;
 
 public static class RoslynExtensions
 {
-    internal static void ClearCached()
-    {
-        NamedTypeSymbols = null;
-        ReferencedTypeSymbols = null;
-        TargetTypes = null;
-    }
     private static INamedTypeSymbol[]? NamedTypeSymbols;
 
     public static IEnumerable<INamedTypeSymbol> GetNamedTypeSymbols(this Compilation compilation)
