@@ -4,59 +4,8 @@ using Microsoft.CodeAnalysis;
 
 namespace Tapper;
 
-public static class RoslynExtensions
+public static partial class RoslynExtensions
 {
-    private static INamedTypeSymbol[]? NamedTypeSymbols;
-
-    public static IEnumerable<INamedTypeSymbol> GetNamedTypeSymbols(this Compilation compilation)
-    {
-        if (NamedTypeSymbols is not null)
-        {
-            return NamedTypeSymbols;
-        }
-
-        NamedTypeSymbols = compilation
-            .SyntaxTrees
-            .SelectMany(syntaxTree =>
-            {
-                var semanticModel = compilation.GetSemanticModel(syntaxTree);
-                return syntaxTree.GetRoot()
-                    .DescendantNodes()
-                    .Select(x => semanticModel.GetDeclaredSymbol(x))
-                    .OfType<INamedTypeSymbol>();
-            }).ToArray();
-
-        return NamedTypeSymbols;
-    }
-
-    private static INamedTypeSymbol[]? TargetTypes;
-
-    public static INamedTypeSymbol[] GetSourceTypes(this Compilation compilation)
-    {
-        if (TargetTypes is not null)
-        {
-            return TargetTypes;
-        }
-
-        var annotationSymbol = compilation.GetTypeByMetadataName("Tapper.TranspilationSourceAttribute");
-
-        TargetTypes = compilation.GetNamedTypeSymbols()
-            .Where(x =>
-            {
-                var attributes = x.GetAttributes();
-
-                if (attributes.IsEmpty)
-                {
-                    return false;
-                }
-
-                return attributes.Any(x => SymbolEqualityComparer.Default.Equals(x.AttributeClass, annotationSymbol));
-            })
-            .ToArray();
-
-        return TargetTypes;
-    }
-
     public static IEnumerable<ISymbol> GetPublicFieldsAndProperties(this INamedTypeSymbol source)
     {
         return source.GetMembers()
