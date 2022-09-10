@@ -17,27 +17,7 @@ using Xunit;
 namespace Tapper.Tests;
 public class CompilationSingleton
 {
-    private static readonly Compilation InternalCompilation;
-    public static Compilation Compilation
-    {
-        get
-        {
-            RoslynExtensions.ClearCached();
-            return InternalCompilation;
-        }
-    }
-
-    private static readonly Compilation InternalCompilationWithExternalReferences;
-
-    public static Compilation CompilationWithExternalReferences
-    {
-        get
-        {
-            RoslynExtensions.ClearCached();
-            return InternalCompilationWithExternalReferences;
-        }
-    }
-
+    public static readonly Compilation Compilation;
 
     static CompilationSingleton()
     {
@@ -105,20 +85,6 @@ public class CompilationSingleton
             references: references,
             options: compilationOptions);
 
-        InternalCompilation = compilation;
-
-        var reference = Compilation.ToMetadataReference();
-
-        var referenceSyntax = CSharpSyntaxTree.ParseText(
-            File.ReadAllText("../../../../Tapper.Test.SourceTypes.Reference/ReferencedClasses.cs"),
-            options);
-
-        var referenceCompilation = CSharpCompilation.Create(
-            assemblyName: null,
-            syntaxTrees: new[] { referenceSyntax },
-            references: references.Concat(new[] { reference }),
-            options: compilationOptions);
-
-        InternalCompilationWithExternalReferences = referenceCompilation;
+        Compilation = compilation;
     }
 }

@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapper.Tests.Server", "test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapper.Test.SourceTypes.Reference", "tests\Tapper.Test.SourceTypes.Reference\Tapper.Test.SourceTypes.Reference.csproj", "{8BC6C3C1-7EC3-4B52-ADF8-1614BD6F43DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapper.Tests.Referenced", "tests\Tapper.Tests.Referenced\Tapper.Tests.Referenced.csproj", "{62CB4040-B253-4E32-AB4E-DFD4ACCC6EC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{8BC6C3C1-7EC3-4B52-ADF8-1614BD6F43DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BC6C3C1-7EC3-4B52-ADF8-1614BD6F43DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BC6C3C1-7EC3-4B52-ADF8-1614BD6F43DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62CB4040-B253-4E32-AB4E-DFD4ACCC6EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62CB4040-B253-4E32-AB4E-DFD4ACCC6EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62CB4040-B253-4E32-AB4E-DFD4ACCC6EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62CB4040-B253-4E32-AB4E-DFD4ACCC6EC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{A5FE864E-1243-4504-990C-ED5DBE9B8762} = {DC7F780E-3C20-4CFA-9CA9-1DB36806958F}
 		{A6E38AD0-2AFB-48A8-8EF9-FB4F31F33072} = {DC7F780E-3C20-4CFA-9CA9-1DB36806958F}
 		{8BC6C3C1-7EC3-4B52-ADF8-1614BD6F43DE} = {DC7F780E-3C20-4CFA-9CA9-1DB36806958F}
+		{62CB4040-B253-4E32-AB4E-DFD4ACCC6EC6} = {DC7F780E-3C20-4CFA-9CA9-1DB36806958F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BBF417F-E9B4-477F-B9AF-D2016323172E}

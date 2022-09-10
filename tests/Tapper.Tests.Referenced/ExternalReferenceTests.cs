@@ -10,7 +10,7 @@ using Tapper.Test.SourceTypes.Reference;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Tapper.Tests;
+namespace Tapper.Tests.Referenced;
 
 public class ExternalReferenceTests
 {
