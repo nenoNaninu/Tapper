@@ -1,10 +1,5 @@
 using System;
-using System.IO;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Tapper.Test.SourceTypes.Space3;
-using Tapper.Tests.SourceTypes;
-using Tapper.TypeMappers;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -23,7 +18,7 @@ public class NestedNamespaceTest
     public void Test1()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
 
         var type = typeof(NastingNamespaceType);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

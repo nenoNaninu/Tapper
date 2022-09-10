@@ -1,10 +1,5 @@
 using System;
-using System.IO;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Tapper.Test.SourceTypes;
-using Tapper.Tests.SourceTypes;
-using Tapper.TypeMappers;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -23,7 +18,7 @@ public class EnumTest
     public void Test_Enum1()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
 
         var type = typeof(Enum1);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -50,7 +45,7 @@ export enum Enum1 {
     public void Test_Enum2()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

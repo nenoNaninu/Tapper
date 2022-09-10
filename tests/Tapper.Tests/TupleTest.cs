@@ -18,7 +18,7 @@ public class TupleTest
     public void Test_SimpleTupleClass()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
 
         var type = typeof(SimpleTupleClass);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -45,7 +45,7 @@ export type SimpleTupleClass = {
     public void Test_TupleClassIncludeNullable()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
 
         var type = typeof(TupleClassIncludeNullable);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -72,7 +72,7 @@ export type TupleClassIncludeNullable = {
     public void Test_TupleClassNullableField()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
 
         var type = typeof(TupleClassNullableField);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -98,7 +98,7 @@ export type TupleClassNullableField = {
     public void Test_TupleClassIncludeCustomType()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
 
         var type = typeof(TupleClassIncludeCustomType);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
