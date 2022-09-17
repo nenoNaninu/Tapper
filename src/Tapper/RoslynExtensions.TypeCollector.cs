@@ -53,7 +53,7 @@ public static partial class RoslynExtensions
 
     private static INamedTypeSymbol[]? TargetTypes;
 
-    public static INamedTypeSymbol[] GetSourceTypes(this Compilation compilation, bool includeRefarenceAssemblies)
+    public static INamedTypeSymbol[] GetSourceTypes(this Compilation compilation, bool includeReferencedAssemblies)
     {
         if (TargetTypes is not null)
         {
@@ -62,7 +62,7 @@ public static partial class RoslynExtensions
 
         var annotationSymbol = compilation.GetTypeByMetadataName("Tapper.TranspilationSourceAttribute");
 
-        var namedTypes = includeRefarenceAssemblies ? compilation.GetGlobalNamedTypeSymbols() : compilation.GetNamedTypeSymbols();
+        var namedTypes = includeReferencedAssemblies ? compilation.GetGlobalNamedTypeSymbols() : compilation.GetNamedTypeSymbols();
 
         TargetTypes = namedTypes
             .Where(x =>

@@ -17,7 +17,7 @@ public class Transpiler
         Compilation compilation,
         string newLine,
         int indent,
-        bool includeRefarenceAssemblies,
+        bool referencedAssembliesTranspilation,
         SerializerOption serializerOption,
         NamingStyle namingStyle,
         EnumNamingStyle enumNamingStyle,
@@ -30,14 +30,14 @@ public class Transpiler
             compilation,
             newLine,
             indent,
-            includeRefarenceAssemblies,
+            referencedAssembliesTranspilation,
             serializerOption,
             namingStyle,
             enumNamingStyle,
             logger
         );
 
-        _targetTypes = compilation.GetSourceTypes(includeRefarenceAssemblies);
+        _targetTypes = compilation.GetSourceTypes(referencedAssembliesTranspilation);
         _targetTypeLookupTable = _targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
     }
 
