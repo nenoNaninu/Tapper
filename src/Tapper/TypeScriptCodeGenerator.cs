@@ -18,14 +18,15 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         Compilation compilation,
         string newLine,
         int indent,
+        bool includeReferencedAssemblies,
         SerializerOption serializerOption,
         NamingStyle namingStyle,
         EnumNamingStyle enumNamingStyle,
         ILogger _)
     {
-        _transpilationOptions = new TranspilationOptions(new DefaultTypeMapperProvider(compilation), serializerOption, namingStyle, enumNamingStyle);
+        _transpilationOptions = new TranspilationOptions(new DefaultTypeMapperProvider(compilation, includeReferencedAssemblies), serializerOption, namingStyle, enumNamingStyle);
 
-        _sourceTypes = compilation.GetSourceTypes();
+        _sourceTypes = compilation.GetSourceTypes(includeReferencedAssemblies);
         _nullableStructTypeSymbol = compilation.GetTypeByMetadataName("System.Nullable`1")!;
         _newLine = newLine;
         _indent = new string(' ', indent);

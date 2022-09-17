@@ -20,9 +20,9 @@ public class HeaderTest
     public void Test_Header1()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
 
-        var targetTypes = compilation.GetSourceTypes();
+        var targetTypes = compilation.GetSourceTypes(false);
         var targetTypeLookupTable = targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
 
         var type = typeof(NastingNamespaceType);
@@ -54,9 +54,9 @@ import { CustomType4 } from './Tapper.Test.SourceTypes.Space2';
     public void Test_Header2()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
 
-        var targetTypes = compilation.GetSourceTypes();
+        var targetTypes = compilation.GetSourceTypes(false);
         var targetTypeLookupTable = targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
 
         var type = typeof(Space2.CustomType2);

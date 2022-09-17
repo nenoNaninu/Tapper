@@ -26,6 +26,7 @@ public class App : ConsoleAppBase
         [Option("o", "Output directory")] string output,
         [Option("eol", "lf / crlf / cr")] string newLine = "lf",
         [Option("i", "Indent size")] int indent = 4,
+        [Option("asm", "Flag whether to extend the transpile target to the referenced assembly.")] bool assemblies = false,
         [Option("s", "Json / MessagePack : The output type will be suitable for the selected serializer.")] string serializer = "json",
         [Option("n", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string namingStyle = "camelCase",
         [Option("en", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string enumNamingStyle = "PascalCase")
@@ -63,7 +64,7 @@ public class App : ConsoleAppBase
         {
             var compilation = await this.CreateCompilationAsync(project);
 
-            await TranspileCore(compilation, output, newLine, indent, serializerOption, style, enumStyle);
+            await TranspileCore(compilation, output, newLine, indent, assemblies, serializerOption, style, enumStyle);
 
             _logger.Log(LogLevel.Information, "======== Transpilation is completed. ========");
             _logger.Log(LogLevel.Information, "Please check the output folder: {output}", output);
@@ -98,11 +99,12 @@ public class App : ConsoleAppBase
         string outputDir,
         string newLine,
         int indent,
+        bool referencedAssembliesTranspilation,
         SerializerOption serializerOption,
         NamingStyle namingStyle,
         EnumNamingStyle enumNamingStyle)
     {
-        var transpiler = new Transpiler(compilation, newLine, indent, serializerOption, namingStyle, enumNamingStyle, _logger);
+        var transpiler = new Transpiler(compilation, newLine, indent, referencedAssembliesTranspilation, serializerOption, namingStyle, enumNamingStyle, _logger);
 
         var generatedSourceCodes = transpiler.Transpile();
 

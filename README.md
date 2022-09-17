@@ -17,6 +17,7 @@ Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and m
   - [Naming Style](#naming-style)
   - [Serializer](#serializer)
     - [MessagePack](#messagepack)
+  - [Referenced Assemblies Transpilation](#referenced-assemblies-transpilation)
 - [Analyzer](#analyzer)
 - [Unity Support](#unity-support)
 
@@ -308,6 +309,15 @@ public class SampleType
     public Guid Id { get; set; }
     public int Value { get; set; }
 }
+```
+
+### Referenced Assemblies Transpilation
+
+By default, only types defined in the project specified by the "--project" option are targeted for transpiling.
+By passing the "-asm true" option, types contained in project/package reference assemblies will also be targeted for transpiling.
+
+```
+tapper --project path/to/Xxx.csproj --output outdir -asm true
 ```
 
 ## Analyzer
