@@ -101,4 +101,17 @@ public class TapperController : ControllerBase
 
         return null;
     }
+
+    [HttpPost]
+    public Type7? Test7(Type7 type7)
+    {
+        var ans = DateTimeOffset.Parse("2022-09-17T16:29:55.2260000+09:00");
+
+        if (type7.DateTimeOffset == ans)
+        {
+            return new Type7(DateTimeOffset.Parse("2022-09-17T16:51:00.4600000+09:00"));
+        }
+
+        return null;
+    }
 }
