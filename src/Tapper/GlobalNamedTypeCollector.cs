@@ -7,7 +7,7 @@ namespace Tapper;
 
 internal sealed class GlobalNamedTypeCollector : SymbolVisitor
 {
-    // Ignore de facto standard lib namespace
+    // Ignore the widely used lib namespace
     private static readonly string[] IgnoreNamespaces = new[]
     {
         "System",
