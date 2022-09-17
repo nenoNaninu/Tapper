@@ -1,4 +1,4 @@
-import { MyEnum, Type2, Type3, Type4, Type5, Type6 } from './generated/json/Tapper.Tests.Server.Models';
+import { MyEnum, Type2, Type3, Type4, Type5, Type6, Type7 } from './generated/json/Tapper.Tests.Server.Models';
 import { randomUUID } from 'crypto';
 import fetch from 'node-fetch';
 
@@ -81,6 +81,24 @@ export const fetchType6 = async () => {
     });
 
     const ret = await response.json() as Type6;
+
+    return ret;
+}
+
+export const fetchType7 = async () => {
+    const obj: Type7 = {
+        dateTimeOffset: new Date("2022-09-17T16:29:55.2260000+09:00")
+    }
+
+    const response = await fetch("http://localhost:5100/tapper/test7", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    const ret = await response.json() as Type7;
+
+    ret.dateTimeOffset = typeof ret.dateTimeOffset === 'string' ? new Date(ret.dateTimeOffset) : ret.dateTimeOffset;
 
     return ret;
 }

@@ -66,3 +66,6 @@ public record Type5(char Value);
 
 [TranspilationSource]
 public record Type6(byte[] Binary);
+
+[TranspilationSource]
+public record Type7(DateTimeOffset DateTimeOffset);
