@@ -17,7 +17,7 @@ Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and m
   - [Naming Style](#naming-style)
   - [Serializer](#serializer)
     - [MessagePack](#messagepack)
-  - [Referenced Assemblies Transpilation](#referenced-assemblies-transpilation)
+  - [Transpile the Types Contained in Referenced Assemblies.](#transpile-the-types-contained-in-referenced-assemblies)
 - [Analyzer](#analyzer)
 - [Unity Support](#unity-support)
 
@@ -312,7 +312,7 @@ public class SampleType
 }
 ```
 
-### Referenced Assemblies Transpilation
+### Transpile the Types Contained in Referenced Assemblies.
 
 By default, only types defined in the project specified by the `--project` option are targeted for transpiling.
 By passing the `-asm true` option, types contained in project/package reference assemblies will also be targeted for transpiling.
