@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -27,8 +27,6 @@
         <PackageReference Include="Microsoft.Build" Version="17.3.2" ExcludeAssets="runtime" />
         <PackageReference Include="Microsoft.Build.Locator" Version="1.5.5" />
         <PackageReference Include="ConsoleAppFramework" Version="4.2.4" />
-        <PackageReference Include="Microsoft.Build" Version="17.3.2" ExcludeAssets="runtime" />
-        <PackageReference Include="Microsoft.Build.Locator" Version="1.5.5" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.1.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.1.0" />
     </ItemGroup>
