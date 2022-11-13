@@ -23,7 +23,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ConsoleAppFramework" Version="4.2.2" />
         <PackageReference Include="Microsoft.Build" Version="17.3.2" ExcludeAssets="runtime" />
         <PackageReference Include="Microsoft.Build.Locator" Version="1.5.5" />
         <PackageReference Include="ConsoleAppFramework" Version="4.2.4" />
