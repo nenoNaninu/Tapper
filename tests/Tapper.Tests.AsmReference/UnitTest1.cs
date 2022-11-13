@@ -31,7 +31,7 @@ public class UnitTest1
 
         foreach (var outputFilePath in outputFilePaths)
         {
-            var output = File.ReadAllText(outputFilePath);
+            var output = await File.ReadAllTextAsync(outputFilePath);
 
             if (outputFilePath.Contains("Tapper.Tests.AsmReference.SourceTypes1.ts"))
             {
