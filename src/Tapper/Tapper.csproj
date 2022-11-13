@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
@@ -8,7 +8,7 @@
         <PackageId>Tapper</PackageId>
         <AssemblyName>Tapper</AssemblyName>
         <Title>Tapper</Title>
-        <Description>A Tool Transpiling C# Type into TypeScript Type.</Description>
+        <Description>A Tool Transpiling C# Type into TypeScript Type. (Support JSON and MessagePack)</Description>
         <Authors>nenoNaninu</Authors>
         <RepositoryUrl>https://github.com/nenoNaninu/Tapper</RepositoryUrl>
         <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>

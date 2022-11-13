@@ -14,7 +14,7 @@
         <PackageId>Tapper.Analyzer</PackageId>
         <AssemblyName>Tapper.Analyzer</AssemblyName>
         <Title>Tapper.Analyzer</Title>
-        <Description>A Tool Transpiling C# Type into TypeScript Type.</Description>
+        <Description>A Tool Transpiling C# Type into TypeScript Type. (Support JSON and MessagePack)</Description>
         <Authors>nenoNaninu</Authors>
         <RepositoryUrl>https://github.com/nenoNaninu/Tapper</RepositoryUrl>
         <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
