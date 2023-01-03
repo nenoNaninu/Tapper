@@ -48,7 +48,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
                 && x.BaseType.SpecialType != SpecialType.System_Object)
             .Select(static x => x.BaseType!);
 
-        var diffrentNamespaceTypes = memberTypes
+        var differentNamespaceTypes = memberTypes
             .Concat(baseTypes)
             .OfType<INamedTypeSymbol>()
             .Where(x => !SymbolEqualityComparer.Default.Equals(x.ContainingNamespace, types.Key)
@@ -56,7 +56,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
             .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default)
             .ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
 
-        foreach (var groupingType in diffrentNamespaceTypes)
+        foreach (var groupingType in differentNamespaceTypes)
         {
             writer.Append($"import {{ {string.Join(", ", groupingType.Select(x => x.Name))} }} from './{groupingType.Key.ToDisplayString()}';{_newLine}");
         }
