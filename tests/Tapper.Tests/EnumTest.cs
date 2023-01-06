@@ -147,7 +147,7 @@ public class EnumTest
             new DefaultTypeMapperProvider(compilation, false),
             SerializerOption.Json,
             NamingStyle.None,
-            EnumStyle.Union,
+            EnumStyle.UnionCamel,
             NewLineOption.Lf,
             4,
             false
