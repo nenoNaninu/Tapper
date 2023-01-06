@@ -8,17 +8,17 @@ public class TranspilationOptions : ITranspilationOptions
 
     public NamingStyle NamingStyle { get; }
 
-    public EnumNamingStyle EnumNamingStyle { get; }
+    public EnumStyle EnumStyle { get; }
 
     public TranspilationOptions(
         ITypeMapperProvider typeMapperProvider,
         SerializerOption serializerOption,
         NamingStyle namingStyle,
-        EnumNamingStyle enumNamingStyle)
+        EnumStyle enumStyle)
     {
         TypeMapperProvider = typeMapperProvider;
         SerializerOption = serializerOption;
         NamingStyle = namingStyle;
-        EnumNamingStyle = enumNamingStyle;
+        EnumStyle = enumStyle;
     }
 }
