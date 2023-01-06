@@ -10,7 +10,7 @@ public interface ITranspilationOptions
     EnumStyle EnumStyle { get; }
     NewLineOption NewLine { get; }
     int Indent { get; }
-    bool IncludeReferencedAssemblies { get; }
+    bool ReferencedAssembliesTranspilation { get; }
 }
 
 public enum SerializerOption

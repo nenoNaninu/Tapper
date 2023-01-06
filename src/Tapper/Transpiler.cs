@@ -27,7 +27,7 @@ public class Transpiler
             logger
         );
 
-        _targetTypes = compilation.GetSourceTypes(options.IncludeReferencedAssemblies);
+        _targetTypes = compilation.GetSourceTypes(options.ReferencedAssembliesTranspilation);
         _targetTypeLookupTable = _targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
     }
 

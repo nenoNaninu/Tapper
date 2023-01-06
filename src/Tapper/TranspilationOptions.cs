@@ -14,7 +14,7 @@ public class TranspilationOptions : ITranspilationOptions
 
     public int Indent { get; }
 
-    public bool IncludeReferencedAssemblies { get; }
+    public bool ReferencedAssembliesTranspilation { get; }
 
     public TranspilationOptions(
         ITypeMapperProvider typeMapperProvider,
@@ -23,14 +23,14 @@ public class TranspilationOptions : ITranspilationOptions
         EnumStyle enumStyle,
         NewLineOption newLineOption,
         int indent,
-        bool includeReferencedAssemblies)
+        bool referencedAssembliesTranspilation)
     {
         TypeMapperProvider = typeMapperProvider;
         SerializerOption = serializerOption;
         NamingStyle = namingStyle;
         EnumStyle = enumStyle;
-        this.NewLine = newLineOption;
+        NewLine = newLineOption;
         Indent = indent;
-        IncludeReferencedAssemblies = includeReferencedAssemblies;
+        ReferencedAssembliesTranspilation = referencedAssembliesTranspilation;
     }
 }

@@ -21,7 +21,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     {
         _transpilationOptions = options;
 
-        _sourceTypes = compilation.GetSourceTypes(options.IncludeReferencedAssemblies);
+        _sourceTypes = compilation.GetSourceTypes(options.ReferencedAssembliesTranspilation);
         _nullableStructTypeSymbol = compilation.GetTypeByMetadataName("System.Nullable`1")!;
 
         _newLineString = options.NewLine.ToNewLineString();
