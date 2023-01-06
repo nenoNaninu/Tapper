@@ -58,7 +58,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.UnderlyingValue, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionField<#= Format(type.Key) #>);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -83,8 +93,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionProperty<#= Format(type.Key) #>()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.UnderlyingValue, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionProperty<#= Format(type.Key) #>);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

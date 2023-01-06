@@ -1,4 +1,3 @@
-using System;
 using Tapper.Test.SourceTypes;
 using Xunit;
 using Xunit.Abstractions;
@@ -18,7 +17,18 @@ public class InheritanceTests
     public void Test0()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(InheritanceClass0);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -45,7 +55,18 @@ export type InheritanceClass0 = {
     public void Test1()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(InheritanceClass1);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -72,7 +93,18 @@ export type InheritanceClass1 = {
     public void Test2()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(InheritanceClass2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -99,7 +131,18 @@ export type InheritanceClass2 = {
     public void Test3()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(Space2.CustomType2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

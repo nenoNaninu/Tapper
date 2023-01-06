@@ -1,4 +1,3 @@
-using System;
 using Tapper.Test.SourceTypes.Tuple;
 using Xunit;
 using Xunit.Abstractions;
@@ -18,7 +17,18 @@ public class TupleTest
     public void Test_SimpleTupleClass()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(SimpleTupleClass);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -45,7 +55,18 @@ export type SimpleTupleClass = {
     public void Test_TupleClassIncludeNullable()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(TupleClassIncludeNullable);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -72,7 +93,18 @@ export type TupleClassIncludeNullable = {
     public void Test_TupleClassNullableField()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(TupleClassNullableField);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -98,7 +130,18 @@ export type TupleClassNullableField = {
     public void Test_TupleClassIncludeCustomType()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(TupleClassIncludeCustomType);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

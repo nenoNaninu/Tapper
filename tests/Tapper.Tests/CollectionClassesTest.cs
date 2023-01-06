@@ -27,7 +27,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldArray);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -50,7 +60,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldArraySegmentint);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -73,7 +93,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldListfloat);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -96,7 +126,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldLinkedListstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -119,7 +159,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldQueueGuid);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -142,7 +192,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldStackUri);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -165,7 +225,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldHashSetDateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -188,7 +258,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldIEnumerablebool);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -211,7 +291,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldIReadOnlyCollectionbyte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -234,7 +324,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldIReadOnlyListobject);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -257,7 +357,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldICollectionstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -280,7 +390,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldIListbool);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -303,7 +423,17 @@ public class CollectionMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionFieldISetsbyte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -326,8 +456,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyArray()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyArray);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -349,8 +489,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyArraySegmentint()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyArraySegmentint);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -372,8 +522,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyListfloat()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyListfloat);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -395,8 +555,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyLinkedListstring()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyLinkedListstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -418,8 +588,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyQueueGuid()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyQueueGuid);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -441,8 +621,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyStackUri()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyStackUri);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -464,8 +654,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyHashSetDateTime()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyHashSetDateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -487,8 +687,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyIEnumerablebool()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyIEnumerablebool);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -510,8 +720,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyIReadOnlyCollectionbyte()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyIReadOnlyCollectionbyte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -533,8 +753,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyIReadOnlyListobject()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyIReadOnlyListobject);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -556,8 +786,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyICollectionstring()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyICollectionstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -579,8 +819,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyIListbool()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyIListbool);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -602,8 +852,18 @@ public class CollectionMapTest
     public void Test_ClassIncludeCollectionPropertyISetsbyte()
     {
         var compilation = CompilationSingleton.Compilation;
+        
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false
+        );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(ClassIncludeCollectionPropertyISetsbyte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
