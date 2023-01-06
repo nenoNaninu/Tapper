@@ -18,7 +18,18 @@ public class EnumTest
     public void Test_Enum1()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 4, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            4,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(Enum1);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -49,7 +60,18 @@ public class EnumTest
     public void Test_Enum2()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 4, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            4,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -79,7 +101,18 @@ public class EnumTest
     public void Test_Enum3()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 4, false, SerializerOption.Json, NamingStyle.None, EnumStyle.NameString, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.NameString,
+            NewLineOption.Lf,
+            4,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -109,7 +142,18 @@ public class EnumTest
     public void Test_Enum4()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 4, false, SerializerOption.Json, NamingStyle.None, EnumStyle.UnionCamel, Logger.Empty);
+
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, false),
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.UnionCamel,
+            NewLineOption.Lf,
+            4,
+            false
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

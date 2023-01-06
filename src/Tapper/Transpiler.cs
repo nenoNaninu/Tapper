@@ -15,29 +15,19 @@ public class Transpiler
 
     public Transpiler(
         Compilation compilation,
-        string newLine,
-        int indent,
-        bool referencedAssembliesTranspilation,
-        SerializerOption serializerOption,
-        NamingStyle namingStyle,
-        EnumStyle enumStyle,
+        ITranspilationOptions options,
         ILogger logger)
     {
-        _newLine = newLine;
+        _newLine = options.NewLine.ToNewLineString();
         _logger = logger;
 
         _codeGenerator = new TypeScriptCodeGenerator(
             compilation,
-            newLine,
-            indent,
-            referencedAssembliesTranspilation,
-            serializerOption,
-            namingStyle,
-            enumStyle,
+            options,
             logger
         );
 
-        _targetTypes = compilation.GetSourceTypes(referencedAssembliesTranspilation);
+        _targetTypes = compilation.GetSourceTypes(options.IncludeReferencedAssemblies);
         _targetTypeLookupTable = _targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
     }
 

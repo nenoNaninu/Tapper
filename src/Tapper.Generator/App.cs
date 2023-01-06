@@ -39,14 +39,6 @@ public class App : ConsoleAppBase
         [Option("en", "Value (default) / NameString / NameStringCamel / NameStringPascal / Union / UnionCamel / UnionPascal")]
         EnumStyle @enum = EnumStyle.Value)
     {
-        var newLineString = newLine switch
-        {
-            NewLineOption.Crlf => "\r\n",
-            NewLineOption.Lf => "\n",
-            NewLineOption.Cr => "\r",
-            _ => throw new ArgumentException($"{newLine} is not supported.")
-        };
-
         _logger.Log(LogLevel.Information, "Start loading the csproj of {path}.", Path.GetFullPath(project));
 
         output = Path.GetFullPath(output);
@@ -55,7 +47,7 @@ public class App : ConsoleAppBase
         {
             var compilation = await this.CreateCompilationAsync(project);
 
-            await TranspileCore(compilation, output, newLineString, indent, assemblies, serializer, namingStyle, @enum);
+            await TranspileCore(compilation, output, newLine, indent, assemblies, serializer, namingStyle, @enum);
 
             _logger.Log(LogLevel.Information, "======== Transpilation is completed. ========");
             _logger.Log(LogLevel.Information, "Please check the output folder: {output}", output);
@@ -88,14 +80,24 @@ public class App : ConsoleAppBase
     private async Task TranspileCore(
         Compilation compilation,
         string outputDir,
-        string newLine,
+        NewLineOption newLine,
         int indent,
         bool referencedAssembliesTranspilation,
         SerializerOption serializerOption,
         NamingStyle namingStyle,
         EnumStyle enumStyle)
     {
-        var transpiler = new Transpiler(compilation, newLine, indent, referencedAssembliesTranspilation, serializerOption, namingStyle, enumStyle, _logger);
+        var options = new TranspilationOptions(
+            new DefaultTypeMapperProvider(compilation, referencedAssembliesTranspilation),
+            serializerOption,
+            namingStyle,
+            enumStyle,
+            newLine,
+            indent,
+            referencedAssembliesTranspilation
+        );
+
+        var transpiler = new Transpiler(compilation, options, _logger);
 
         var generatedSourceCodes = transpiler.Transpile();
 
@@ -126,10 +128,4 @@ public class App : ConsoleAppBase
             await fs.WriteAsync(Encoding.UTF8.GetBytes(generatedSourceCode.Content));
         }
     }
-}
-public enum NewLineOption
-{
-    Lf,
-    Crlf,
-    Cr,
 }

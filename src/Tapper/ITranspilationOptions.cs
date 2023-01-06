@@ -1,3 +1,5 @@
+using System;
+
 namespace Tapper;
 
 public interface ITranspilationOptions
@@ -6,6 +8,9 @@ public interface ITranspilationOptions
     SerializerOption SerializerOption { get; }
     NamingStyle NamingStyle { get; }
     EnumStyle EnumStyle { get; }
+    NewLineOption NewLine { get; }
+    int Indent { get; }
+    bool IncludeReferencedAssemblies { get; }
 }
 
 public enum SerializerOption
@@ -30,4 +35,25 @@ public enum EnumStyle
     Union,
     UnionCamel,
     UnionPascal,
+}
+
+public enum NewLineOption
+{
+    Lf,
+    Crlf,
+    Cr,
+}
+
+public static class OptionExtensions
+{
+    public static string ToNewLineString(this NewLineOption option)
+    {
+        return option switch
+        {
+            NewLineOption.Crlf => "\r\n",
+            NewLineOption.Lf => "\n",
+            NewLineOption.Cr => "\r",
+            _ => throw new InvalidOperationException("Invalid NewLineOption.")
+        };
+    }
 }
