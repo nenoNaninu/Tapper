@@ -286,7 +286,7 @@ tapper --project path/to/Xxx.csproj --output outdir --naming-style camelCase
 
 ### Enum Style
 There are options for enum transpiling.
-You can select `Value` (default), `NameString`, `NameString`, `NameStringCamel`, `NameStringPascal`, `Union`, `UnionCamel`, or `UnionPascal`.
+You can select `Value` (default), `NameString`, `NameStringCamel`, `NameStringPascal`, `Union`, `UnionCamel`, or `UnionPascal`.
 If you use this option, be careful with the serializer options. 
 For example, `System.Text.Json` serializes an enum as a integer by default (not string).
 To serialize an enum as a string, you must pass `JsonStringEnumConverter` as an option to `JsonSerializer`.
