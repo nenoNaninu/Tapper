@@ -44,7 +44,6 @@ public enum NewLineOption
     Cr,
 }
 
-
 public static class OptionExtensions
 {
     public static string ToNewLineString(this NewLineOption option)
