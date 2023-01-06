@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
-        <LangVersion>10</LangVersion>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
