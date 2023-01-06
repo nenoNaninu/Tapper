@@ -27,7 +27,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemBoolean);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -50,7 +50,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemByte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -73,7 +73,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemSByte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -96,7 +96,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemChar);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -119,7 +119,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemDecimal);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -142,7 +142,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemDouble);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -165,7 +165,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemSingle);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -188,7 +188,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemInt32);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -211,7 +211,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemUInt32);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -234,7 +234,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemInt64);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -257,7 +257,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemUInt64);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -280,7 +280,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemInt16);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -303,7 +303,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemUInt16);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -326,7 +326,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemObject);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -349,7 +349,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemString);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -372,7 +372,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemUri);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -395,7 +395,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemGuid);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -418,7 +418,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitiveFieldSystemDateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -443,7 +443,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemBoolean);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -466,7 +466,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemByte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -489,7 +489,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemSByte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -512,7 +512,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemChar);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -535,7 +535,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemDecimal);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -558,7 +558,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemDouble);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -581,7 +581,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemSingle);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -604,7 +604,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemInt32);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -627,7 +627,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemUInt32);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -650,7 +650,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemInt64);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -673,7 +673,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemUInt64);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -696,7 +696,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemInt16);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -719,7 +719,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemUInt16);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -742,7 +742,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemObject);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -765,7 +765,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemString);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -788,7 +788,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemUri);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -811,7 +811,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemGuid);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -834,7 +834,7 @@ public class PrimitiveMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludePrimitivePropertySystemDateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

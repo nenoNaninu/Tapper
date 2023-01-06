@@ -1,5 +1,8 @@
 {
     "profiles": {
+        "Tapper.Help": {
+            "commandName": "Project"
+        },
         "Tapper.Generator": {
             "commandName": "Project",
             "commandLineArgs": "--project ..\\..\\..\\..\\..\\sandbox\\SampleTypes\\SampleTypes.csproj --output out"
@@ -18,7 +21,7 @@
         },
         "Tapper.Generator4": {
             "commandName": "Project",
-            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests.Server\\Tapper.Tests.Server.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated\\msgpack --serializer messagepack --naming-style none --enum-naming-style none"
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests.Server\\Tapper.Tests.Server.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated\\msgpack --serializer messagepack --naming-style none"
         },
         "Tapper.Generator-asm-false": {
             "commandName": "Project",
@@ -27,6 +30,14 @@
         "Tapper.Generator-asm-true": {
             "commandName": "Project",
             "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests\\Tapper.Tests.csproj --output out2 -asm true"
+        },
+        "Tapper.Generator-enum-name": {
+            "commandName": "Project",
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests\\Tapper.Tests.csproj --output out2 -asm true --enum NameStringPascal"
+        },
+        "Tapper.Generator-enum-union": {
+            "commandName": "Project",
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests\\Tapper.Tests.csproj --output out2 -asm true --enum UnionPascal"
         }
     }
 }

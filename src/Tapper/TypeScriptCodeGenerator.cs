@@ -21,10 +21,10 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         bool includeReferencedAssemblies,
         SerializerOption serializerOption,
         NamingStyle namingStyle,
-        EnumNamingStyle enumNamingStyle,
+        EnumStyle enumStyle,
         ILogger _)
     {
-        _transpilationOptions = new TranspilationOptions(new DefaultTypeMapperProvider(compilation, includeReferencedAssemblies), serializerOption, namingStyle, enumNamingStyle);
+        _transpilationOptions = new TranspilationOptions(new DefaultTypeMapperProvider(compilation, includeReferencedAssemblies), serializerOption, namingStyle, enumStyle);
 
         _sourceTypes = compilation.GetSourceTypes(includeReferencedAssemblies);
         _nullableStructTypeSymbol = compilation.GetTypeByMetadataName("System.Nullable`1")!;
@@ -78,6 +78,27 @@ public class TypeScriptCodeGenerator : ICodeGenerator
 
     private void AddEnum(INamedTypeSymbol typeSymbol, ref CodeWriter writer)
     {
+        if (_transpilationOptions.EnumStyle
+            is EnumStyle.Value
+            or EnumStyle.NameString
+            or EnumStyle.NameStringCamel
+            or EnumStyle.NameStringPascal)
+        {
+            AddEnumAsEnum(typeSymbol, ref writer);
+        }
+        else if (_transpilationOptions.EnumStyle
+                 is EnumStyle.Union
+                 or EnumStyle.UnionCamel
+                 or EnumStyle.UnionPascal)
+        {
+            AddEnumAsUnion(typeSymbol, ref writer);
+        }
+    }
+
+    private void AddEnumAsEnum(INamedTypeSymbol typeSymbol, ref CodeWriter writer)
+    {
+        var enumStyle = _transpilationOptions.EnumStyle;
+
         var members = typeSymbol.GetPublicFieldsAndProperties().IgnoreStatic().ToArray();
 
         writer.Append($"/** Transpiled from {typeSymbol.ToDisplayString()} */{_newLine}");
@@ -85,10 +106,32 @@ public class TypeScriptCodeGenerator : ICodeGenerator
 
         foreach (var member in members.OfType<IFieldSymbol>())
         {
-            writer.Append($"{_indent}{Transform(member.Name, _transpilationOptions.EnumNamingStyle)} = {member.ConstantValue},{_newLine}");
+            var value = enumStyle is EnumStyle.Value
+                ? member.ConstantValue
+                : $"\"{Transform(member.Name, enumStyle)}\"";
+
+            writer.Append($"{_indent}{Transform(member.Name, enumStyle)} = {value},{_newLine}");
         }
 
         writer.Append('}');
+        writer.Append(_newLine);
+    }
+
+    private void AddEnumAsUnion(INamedTypeSymbol typeSymbol, ref CodeWriter writer)
+    {
+        var enumStyle = _transpilationOptions.EnumStyle;
+
+        var members = typeSymbol.GetPublicFieldsAndProperties().IgnoreStatic().ToArray();
+
+        writer.Append($"/** Transpiled from {typeSymbol.ToDisplayString()} */{_newLine}");
+        writer.Append($"export type {typeSymbol.Name} = ");
+
+        var memberNames = members.OfType<IFieldSymbol>()
+            .Select(x => $"\"{Transform(x.Name, enumStyle)}\"");
+
+        writer.Append(string.Join(" | ", memberNames));
+
+        writer.Append(';');
         writer.Append(_newLine);
     }
 
@@ -108,7 +151,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
                 throw new InvalidOperationException();
             }
 
-            // Add jdoc comment
+            // Add jsdoc comment
             writer.Append($"{_indent}/** Transpiled from {memberTypeSymbol.ToDisplayString()} */{_newLine}");
             writer.Append($"{_indent}{Transform(member.Name, _transpilationOptions.NamingStyle)}{(isNullable ? "?" : string.Empty)}: {TypeMapper.MapTo(memberTypeSymbol, _transpilationOptions)};{_newLine}");
         }
@@ -132,55 +175,53 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     {
         if (symbol is IPropertySymbol propertySymbol)
         {
-            if (propertySymbol.Type is ITypeSymbol typeSymbol)
+            var typeSymbol = propertySymbol.Type;
+
+            if (typeSymbol.IsValueType)
             {
-                if (typeSymbol.IsValueType)
+                if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
                 {
-                    if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
+                    if (!namedTypeSymbol.IsGenericType)
                     {
-                        if (!namedTypeSymbol.IsGenericType)
-                        {
-                            return (typeSymbol, false);
-                        }
-
-                        if (SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, _nullableStructTypeSymbol))
-                        {
-                            return (namedTypeSymbol.TypeArguments[0], true);
-                        }
-
                         return (typeSymbol, false);
                     }
-                }
 
-                var isNullable = propertySymbol.NullableAnnotation is not NullableAnnotation.NotAnnotated;
-                return (typeSymbol, isNullable);
+                    if (SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, _nullableStructTypeSymbol))
+                    {
+                        return (namedTypeSymbol.TypeArguments[0], true);
+                    }
+
+                    return (typeSymbol, false);
+                }
             }
+
+            var isNullable = propertySymbol.NullableAnnotation is not NullableAnnotation.NotAnnotated;
+            return (typeSymbol, isNullable);
         }
         else if (symbol is IFieldSymbol fieldSymbol)
         {
-            if (fieldSymbol.Type is ITypeSymbol typeSymbol)
+            var typeSymbol = fieldSymbol.Type;
+
+            if (typeSymbol.IsValueType)
             {
-                if (typeSymbol.IsValueType)
+                if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
                 {
-                    if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
+                    if (!namedTypeSymbol.IsGenericType)
                     {
-                        if (!namedTypeSymbol.IsGenericType)
-                        {
-                            return (typeSymbol, false);
-                        }
-
-                        if (SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, _nullableStructTypeSymbol))
-                        {
-                            return (namedTypeSymbol.TypeArguments[0], true);
-                        }
-
                         return (typeSymbol, false);
                     }
-                }
 
-                var isNullable = fieldSymbol.NullableAnnotation is not NullableAnnotation.NotAnnotated;
-                return (typeSymbol, isNullable);
+                    if (SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, _nullableStructTypeSymbol))
+                    {
+                        return (namedTypeSymbol.TypeArguments[0], true);
+                    }
+
+                    return (typeSymbol, false);
+                }
             }
+
+            var isNullable = fieldSymbol.NullableAnnotation is not NullableAnnotation.NotAnnotated;
+            return (typeSymbol, isNullable);
         }
 
         return (null, false);
@@ -196,12 +237,12 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         };
     }
 
-    private static string Transform(string text, EnumNamingStyle enumNamingStyle)
+    private static string Transform(string text, EnumStyle enumStyle)
     {
-        return enumNamingStyle switch
+        return enumStyle switch
         {
-            EnumNamingStyle.PascalCase => $"{char.ToUpper(text[0])}{text[1..]}",
-            EnumNamingStyle.CamelCase => $"{char.ToLower(text[0])}{text[1..]}",
+            EnumStyle.NameStringPascal or EnumStyle.UnionPascal => $"{char.ToUpper(text[0])}{text[1..]}",
+            EnumStyle.NameStringCamel or EnumStyle.UnionCamel => $"{char.ToLower(text[0])}{text[1..]}",
             _ => text,
         };
     }

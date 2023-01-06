@@ -5,26 +5,29 @@ public interface ITranspilationOptions
     ITypeMapperProvider TypeMapperProvider { get; }
     SerializerOption SerializerOption { get; }
     NamingStyle NamingStyle { get; }
-    EnumNamingStyle EnumNamingStyle { get; }
+    EnumStyle EnumStyle { get; }
 }
 
 public enum SerializerOption
 {
-    None,
-    Json,
+    Json, // default
     MessagePack
 }
 
 public enum NamingStyle
 {
-    None,
+    None, // default
     CamelCase,
     PascalCase
 }
 
-public enum EnumNamingStyle
+public enum EnumStyle
 {
-    None,
-    CamelCase,
-    PascalCase
+    Value, // default
+    NameString,
+    NameStringCamel,
+    NameStringPascal,
+    Union,
+    UnionCamel,
+    UnionPascal,
 }

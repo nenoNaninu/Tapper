@@ -15,6 +15,7 @@ Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and m
   - [Nesting Types](#nesting-types)
 - [Options](#options)
   - [Naming Style](#naming-style)
+  - [Enum Style](#enum-style)
   - [Serializer](#serializer)
     - [MessagePack](#messagepack)
   - [Transpile the Types Contained in Referenced Assemblies.](#transpile-the-types-contained-in-referenced-assemblies)
@@ -280,7 +281,55 @@ For `none`, the property name in C# is used.
 The default is the standard naming style for TypeScript.
 
 ```bash
-tapper --project path/to/Xxx.csproj --output outdir --naming-style camelCase --enum-naming-style PascalCase
+tapper --project path/to/Xxx.csproj --output outdir --naming-style camelCase
+```
+
+### Enum Style
+There are options for enum transpiling.
+You can select `Value` (default), `NameString`, `NameString`, `NameStringCamel`, `NameStringPascal`, `Union`, `UnionCamel`, or `UnionPascal`.
+If you use this option, be careful with the serializer options. 
+For example, `System.Text.Json` serializes an enum as a integer by default (not string).
+To serialize an enum as a string, you must pass `JsonStringEnumConverter` as an option to `JsonSerializer`.
+
+```bash
+tapper --project path/to/Xxx.csproj --output outdir --enum value
+tapper --project path/to/Xxx.csproj --output outdir --enum nameString
+tapper --project path/to/Xxx.csproj --output outdir --enum union
+```
+
+```cs
+// C# source
+[TranspilationSource]
+public enum MyEnum
+{
+    Zero = 0,
+    One = 1,
+    Two = 1 << 1,
+    Four = 1 << 2,
+}
+```
+
+```ts
+// Generated TypeScript
+
+// --enum value (default)
+export enum MyEnum {
+  Zero = 0,
+  One = 1,
+  Two = 2,
+  Four = 4,
+}
+
+// --enum nameString
+export enum MyEnum {
+  Zero = "Zero",
+  One = "One",
+  Two = "Two",
+  Four = "Four",
+}
+
+// --enum union
+export type MyEnum = "Zero" | "One" | "Two" | "Four";
 ```
 
 ### Serializer
@@ -291,7 +340,7 @@ You can specify which one to use by passing the `--serializer` option.
 The default is `json`.
 
 ```bash
-tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none --enum-naming-style none
+tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none
 ```
 
 Also, it is supposed that the following serializers are used.
@@ -308,10 +357,14 @@ Also, it is supposed that the following serializers are used.
 
 If you use [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp) for the serializer, be careful how you apply the `[MessagePackObject]` Attribute. 
 It is recommended to use `[MessagePackObject(true)]`. 
-Also, in that case, set `--naming-style` to `none` and `--enum-naming-style` to `none` .
+Also, in that case, set `--naming-style` to `none`.
+
+```bash
+tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none
+```
 
 ```cs
-[MessagePackObject(true)]
+[MessagePackObject(true)] // <- use this!
 public class SampleType
 {
     public Guid Id { get; set; }

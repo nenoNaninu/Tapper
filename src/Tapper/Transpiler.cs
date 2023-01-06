@@ -20,7 +20,7 @@ public class Transpiler
         bool referencedAssembliesTranspilation,
         SerializerOption serializerOption,
         NamingStyle namingStyle,
-        EnumNamingStyle enumNamingStyle,
+        EnumStyle enumStyle,
         ILogger logger)
     {
         _newLine = newLine;
@@ -33,7 +33,7 @@ public class Transpiler
             referencedAssembliesTranspilation,
             serializerOption,
             namingStyle,
-            enumNamingStyle,
+            enumStyle,
             logger
         );
 

@@ -22,20 +22,28 @@ public class App : ConsoleAppBase
 
     [RootCommand]
     public async Task Transpile(
-        [Option("p", "Path to the project file (XXX.csproj)")] string project,
-        [Option("o", "Output directory")] string output,
-        [Option("eol", "lf / crlf / cr")] string newLine = "lf",
-        [Option("i", "Indent size")] int indent = 4,
-        [Option("asm", "Flag whether to extend the transpile target to the referenced assembly.")] bool assemblies = false,
-        [Option("s", "Json / MessagePack : The output type will be suitable for the selected serializer.")] string serializer = "json",
-        [Option("n", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string namingStyle = "camelCase",
-        [Option("en", "PascalCase / camelCase / none (The name in C# is used as it is.)")] string enumNamingStyle = "PascalCase")
+        [Option("p", "Path to the project file (XXX.csproj)")]
+        string project,
+        [Option("o", "Output directory")]
+        string output,
+        [Option("eol", "lf / crlf / cr")]
+        NewLineOption newLine = NewLineOption.Lf,
+        [Option("i", "Indent size")]
+        int indent = 4,
+        [Option("asm", "Flag whether to extend the transpile target to the referenced assembly.")]
+        bool assemblies = false,
+        [Option("s", "Json / MessagePack : The output type will be suitable for the selected serializer.")]
+        SerializerOption serializer = SerializerOption.Json,
+        [Option("n", "PascalCase / camelCase / none (The name in C# is used as it is.)")]
+        NamingStyle namingStyle = NamingStyle.CamelCase,
+        [Option("en", "Value (default) / NameString / NameStringCamel / NameStringPascal / Union / UnionCamel / UnionPascal")]
+        EnumStyle @enum = EnumStyle.Value)
     {
-        newLine = newLine switch
+        var newLineString = newLine switch
         {
-            "crlf" => "\r\n",
-            "lf" => "\n",
-            "cr" => "\r",
+            NewLineOption.Crlf => "\r\n",
+            NewLineOption.Lf => "\n",
+            NewLineOption.Cr => "\r",
             _ => throw new ArgumentException($"{newLine} is not supported.")
         };
 
@@ -43,28 +51,11 @@ public class App : ConsoleAppBase
 
         output = Path.GetFullPath(output);
 
-        if (!Enum.TryParse<SerializerOption>(serializer, true, out var serializerOption))
-        {
-            _logger.Log(LogLevel.Error, "Only json or messagepack can be selected for serializer. {type} is not supported.", serializer);
-            return;
-        }
-
-        if (!Enum.TryParse<NamingStyle>(namingStyle, true, out var style))
-        {
-            _logger.Log(LogLevel.Error, "The naming style can only be selected from None, CamelCase, or PascalCase. {style} is not supported.", namingStyle);
-            return;
-        }
-
-        if (!Enum.TryParse<EnumNamingStyle>(enumNamingStyle, true, out var enumStyle))
-        {
-            _logger.Log(LogLevel.Error, "The enum naming style can only be selected from None, CamelCase, or PascalCase. {style} is not supported.", enumNamingStyle);
-        }
-
         try
         {
             var compilation = await this.CreateCompilationAsync(project);
 
-            await TranspileCore(compilation, output, newLine, indent, assemblies, serializerOption, style, enumStyle);
+            await TranspileCore(compilation, output, newLineString, indent, assemblies, serializer, namingStyle, @enum);
 
             _logger.Log(LogLevel.Information, "======== Transpilation is completed. ========");
             _logger.Log(LogLevel.Information, "Please check the output folder: {output}", output);
@@ -102,9 +93,9 @@ public class App : ConsoleAppBase
         bool referencedAssembliesTranspilation,
         SerializerOption serializerOption,
         NamingStyle namingStyle,
-        EnumNamingStyle enumNamingStyle)
+        EnumStyle enumStyle)
     {
-        var transpiler = new Transpiler(compilation, newLine, indent, referencedAssembliesTranspilation, serializerOption, namingStyle, enumNamingStyle, _logger);
+        var transpiler = new Transpiler(compilation, newLine, indent, referencedAssembliesTranspilation, serializerOption, namingStyle, enumStyle, _logger);
 
         var generatedSourceCodes = transpiler.Transpile();
 
@@ -131,8 +122,14 @@ public class App : ConsoleAppBase
 
         foreach (var generatedSourceCode in generatedSourceCodes)
         {
-            using var fs = File.Create(Path.Join(outputDir, generatedSourceCode.SourceName));
+            await using var fs = File.Create(Path.Join(outputDir, generatedSourceCode.SourceName));
             await fs.WriteAsync(Encoding.UTF8.GetBytes(generatedSourceCode.Content));
         }
     }
+}
+public enum NewLineOption
+{
+    Lf,
+    Crlf,
+    Cr,
 }

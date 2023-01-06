@@ -27,7 +27,7 @@ public class DictionaryMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludeDictionaryFieldDictionaryintstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -50,7 +50,7 @@ public class DictionaryMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludeDictionaryFieldIDictionaryfloatGuid);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -73,7 +73,7 @@ public class DictionaryMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -97,7 +97,7 @@ public class DictionaryMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludeDictionaryPropertyDictionaryintstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -120,7 +120,7 @@ public class DictionaryMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludeDictionaryPropertyIDictionaryfloatGuid);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -143,7 +143,7 @@ public class DictionaryMapTest
     {
         var compilation = CompilationSingleton.Compilation;
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.Value, Logger.Empty);
 
         var type = typeof(ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
