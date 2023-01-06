@@ -18,7 +18,7 @@ public class EnumTest
     public void Test_Enum1()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.UnderlyingValue, Logger.Empty);
 
         var type = typeof(Enum1);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -45,7 +45,7 @@ export enum Enum1 {
     public void Test_Enum2()
     {
         var compilation = CompilationSingleton.Compilation;
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumNamingStyle.None, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, Environment.NewLine, 2, false, SerializerOption.Json, NamingStyle.None, EnumStyle.UnderlyingValue, Logger.Empty);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

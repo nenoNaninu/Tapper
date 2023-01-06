@@ -151,7 +151,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
                 throw new InvalidOperationException();
             }
 
-            // Add jdoc comment
+            // Add jsdoc comment
             writer.Append($"{_indent}/** Transpiled from {memberTypeSymbol.ToDisplayString()} */{_newLine}");
             writer.Append($"{_indent}{Transform(member.Name, _transpilationOptions.NamingStyle)}{(isNullable ? "?" : string.Empty)}: {TypeMapper.MapTo(memberTypeSymbol, _transpilationOptions)};{_newLine}");
         }
@@ -175,55 +175,53 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     {
         if (symbol is IPropertySymbol propertySymbol)
         {
-            if (propertySymbol.Type is ITypeSymbol typeSymbol)
+            var typeSymbol = propertySymbol.Type;
+
+            if (typeSymbol.IsValueType)
             {
-                if (typeSymbol.IsValueType)
+                if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
                 {
-                    if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
+                    if (!namedTypeSymbol.IsGenericType)
                     {
-                        if (!namedTypeSymbol.IsGenericType)
-                        {
-                            return (typeSymbol, false);
-                        }
-
-                        if (SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, _nullableStructTypeSymbol))
-                        {
-                            return (namedTypeSymbol.TypeArguments[0], true);
-                        }
-
                         return (typeSymbol, false);
                     }
-                }
 
-                var isNullable = propertySymbol.NullableAnnotation is not NullableAnnotation.NotAnnotated;
-                return (typeSymbol, isNullable);
+                    if (SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, _nullableStructTypeSymbol))
+                    {
+                        return (namedTypeSymbol.TypeArguments[0], true);
+                    }
+
+                    return (typeSymbol, false);
+                }
             }
+
+            var isNullable = propertySymbol.NullableAnnotation is not NullableAnnotation.NotAnnotated;
+            return (typeSymbol, isNullable);
         }
         else if (symbol is IFieldSymbol fieldSymbol)
         {
-            if (fieldSymbol.Type is ITypeSymbol typeSymbol)
+            var typeSymbol = fieldSymbol.Type;
+
+            if (typeSymbol.IsValueType)
             {
-                if (typeSymbol.IsValueType)
+                if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
                 {
-                    if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
+                    if (!namedTypeSymbol.IsGenericType)
                     {
-                        if (!namedTypeSymbol.IsGenericType)
-                        {
-                            return (typeSymbol, false);
-                        }
-
-                        if (SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, _nullableStructTypeSymbol))
-                        {
-                            return (namedTypeSymbol.TypeArguments[0], true);
-                        }
-
                         return (typeSymbol, false);
                     }
-                }
 
-                var isNullable = fieldSymbol.NullableAnnotation is not NullableAnnotation.NotAnnotated;
-                return (typeSymbol, isNullable);
+                    if (SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, _nullableStructTypeSymbol))
+                    {
+                        return (namedTypeSymbol.TypeArguments[0], true);
+                    }
+
+                    return (typeSymbol, false);
+                }
             }
+
+            var isNullable = fieldSymbol.NullableAnnotation is not NullableAnnotation.NotAnnotated;
+            return (typeSymbol, isNullable);
         }
 
         return (null, false);

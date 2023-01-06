@@ -10,7 +10,6 @@ public interface ITranspilationOptions
 
 public enum SerializerOption
 {
-    None,
     Json,
     MessagePack
 }
