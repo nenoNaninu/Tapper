@@ -10,20 +10,20 @@ public interface ITranspilationOptions
 
 public enum SerializerOption
 {
-    Json,
+    Json, // default
     MessagePack
 }
 
 public enum NamingStyle
 {
-    None,
+    None, // default
     CamelCase,
     PascalCase
 }
 
 public enum EnumStyle
 {
-    UnderlyingValue,
+    UnderlyingValue, // default
     NameString,
     NameStringCamel,
     NameStringPascal,
