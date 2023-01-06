@@ -36,8 +36,8 @@ public class App : ConsoleAppBase
         SerializerOption serializer = SerializerOption.Json,
         [Option("n", "PascalCase / camelCase / none (The name in C# is used as it is.)")]
         NamingStyle namingStyle = NamingStyle.CamelCase,
-        [Option("en", "UnderlyingValue (default) / NameString / NameStringCamel / NameStringPascal / Union / UnionCamel / UnionPascal")]
-        EnumStyle @enum = EnumStyle.UnderlyingValue)
+        [Option("en", "Value (default) / NameString / NameStringCamel / NameStringPascal / Union / UnionCamel / UnionPascal")]
+        EnumStyle @enum = EnumStyle.Value)
     {
         var newLineString = newLine switch
         {

@@ -23,7 +23,7 @@ public enum NamingStyle
 
 public enum EnumStyle
 {
-    UnderlyingValue, // default
+    Value, // default
     NameString,
     NameStringCamel,
     NameStringPascal,

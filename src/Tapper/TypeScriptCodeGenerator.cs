@@ -79,7 +79,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     private void AddEnum(INamedTypeSymbol typeSymbol, ref CodeWriter writer)
     {
         if (_transpilationOptions.EnumStyle
-            is EnumStyle.UnderlyingValue
+            is EnumStyle.Value
             or EnumStyle.NameString
             or EnumStyle.NameStringCamel
             or EnumStyle.NameStringPascal)
@@ -106,7 +106,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
 
         foreach (var member in members.OfType<IFieldSymbol>())
         {
-            var value = enumStyle is EnumStyle.UnderlyingValue
+            var value = enumStyle is EnumStyle.Value
                 ? member.ConstantValue
                 : $"\"{Transform(member.Name, enumStyle)}\"";
 
