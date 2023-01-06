@@ -280,7 +280,7 @@ For `none`, the property name in C# is used.
 The default is the standard naming style for TypeScript.
 
 ```bash
-tapper --project path/to/Xxx.csproj --output outdir --naming-style camelCase --enum-naming-style PascalCase
+tapper --project path/to/Xxx.csproj --output outdir --naming-style camelCase
 ```
 
 ### Serializer
@@ -291,7 +291,7 @@ You can specify which one to use by passing the `--serializer` option.
 The default is `json`.
 
 ```bash
-tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none --enum-naming-style none
+tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none
 ```
 
 Also, it is supposed that the following serializers are used.
@@ -308,10 +308,14 @@ Also, it is supposed that the following serializers are used.
 
 If you use [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp) for the serializer, be careful how you apply the `[MessagePackObject]` Attribute. 
 It is recommended to use `[MessagePackObject(true)]`. 
-Also, in that case, set `--naming-style` to `none` and `--enum-naming-style` to `none` .
+Also, in that case, set `--naming-style` to `none`.
+
+```bash
+tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none
+```
 
 ```cs
-[MessagePackObject(true)]
+[MessagePackObject(true)] // <- use this!
 public class SampleType
 {
     public Guid Id { get; set; }
