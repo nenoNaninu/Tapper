@@ -63,11 +63,5 @@ jobs:
       - name: Yarn install
         run: yarn --cwd ./tests/TypeScriptTest/ install
 
-      - name: Yarn test-json
-        run: yarn --cwd ./tests/TypeScriptTest/ test-json
-
-      - name: Yarn test-msgpack
-        run: yarn --cwd ./tests/TypeScriptTest/ test-msgpack
-
-      - name: Yarn test-json-string-enum
-        run: yarn --cwd ./tests/TypeScriptTest/ test-json-string-enum
+      - name: Yarn test
+        run: yarn --cwd ./tests/TypeScriptTest/ test
