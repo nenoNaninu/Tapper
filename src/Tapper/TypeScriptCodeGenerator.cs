@@ -107,7 +107,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
                 ? member.ConstantValue
                 : $"\"{Transform(member.Name, enumStyle)}\"";
 
-            writer.Append($"{_indent}{Transform(member.Name, enumStyle)} = {value},{_newLineString}");
+            writer.Append($"{_indent}{Transform(member.Name, NamingStyle.PascalCase)} = {value},{_newLineString}");
         }
 
         writer.Append('}');
