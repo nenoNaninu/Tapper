@@ -32,11 +32,11 @@ public class App : ConsoleAppBase
         int indent = 4,
         [Option("asm", "Flag whether to extend the transpile target to the referenced assembly.")]
         bool assemblies = false,
-        [Option("s", "Json / MessagePack : The output type will be suitable for the selected serializer.")]
+        [Option("s", "JSON / MessagePack : The output type will be suitable for the selected serializer.")]
         SerializerOption serializer = SerializerOption.Json,
-        [Option("n", "PascalCase / camelCase / none (The name in C# is used as it is.)")]
+        [Option("n", "camelCase (default) / PascalCase / none (The name in C# is used as it is.)")]
         NamingStyle namingStyle = NamingStyle.CamelCase,
-        [Option("en", "Value (default) / NameString / NameStringCamel / NameStringPascal / Union / UnionCamel / UnionPascal")]
+        [Option("en", "value (default) / name / nameCamel / NamePascal / union / unionCamel / UnionPascal")]
         EnumStyle @enum = EnumStyle.Value)
     {
         _logger.Log(LogLevel.Information, "Start loading the csproj of {path}.", Path.GetFullPath(project));
