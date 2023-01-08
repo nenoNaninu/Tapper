@@ -40,22 +40,22 @@ jobs:
         run: dotnet build ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore
 
       - name: Generate Code (json)
-        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json/
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json/
 
       - name: Generate Code (msgpack)
-        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/msgpack --serializer messagepack --naming-style none
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/msgpack --serializer messagepack --naming-style none
 
       - name: Generate Code (json-string-enum)
-        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json-string-enum --enum nameCamel
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json-string-enum --enum nameCamel
 
       - name: Build test api server
         run: dotnet build ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore
 
       - name: Launch test server1
-        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore --no-build --launch-profile Tapper.Tests.Server &
+        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-build --launch-profile Tapper.Tests.Server &
 
       - name: Launch test server2
-        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore --no-build --launch-profile Tapper.Tests.Server-JsonStringEnum &
+        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-build --launch-profile Tapper.Tests.Server-JsonStringEnum &
 
       - name: Install yarn
         run: npm install -g yarn
