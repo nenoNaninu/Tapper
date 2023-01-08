@@ -1,16 +1,30 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using MessagePack.AspNetCoreMvcFormatter;
 using MessagePack.Resolvers;
 using Microsoft.AspNetCore.HttpLogging;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var configure = builder.Configuration;
+
 // Add services to the container.
 
-builder.Services.AddControllers(options =>
-{
-    options.InputFormatters.Add(new MessagePackInputFormatter(ContractlessStandardResolver.Options));
-    options.OutputFormatters.Add(new MessagePackOutputFormatter(ContractlessStandardResolver.Options));
-});
+builder.Services
+    .AddControllers(options =>
+    {
+        options.InputFormatters.Add(new MessagePackInputFormatter(ContractlessStandardResolver.Options));
+        options.OutputFormatters.Add(new MessagePackOutputFormatter(ContractlessStandardResolver.Options));
+    })
+    .AddJsonOptions(options =>
+    {
+        if (configure["UseStringEnum"] == "true")
+        {
+            options.JsonSerializerOptions
+                .Converters
+                .Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+        }
+    });
 //.AddJsonOptions(options =>
 //{
 //    options.JsonSerializerOptions.PropertyNamingPolicy = null;

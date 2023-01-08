@@ -1,29 +1,38 @@
 {
-  "$schema": "https://json.schemastore.org/launchsettings.json",
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:22578",
-      "sslPort": 0
-    }
-  },
-  "profiles": {
-    "Tapper.Tests.Server": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5100",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+    "$schema": "https://json.schemastore.org/launchsettings.json",
+    "iisSettings": {
+        "windowsAuthentication": false,
+        "anonymousAuthentication": true,
+        "iisExpress": {
+            "applicationUrl": "http://localhost:22578",
+            "sslPort": 0
+        }
     },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+    "profiles": {
+        "Tapper.Tests.Server": {
+            "commandName": "Project",
+            "dotnetRunMessages": true,
+            "applicationUrl": "http://localhost:5100",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "Tapper.Tests.Server-JsonStringEnum": {
+            "commandName": "Project",
+            "dotnetRunMessages": true,
+            "applicationUrl": "http://localhost:5200",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "UseStringEnum": "true"
+            }
+        },
+        "IIS Express": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "launchUrl": "weatherforecast",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        }
     }
-  }
 }
