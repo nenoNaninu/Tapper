@@ -77,9 +77,9 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     {
         if (_transpilationOptions.EnumStyle
             is EnumStyle.Value
-            or EnumStyle.NameString
-            or EnumStyle.NameStringCamel
-            or EnumStyle.NameStringPascal)
+            or EnumStyle.Name
+            or EnumStyle.NameCamel
+            or EnumStyle.NamePascal)
         {
             AddEnumAsEnum(typeSymbol, ref writer);
         }
@@ -238,8 +238,8 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     {
         return enumStyle switch
         {
-            EnumStyle.NameStringPascal or EnumStyle.UnionPascal => $"{char.ToUpper(text[0])}{text[1..]}",
-            EnumStyle.NameStringCamel or EnumStyle.UnionCamel => $"{char.ToLower(text[0])}{text[1..]}",
+            EnumStyle.NamePascal or EnumStyle.UnionPascal => $"{char.ToUpper(text[0])}{text[1..]}",
+            EnumStyle.NameCamel or EnumStyle.UnionCamel => $"{char.ToLower(text[0])}{text[1..]}",
             _ => text,
         };
     }

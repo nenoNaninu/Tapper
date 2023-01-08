@@ -29,9 +29,9 @@ public enum NamingStyle
 public enum EnumStyle
 {
     Value, // default
-    NameString,
-    NameStringCamel,
-    NameStringPascal,
+    Name,
+    NameCamel,
+    NamePascal,
     Union,
     UnionCamel,
     UnionPascal,
