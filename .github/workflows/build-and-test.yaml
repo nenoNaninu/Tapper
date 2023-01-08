@@ -45,8 +45,14 @@ jobs:
       - name: Generate Code (msgpack)
         run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/msgpack --serializer messagepack --naming-style none
 
-      - name: Launch test server
-        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore &
+      - name: Generate Code (json-string-enum)
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json-string-enum --enum nameCamel
+
+      - name: Launch test server1
+        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore --launch-profile Tapper.Tests.Server &
+
+      - name: Launch test server2
+        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore --launch-profile Tapper.Tests.Server-JsonStringEnum &
 
       - name: Install yarn
         run: npm install -g yarn
@@ -54,5 +60,11 @@ jobs:
       - name: Yarn install
         run: yarn --cwd ./tests/TypeScriptTest/ install
 
-      - name: Yarn Test
-        run: yarn --cwd ./tests/TypeScriptTest/ test
+      - name: Yarn test-json
+        run: yarn --cwd ./tests/TypeScriptTest/ test-json
+
+      - name: Yarn test-msgpack
+        run: yarn --cwd ./tests/TypeScriptTest/ test-msgpack
+
+      - name: Yarn test-json-string-enum
+        run: yarn --cwd ./tests/TypeScriptTest/ test-json-string-enum
