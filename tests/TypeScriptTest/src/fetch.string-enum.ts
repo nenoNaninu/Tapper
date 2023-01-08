@@ -46,7 +46,7 @@ export const fetchType4 = async () => {
         value: 99
     };
 
-    const response = await fetch("http://localhost:5200/tapper/test4", {
+    const response = await fetch("http://localhost:5100/tapper/test4", {
         method: "POST",
         body: JSON.stringify(obj),
         headers: { 'Content-Type': 'application/json' },
