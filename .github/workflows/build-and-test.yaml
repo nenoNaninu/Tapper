@@ -49,7 +49,7 @@ jobs:
         run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json-string-enum --enum nameCamel
 
       - name: Build test api server
-        run: dotnet build --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore
+        run: dotnet build ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore
 
       - name: Launch test server1
         run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore --no-build --launch-profile Tapper.Tests.Server &
