@@ -15,13 +15,17 @@
             "commandName": "Project",
             "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Test.SourceTypes\\Tapper.Test.SourceTypes.csproj --output out2_camle --naming-style camelcase"
         },
-        "Tapper.Generator3": {
+        "test-json": {
             "commandName": "Project",
             "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests.Server\\Tapper.Tests.Server.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated\\json"
         },
-        "Tapper.Generator4": {
+        "test-msgpack": {
             "commandName": "Project",
             "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests.Server\\Tapper.Tests.Server.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated\\msgpack --serializer messagepack --naming-style none"
+        },
+        "test-json-enum-name": {
+            "commandName": "Project",
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests.Server\\Tapper.Tests.Server.csproj --output ..\\..\\..\\..\\..\\tests\\TypeScriptTest\\src\\generated\\json-string-enum --enum nameCamel"
         },
         "Tapper.Generator-asm-false": {
             "commandName": "Project",
@@ -33,11 +37,12 @@
         },
         "Tapper.Generator-enum-name": {
             "commandName": "Project",
-            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests\\Tapper.Tests.csproj --output out2 -asm true --enum NameStringPascal"
+            "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests\\Tapper.Tests.csproj --output out2 -asm true --enum NamePascal"
         },
         "Tapper.Generator-enum-union": {
             "commandName": "Project",
             "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests\\Tapper.Tests.csproj --output out2 -asm true --enum UnionPascal"
         }
+
     }
 }

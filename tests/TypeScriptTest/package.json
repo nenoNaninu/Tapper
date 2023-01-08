@@ -10,7 +10,10 @@
         "typescript": "^4.6.2"
     },
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "test-json": "jest .json.test.ts",
+        "test-msgpack": "jest .msgpack.test.ts",
+        "test-json-string-enum": "jest .string-enum.test.ts"
     },
     "dependencies": {
         "@msgpack/msgpack": "^2.7.2",

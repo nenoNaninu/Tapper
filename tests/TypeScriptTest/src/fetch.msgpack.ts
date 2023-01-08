@@ -19,7 +19,7 @@ export const fetchType2 = async () => {
     });
 
     const buf = await response.buffer()
-    const ret = decode<Type2>(buf);
+    const ret = decode<Type2>(buf) as Type2;
 
     return ret;
 }
@@ -43,7 +43,7 @@ export const fetchType3 = async () => {
     });
 
     const buf = await response.buffer()
-    const ret = decode<Type3>(buf);
+    const ret = decode<Type3>(buf) as Type3;
 
     return ret;
 }
@@ -64,7 +64,7 @@ export const fetchType4 = async () => {
     });
 
     const buf = await response.buffer()
-    const ret = decode<Type4>(buf);
+    const ret = decode<Type4>(buf) as Type4;
 
     return ret;
 }
@@ -84,7 +84,7 @@ export const fetchType5 = async () => {
     });
 
     const buf = await response.buffer()
-    const ret = decode<Type5>(buf);
+    const ret = decode<Type5>(buf) as Type5;
 
     return ret;
 }

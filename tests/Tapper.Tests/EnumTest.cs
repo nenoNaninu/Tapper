@@ -106,7 +106,7 @@ public class EnumTest
             new DefaultTypeMapperProvider(compilation, false),
             SerializerOption.Json,
             NamingStyle.None,
-            EnumStyle.NameString,
+            EnumStyle.Name,
             NewLineOption.Lf,
             4,
             false
