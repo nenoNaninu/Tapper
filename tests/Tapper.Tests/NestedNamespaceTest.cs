@@ -20,7 +20,7 @@ public class NestedNamespaceTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -29,7 +29,7 @@ public class NestedNamespaceTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(NastingNamespaceType);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

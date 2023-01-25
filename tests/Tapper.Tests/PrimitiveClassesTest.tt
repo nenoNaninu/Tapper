@@ -81,7 +81,7 @@ public class PrimitiveMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -90,7 +90,7 @@ public class PrimitiveMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #>);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -118,7 +118,7 @@ public class PrimitiveMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -127,7 +127,7 @@ public class PrimitiveMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #>);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

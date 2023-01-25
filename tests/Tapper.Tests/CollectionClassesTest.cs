@@ -28,7 +28,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -37,7 +37,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldArray);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -61,7 +61,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -70,7 +70,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldArraySegmentint);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -94,7 +94,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -103,7 +103,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldListfloat);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -127,7 +127,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -136,7 +136,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldLinkedListstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -160,7 +160,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -169,7 +169,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldQueueGuid);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -193,7 +193,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -202,7 +202,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldStackUri);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -226,7 +226,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -235,7 +235,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldHashSetDateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -259,7 +259,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -268,7 +268,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldIEnumerablebool);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -292,7 +292,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -301,7 +301,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldIReadOnlyCollectionbyte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -325,7 +325,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -334,7 +334,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldIReadOnlyListobject);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -358,7 +358,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -367,7 +367,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldICollectionstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -391,7 +391,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -400,7 +400,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldIListbool);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -424,7 +424,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -433,7 +433,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionFieldISetsbyte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -458,7 +458,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -467,7 +467,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyArray);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -491,7 +491,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -500,7 +500,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyArraySegmentint);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -524,7 +524,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -533,7 +533,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyListfloat);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -557,7 +557,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -566,7 +566,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyLinkedListstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -590,7 +590,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -599,7 +599,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyQueueGuid);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -623,7 +623,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -632,7 +632,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyStackUri);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -656,7 +656,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -665,7 +665,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyHashSetDateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -689,7 +689,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -698,7 +698,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyIEnumerablebool);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -722,7 +722,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -731,7 +731,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyIReadOnlyCollectionbyte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -755,7 +755,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -764,7 +764,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyIReadOnlyListobject);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -788,7 +788,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -797,7 +797,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyICollectionstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -821,7 +821,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -830,7 +830,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyIListbool);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -854,7 +854,7 @@ public class CollectionMapTest
         var compilation = CompilationSingleton.Compilation;
         
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -863,7 +863,7 @@ public class CollectionMapTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(ClassIncludeCollectionPropertyISetsbyte);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
