@@ -14,7 +14,6 @@ internal class DefaultMessageTypeFormatter : ITypeFormatter
     public void Transpile(ref CodeWriter codeWriter, INamedTypeSymbol typeSymbol, ITranspilationOptions options)
     {
         var indent = options.GetIndentString();
-        var enumStyle = options.EnumStyle;
         var newLineString = options.NewLine.ToNewLineString();
 
         var members = typeSymbol.GetPublicFieldsAndProperties()
