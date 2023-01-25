@@ -1,11 +1,11 @@
 using System.Linq;
 using Microsoft.CodeAnalysis;
 
-namespace Tapper.TypeFormatters;
+namespace Tapper.TypeTranslators;
 
-internal sealed class EnumTypeFormatter : ITypeFormatter
+internal sealed class EnumTypeTranslator : ITypeTranslator
 {
-    public void Transpile(ref CodeWriter codeWriter, INamedTypeSymbol typeSymbol, ITranspilationOptions options)
+    public void Translate(ref CodeWriter codeWriter, INamedTypeSymbol typeSymbol, ITranspilationOptions options)
     {
         var indent = options.GetIndentString();
         var newLineString = options.NewLine.ToNewLineString();
@@ -27,9 +27,9 @@ internal sealed class EnumTypeFormatter : ITypeFormatter
     }
 }
 
-internal sealed class StringEnumTypeFormatter : ITypeFormatter
+internal sealed class StringEnumTypeTranslator : ITypeTranslator
 {
-    public void Transpile(ref CodeWriter codeWriter, INamedTypeSymbol typeSymbol, ITranspilationOptions options)
+    public void Translate(ref CodeWriter codeWriter, INamedTypeSymbol typeSymbol, ITranspilationOptions options)
     {
         var indent = options.GetIndentString();
         var enumStyle = options.EnumStyle;
@@ -52,9 +52,9 @@ internal sealed class StringEnumTypeFormatter : ITypeFormatter
     }
 }
 
-internal sealed class UnionEnumTypeFormatter : ITypeFormatter
+internal sealed class UnionEnumTypeTranslator : ITypeTranslator
 {
-    public void Transpile(ref CodeWriter codeWriter, INamedTypeSymbol typeSymbol, ITranspilationOptions options)
+    public void Translate(ref CodeWriter codeWriter, INamedTypeSymbol typeSymbol, ITranspilationOptions options)
     {
         var enumStyle = options.EnumStyle;
         var newLineString = options.NewLine.ToNewLineString();

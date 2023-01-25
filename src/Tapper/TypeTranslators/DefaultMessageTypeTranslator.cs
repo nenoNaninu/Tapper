@@ -5,13 +5,13 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Tapper.TypeMappers;
 
-namespace Tapper.TypeFormatters;
+namespace Tapper.TypeTranslators;
 
 // The name "Message" is derived from the protobuf message.
 // In other words, user defined type.
-internal class DefaultMessageTypeFormatter : ITypeFormatter
+internal class DefaultMessageTypeTranslator : ITypeTranslator
 {
-    public void Transpile(ref CodeWriter codeWriter, INamedTypeSymbol typeSymbol, ITranspilationOptions options)
+    public void Translate(ref CodeWriter codeWriter, INamedTypeSymbol typeSymbol, ITranspilationOptions options)
     {
         var indent = options.GetIndentString();
         var newLineString = options.NewLine.ToNewLineString();
@@ -25,7 +25,7 @@ internal class DefaultMessageTypeFormatter : ITypeFormatter
 
         foreach (var member in members)
         {
-            var (memberTypeSymbol, isNullable) = MessageTypeFormatterHelper.GetMemberTypeSymbol(member, options);
+            var (memberTypeSymbol, isNullable) = MessageTypeTranslatorHelper.GetMemberTypeSymbol(member, options);
 
             // Add jsdoc comment
             codeWriter.Append($"{indent}/** Transpiled from {memberTypeSymbol.ToDisplayString()} */{newLineString}");
@@ -34,7 +34,7 @@ internal class DefaultMessageTypeFormatter : ITypeFormatter
 
         codeWriter.Append('}');
 
-        if (MessageTypeFormatterHelper.IsSourceType(typeSymbol.BaseType, options))
+        if (MessageTypeTranslatorHelper.IsSourceType(typeSymbol.BaseType, options))
         {
             codeWriter.Append($" & {typeSymbol.BaseType.Name};");
         }
@@ -43,7 +43,7 @@ internal class DefaultMessageTypeFormatter : ITypeFormatter
     }
 }
 
-file static class MessageTypeFormatterHelper
+file static class MessageTypeTranslatorHelper
 {
     public static (ITypeSymbol TypeSymbol, bool IsNullable) GetMemberTypeSymbol(ISymbol symbol, ITranspilationOptions options)
     {

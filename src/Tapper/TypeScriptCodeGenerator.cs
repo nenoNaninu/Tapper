@@ -9,7 +9,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
     private readonly string _newLineString;
     private readonly INamedTypeSymbol[] _sourceTypes;
     private readonly ITranspilationOptions _transpilationOptions;
-    private readonly ITypeFormatterProvider _typeFormatterProvider;
+    private readonly ITypeTranslatorProvider _typeTranslatorProvider;
 
     public TypeScriptCodeGenerator(Compilation compilation, ITranspilationOptions options)
     {
@@ -18,7 +18,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         _sourceTypes = compilation.GetSourceTypes(options.ReferencedAssembliesTranspilation);
 
         _newLineString = options.NewLine.ToNewLineString();
-        _typeFormatterProvider = TypeFormatterProviderBuilder.Build(options.EnumStyle);
+        _typeTranslatorProvider = TypeTranslatorProviderBuilder.Build(options.EnumStyle);
     }
 
     public void AddHeader(IGrouping<INamespaceSymbol, INamedTypeSymbol> types, ref CodeWriter writer)
@@ -55,8 +55,8 @@ public class TypeScriptCodeGenerator : ICodeGenerator
 
     public void AddType(INamedTypeSymbol typeSymbol, ref CodeWriter writer)
     {
-        var typeFormatter = _typeFormatterProvider.GetTypeFormatter(typeSymbol);
+        var typeTranslator = _typeTranslatorProvider.GetTypeTranslator(typeSymbol);
 
-        typeFormatter.Transpile(ref writer, typeSymbol, _transpilationOptions);
+        typeTranslator.Translate(ref writer, typeSymbol, _transpilationOptions);
     }
 }
