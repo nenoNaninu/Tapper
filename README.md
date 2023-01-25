@@ -35,15 +35,13 @@ Use `Tapper.Generator`(CLI Tool) to generate TypeScript type from C# type.
 You can use the installed tools with the command `tapper`.
 
 ```bash
-# install (.NET 7)
+# install
+# dotnet tool (Tapper CLI) requires .NET 7, but your app TFM can use .NET 6, etc.
 dotnet tool install --global Tapper.Generator
 tapper help
 
 # update
 dotnet tool update --global Tapper.Generator
-
-# install (.NET 6)
-dotnet tool install --global Tapper.Generator --version 1.5.1
 ```
 
 ## Getting Started
