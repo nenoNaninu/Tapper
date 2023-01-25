@@ -23,8 +23,7 @@ public class Transpiler
 
         _codeGenerator = new TypeScriptCodeGenerator(
             compilation,
-            options,
-            logger
+            options
         );
 
         _targetTypes = compilation.GetSourceTypes(options.ReferencedAssembliesTranspilation);

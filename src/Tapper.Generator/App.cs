@@ -32,7 +32,7 @@ public class App : ConsoleAppBase
         int indent = 4,
         [Option("asm", "Flag whether to extend the transpile target to the referenced assembly.")]
         bool assemblies = false,
-        [Option("s", "JSON / MessagePack : The output type will be suitable for the selected serializer.")]
+        [Option("s", "JSON (default) / MessagePack : The output type will be suitable for the selected serializer.")]
         SerializerOption serializer = SerializerOption.Json,
         [Option("n", "camelCase (default) / PascalCase / none (The name in C# is used as it is.)")]
         NamingStyle namingStyle = NamingStyle.CamelCase,
@@ -88,7 +88,7 @@ public class App : ConsoleAppBase
         EnumStyle enumStyle)
     {
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, referencedAssembliesTranspilation),
+            compilation,
             serializerOption,
             namingStyle,
             enumStyle,
