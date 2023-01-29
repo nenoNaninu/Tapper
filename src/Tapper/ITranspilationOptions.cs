@@ -7,6 +7,7 @@ namespace Tapper;
 public interface ITranspilationOptions
 {
     ITypeMapperProvider TypeMapperProvider { get; }
+    SpecialSymbols SpecialSymbols { get; }
     IReadOnlyList<INamedTypeSymbol> SourceTypes { get; }
     SerializerOption SerializerOption { get; }
     NamingStyle NamingStyle { get; }
@@ -14,6 +15,7 @@ public interface ITranspilationOptions
     NewLineOption NewLine { get; }
     int Indent { get; }
     bool ReferencedAssembliesTranspilation { get; }
+    bool EnableAttributeReference { get; }
 }
 
 public enum SerializerOption

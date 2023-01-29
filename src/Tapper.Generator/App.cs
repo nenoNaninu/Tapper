@@ -30,14 +30,15 @@ public class App : ConsoleAppBase
         NewLineOption newLine = NewLineOption.Lf,
         [Option("i", "Indent size")]
         int indent = 4,
-        [Option("asm", "Flag whether to extend the transpile target to the referenced assembly.")]
+        [Option("asm", "The flag whether to extend the transpile target to the referenced assembly.")]
         bool assemblies = false,
         [Option("s", "JSON (default) / MessagePack : The output type will be suitable for the selected serializer.")]
         SerializerOption serializer = SerializerOption.Json,
         [Option("n", "camelCase (default) / PascalCase / none (The name in C# is used as it is.)")]
         NamingStyle namingStyle = NamingStyle.CamelCase,
         [Option("en", "value (default) / name / nameCamel / NamePascal / union / unionCamel / UnionPascal")]
-        EnumStyle @enum = EnumStyle.Value)
+        EnumStyle @enum = EnumStyle.Value,
+        [Option("attr", "The flag whether attributes such as JsonPropertyName should affect transpilation.")] bool attribute = true)
     {
         _logger.Log(LogLevel.Information, "Start loading the csproj of {path}.", Path.GetFullPath(project));
 
@@ -47,7 +48,7 @@ public class App : ConsoleAppBase
         {
             var compilation = await this.CreateCompilationAsync(project);
 
-            await TranspileCore(compilation, output, newLine, indent, assemblies, serializer, namingStyle, @enum);
+            await TranspileCore(compilation, output, newLine, indent, assemblies, serializer, namingStyle, @enum, attribute);
 
             _logger.Log(LogLevel.Information, "======== Transpilation is completed. ========");
             _logger.Log(LogLevel.Information, "Please check the output folder: {output}", output);
@@ -85,7 +86,8 @@ public class App : ConsoleAppBase
         bool referencedAssembliesTranspilation,
         SerializerOption serializerOption,
         NamingStyle namingStyle,
-        EnumStyle enumStyle)
+        EnumStyle enumStyle,
+        bool enableAttributeReference)
     {
         var options = new TranspilationOptions(
             compilation,
@@ -94,7 +96,8 @@ public class App : ConsoleAppBase
             enumStyle,
             newLine,
             indent,
-            referencedAssembliesTranspilation
+            referencedAssembliesTranspilation,
+            enableAttributeReference
         );
 
         var transpiler = new Transpiler(compilation, options, _logger);
