@@ -18,6 +18,9 @@ Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and m
   - [Enum Style](#enum-style)
   - [Serializer](#serializer)
     - [MessagePack](#messagepack)
+  - [Serializer Attributes Support](#serializer-attributes-support)
+    - [JSON](#json)
+    - [MessagePack](#messagepack-1)
   - [Transpile the Types Contained in Referenced Assemblies](#transpile-the-types-contained-in-referenced-assemblies)
 - [Analyzer](#analyzer)
 - [Unity Support](#unity-support)
@@ -169,6 +172,8 @@ If you add an analyzer package, you can avoid forgetting to apply `[Transpilatio
 
 ```cs
 #nullable enable
+using System.Text.Json.Serialization;
+using Tapper;
 
 namespace Space1
 {
@@ -177,6 +182,8 @@ namespace Space1
     {
         public int Value;
         public Guid Id;
+        [JsonIgnore]
+        public string Foo;
     }
 
     namespace Sub
@@ -209,7 +216,8 @@ namespace Space3
     {
         public CustomType1? Value { get; set; }
         public MyEnum MyEnumValue { get; set; }
-        public List<CustomType3> List { get; set; } = new();
+        [JsonPropertyName("List")]
+        public List<CustomType3> MyList { get; set; } = new();
     }
 }
 ```
@@ -372,6 +380,105 @@ public class SampleType
     public int Value { get; set; }
 }
 ```
+
+### Serializer Attributes Support
+
+Tapper reflects JSON and MessagePack serializer attributes in the output TypeScript code.
+
+Support attributes: 
+- `System.Text.Json.Serialization`
+    - `[JsonPropertyName("string")]`
+    - `[JsonIgnore]`
+- `MessagePack`
+    - `[Key("string")]`
+    - `[IgnoreMember]`
+
+#### JSON
+```cs
+// input C# code
+// --serializer json
+
+namespace Readme;
+
+[TranspilationSource]
+public class Type1
+{
+    [JsonIgnore]
+    public required int Value { get; init; }
+    public required string Name { get; init; }
+}
+
+[TranspilationSource]
+public class Type2
+{
+    [JsonPropertyName("Foo")]
+    public required int Value { get; init; }
+    public required string Name { get; init; }
+}
+```
+
+```ts
+// output TypeScript code
+
+/** Transpiled from Readme.Type1 */
+export type Type1 = {
+    /** Transpiled from string */
+    name: string;
+}
+
+/** Transpiled from Readme.Type2 */
+export type Type2 = {
+    /** Transpiled from int */
+    Foo: number;
+    /** Transpiled from string */
+    name: string;
+}
+```
+
+
+#### MessagePack
+
+```cs
+// input C# code
+// --serializer MessagePack --naming-style none
+
+namespace Readme;
+
+[TranspilationSource]
+public class Type3
+{
+    [IgnoreMember]
+    public required Value { get; init; }
+    public required string Name { get; init; }
+}
+
+[TranspilationSource]
+public class Type4
+{
+    [Key("Bar")]
+    public required int Value { get; init; }
+    public required string Name { get; init; }
+}
+```
+
+```ts
+// output TypeScript code
+
+/** Transpiled from Readme.Type3 */
+export type Type3 = {
+    /** Transpiled from string */
+    Name: string;
+}
+
+/** Transpiled from Readme.Type4 */
+export type Type4 = {
+    /** Transpiled from int */
+    Bar: number;
+    /** Transpiled from string */
+    Name: string;
+}
+```
+
 
 ### Transpile the Types Contained in Referenced Assemblies
 
