@@ -18,7 +18,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         _sourceTypes = compilation.GetSourceTypes(options.ReferencedAssembliesTranspilation);
 
         _newLineString = options.NewLine.ToNewLineString();
-        _typeTranslatorProvider = TypeTranslatorProviderBuilder.Build(options.EnumStyle);
+        _typeTranslatorProvider = new TypeTranslatorProviderBuilder(options.EnumStyle).Build();
     }
 
     public void AddHeader(IGrouping<INamespaceSymbol, INamedTypeSymbol> types, ref CodeWriter writer)
