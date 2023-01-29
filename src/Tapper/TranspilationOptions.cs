@@ -1,8 +1,13 @@
+using System.Collections.Generic;
+using Microsoft.CodeAnalysis;
+
 namespace Tapper;
 
 public class TranspilationOptions : ITranspilationOptions
 {
     public ITypeMapperProvider TypeMapperProvider { get; }
+
+    public IReadOnlyList<INamedTypeSymbol> SourceTypes { get; }
 
     public SerializerOption SerializerOption { get; }
 
@@ -16,8 +21,9 @@ public class TranspilationOptions : ITranspilationOptions
 
     public bool ReferencedAssembliesTranspilation { get; }
 
+
     public TranspilationOptions(
-        ITypeMapperProvider typeMapperProvider,
+        Compilation compilation,
         SerializerOption serializerOption,
         NamingStyle namingStyle,
         EnumStyle enumStyle,
@@ -25,7 +31,8 @@ public class TranspilationOptions : ITranspilationOptions
         int indent,
         bool referencedAssembliesTranspilation)
     {
-        TypeMapperProvider = typeMapperProvider;
+        TypeMapperProvider = new DefaultTypeMapperProvider(compilation, referencedAssembliesTranspilation);
+        SourceTypes = compilation.GetSourceTypes(referencedAssembliesTranspilation);
         SerializerOption = serializerOption;
         NamingStyle = namingStyle;
         EnumStyle = enumStyle;

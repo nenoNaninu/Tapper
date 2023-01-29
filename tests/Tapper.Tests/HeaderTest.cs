@@ -22,7 +22,7 @@ public class HeaderTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -31,7 +31,7 @@ public class HeaderTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var targetTypes = compilation.GetSourceTypes(false);
         var targetTypeLookupTable = targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
@@ -67,7 +67,7 @@ import { CustomType4 } from './Tapper.Test.SourceTypes.Space2';
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -76,7 +76,7 @@ import { CustomType4 } from './Tapper.Test.SourceTypes.Space2';
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var targetTypes = compilation.GetSourceTypes(false);
         var targetTypeLookupTable = targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);

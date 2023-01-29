@@ -20,7 +20,7 @@ public class EnumTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -29,7 +29,7 @@ public class EnumTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(Enum1);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -62,7 +62,7 @@ public class EnumTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Value,
@@ -71,7 +71,7 @@ public class EnumTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -103,7 +103,7 @@ public class EnumTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.Name,
@@ -112,7 +112,7 @@ public class EnumTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -144,7 +144,7 @@ public class EnumTest
         var compilation = CompilationSingleton.Compilation;
 
         var options = new TranspilationOptions(
-            new DefaultTypeMapperProvider(compilation, false),
+            compilation,
             SerializerOption.Json,
             NamingStyle.None,
             EnumStyle.UnionCamel,
@@ -153,7 +153,7 @@ public class EnumTest
             false
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options, Logger.Empty);
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
