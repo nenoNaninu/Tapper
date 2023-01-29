@@ -25,7 +25,8 @@ public class TupleTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -63,7 +64,8 @@ export type SimpleTupleClass = {
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -101,7 +103,8 @@ export type TupleClassIncludeNullable = {
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -138,7 +141,8 @@ export type TupleClassNullableField = {
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);

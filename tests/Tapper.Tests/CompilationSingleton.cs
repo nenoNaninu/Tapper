@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
+using System.Text.Json.Serialization;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using Tapper.TypeMappers;
 using Xunit;
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
 
@@ -49,6 +48,14 @@ public class CompilationSingleton
             File.ReadAllText("../../../../Tapper.Test.SourceTypes/InheritanceClasses.cs"),
             options);
 
+        var attributeAnnotatedSyntax = CSharpSyntaxTree.ParseText(
+            File.ReadAllText("../../../../Tapper.Test.SourceTypes/AttributeAnnotatedClasses.cs"),
+            options);
+
+        var messagePackAttributesSyntax = CSharpSyntaxTree.ParseText(
+            File.ReadAllText("../../../../Tapper.Test.SourceTypes/MessagePackAttributes.cs"),
+            options);
+
         var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
             .WithNullableContextOptions(NullableContextOptions.Enable);
 
@@ -58,6 +65,7 @@ public class CompilationSingleton
             MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
             MetadataReference.CreateFromFile(typeof(Uri).Assembly.Location),
             MetadataReference.CreateFromFile(typeof(LinkedList<>).Assembly.Location),
+            MetadataReference.CreateFromFile(typeof(JsonPropertyNameAttribute).Assembly.Location),
         };
 
         var compilation = CSharpCompilation.Create(
@@ -72,6 +80,8 @@ public class CompilationSingleton
                 nestedNamespaceSyntax,
                 tupleSyntax,
                 inheritanceSyntax,
+                attributeAnnotatedSyntax,
+                messagePackAttributesSyntax,
             },
             references: references,
             options: compilationOptions);
