@@ -216,7 +216,7 @@ namespace Space3
     {
         public CustomType1? Value { get; set; }
         public MyEnum MyEnumValue { get; set; }
-        [JsonPropertyName("List")]
+        [JsonPropertyName("list")]
         public List<CustomType3> MyList { get; set; } = new();
     }
 }
