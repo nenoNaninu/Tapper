@@ -45,7 +45,6 @@ public class TranspilationOptions : ITranspilationOptions
               referencedAssembliesTranspilation,
               enableAttributeReference)
     {
-
     }
 
     public TranspilationOptions(
