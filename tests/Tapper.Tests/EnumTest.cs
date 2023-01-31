@@ -26,7 +26,8 @@ public class EnumTest
             EnumStyle.Value,
             NewLineOption.Lf,
             4,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -68,7 +69,8 @@ public class EnumTest
             EnumStyle.Value,
             NewLineOption.Lf,
             4,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -109,7 +111,8 @@ public class EnumTest
             EnumStyle.Name,
             NewLineOption.Lf,
             4,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -150,7 +153,8 @@ public class EnumTest
             EnumStyle.UnionCamel,
             NewLineOption.Lf,
             4,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);

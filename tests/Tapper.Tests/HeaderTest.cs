@@ -28,7 +28,8 @@ public class HeaderTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -73,7 +74,8 @@ import { CustomType4 } from './Tapper.Test.SourceTypes.Space2';
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);

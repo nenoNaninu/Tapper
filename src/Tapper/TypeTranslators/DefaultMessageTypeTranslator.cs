@@ -27,9 +27,16 @@ internal class DefaultMessageTypeTranslator : ITypeTranslator
         {
             var (memberTypeSymbol, isNullable) = MessageTypeTranslatorHelper.GetMemberTypeSymbol(member, options);
 
+            var (isValid, name) = MessageTypeTranslatorHelper.GetMemberName(member, options);
+
+            if (!isValid)
+            {
+                continue;
+            }
+
             // Add jsdoc comment
             codeWriter.Append($"{indent}/** Transpiled from {memberTypeSymbol.ToDisplayString()} */{newLineString}");
-            codeWriter.Append($"{indent}{options.NamingStyle.Transform(member.Name)}{(isNullable ? "?" : string.Empty)}: {TypeMapper.MapTo(memberTypeSymbol, options)};{newLineString}");
+            codeWriter.Append($"{indent}{name}{(isNullable ? "?" : string.Empty)}: {TypeMapper.MapTo(memberTypeSymbol, options)};{newLineString}");
         }
 
         codeWriter.Append('}');
@@ -112,5 +119,46 @@ file static class MessageTypeTranslatorHelper
         }
 
         return false;
+    }
+
+    public static (bool IsValid, string Name) GetMemberName(ISymbol memberSymbol, ITranspilationOptions options)
+    {
+        if (options.SerializerOption == SerializerOption.Json)
+        {
+            foreach (var attr in memberSymbol.GetAttributes())
+            {
+                if (SymbolEqualityComparer.Default.Equals(attr.AttributeClass, options.SpecialSymbols.JsonIgnoreAttribute))
+                {
+                    return (false, string.Empty);
+                }
+
+                if (SymbolEqualityComparer.Default.Equals(attr.AttributeClass, options.SpecialSymbols.JsonPropertyNameAttribute))
+                {
+                    var name = attr.ConstructorArguments[0].Value!.ToString()!;
+                    return (true, name);
+                }
+            }
+        }
+        else if (options.SerializerOption == SerializerOption.MessagePack)
+        {
+            foreach (var attr in memberSymbol.GetAttributes())
+            {
+                if (SymbolEqualityComparer.Default.Equals(attr.AttributeClass, options.SpecialSymbols.MessagePackIgnoreMemberAttribute))
+                {
+                    return (false, string.Empty);
+                }
+
+                if (SymbolEqualityComparer.Default.Equals(attr.AttributeClass, options.SpecialSymbols.MessagePackKeyAttribute))
+                {
+                    if (attr.ConstructorArguments[0].Type?.SpecialType == SpecialType.System_String)
+                    {
+                        var name = attr.ConstructorArguments[0].Value!.ToString()!;
+                        return (true, name);
+                    }
+                }
+            }
+        }
+
+        return (true, options.NamingStyle.Transform(memberSymbol.Name));
     }
 }

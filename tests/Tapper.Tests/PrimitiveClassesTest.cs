@@ -34,7 +34,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -67,7 +68,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -100,7 +102,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -133,7 +136,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -166,7 +170,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -199,7 +204,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -232,7 +238,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -265,7 +272,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -298,7 +306,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -331,7 +340,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -364,7 +374,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -397,7 +408,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -430,7 +442,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -463,7 +476,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -496,7 +510,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -529,7 +544,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -562,7 +578,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -595,7 +612,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -630,7 +648,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -663,7 +682,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -696,7 +716,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -729,7 +750,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -762,7 +784,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -795,7 +818,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -828,7 +852,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -861,7 +886,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -894,7 +920,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -927,7 +954,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -960,7 +988,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -993,7 +1022,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -1026,7 +1056,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -1059,7 +1090,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -1092,7 +1124,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -1125,7 +1158,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -1158,7 +1192,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -1191,7 +1226,8 @@ public class PrimitiveMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);

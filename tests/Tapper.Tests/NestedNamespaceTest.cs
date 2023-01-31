@@ -26,7 +26,8 @@ public class NestedNamespaceTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);

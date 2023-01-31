@@ -34,7 +34,8 @@ public class DictionaryMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -67,7 +68,8 @@ public class DictionaryMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -100,7 +102,8 @@ public class DictionaryMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -134,7 +137,8 @@ public class DictionaryMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -167,7 +171,8 @@ public class DictionaryMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
@@ -200,7 +205,8 @@ public class DictionaryMapTest
             EnumStyle.Value,
             NewLineOption.Lf,
             2,
-            false
+            false,
+            true
         );
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);

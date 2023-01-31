@@ -7,6 +7,8 @@ public class TranspilationOptions : ITranspilationOptions
 {
     public ITypeMapperProvider TypeMapperProvider { get; }
 
+    public SpecialSymbols SpecialSymbols { get; }
+
     public IReadOnlyList<INamedTypeSymbol> SourceTypes { get; }
 
     public SerializerOption SerializerOption { get; }
@@ -21,6 +23,7 @@ public class TranspilationOptions : ITranspilationOptions
 
     public bool ReferencedAssembliesTranspilation { get; }
 
+    public bool EnableAttributeReference { get; }
 
     public TranspilationOptions(
         Compilation compilation,
@@ -29,9 +32,11 @@ public class TranspilationOptions : ITranspilationOptions
         EnumStyle enumStyle,
         NewLineOption newLineOption,
         int indent,
-        bool referencedAssembliesTranspilation)
+        bool referencedAssembliesTranspilation,
+        bool enableAttributeReference)
     {
         TypeMapperProvider = new DefaultTypeMapperProvider(compilation, referencedAssembliesTranspilation);
+        SpecialSymbols = new SpecialSymbols(compilation);
         SourceTypes = compilation.GetSourceTypes(referencedAssembliesTranspilation);
         SerializerOption = serializerOption;
         NamingStyle = namingStyle;
@@ -39,5 +44,6 @@ public class TranspilationOptions : ITranspilationOptions
         NewLine = newLineOption;
         Indent = indent;
         ReferencedAssembliesTranspilation = referencedAssembliesTranspilation;
+        EnableAttributeReference = enableAttributeReference;
     }
 }
