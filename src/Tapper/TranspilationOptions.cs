@@ -34,8 +34,32 @@ public class TranspilationOptions : ITranspilationOptions
         int indent,
         bool referencedAssembliesTranspilation,
         bool enableAttributeReference)
+        : this(
+              compilation,
+              new DefaultTypeMapperProvider(compilation, referencedAssembliesTranspilation),
+              serializerOption,
+              namingStyle,
+              enumStyle,
+              newLineOption,
+              indent,
+              referencedAssembliesTranspilation,
+              enableAttributeReference)
     {
-        TypeMapperProvider = new DefaultTypeMapperProvider(compilation, referencedAssembliesTranspilation);
+
+    }
+
+    public TranspilationOptions(
+        Compilation compilation,
+        ITypeMapperProvider typeMapperProvider,
+        SerializerOption serializerOption,
+        NamingStyle namingStyle,
+        EnumStyle enumStyle,
+        NewLineOption newLineOption,
+        int indent,
+        bool referencedAssembliesTranspilation,
+        bool enableAttributeReference)
+    {
+        TypeMapperProvider = typeMapperProvider;
         SpecialSymbols = new SpecialSymbols(compilation);
         SourceTypes = compilation.GetSourceTypes(referencedAssembliesTranspilation);
         SerializerOption = serializerOption;
