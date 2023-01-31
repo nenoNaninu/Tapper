@@ -38,7 +38,8 @@ public class App : ConsoleAppBase
         NamingStyle namingStyle = NamingStyle.CamelCase,
         [Option("en", "value (default) / name / nameCamel / NamePascal / union / unionCamel / UnionPascal")]
         EnumStyle @enum = EnumStyle.Value,
-        [Option("attr", "The flag whether attributes such as JsonPropertyName should affect transpilation.")] bool attribute = true)
+        [Option("attr", "The flag whether attributes such as JsonPropertyName should affect transpilation.")]
+        bool attribute = true)
     {
         _logger.Log(LogLevel.Information, "Start loading the csproj of {path}.", Path.GetFullPath(project));
 
