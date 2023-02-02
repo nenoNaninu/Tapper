@@ -102,6 +102,8 @@ public class TapperAnalyzer : DiagnosticAnalyzer
     private static void AnalyzeSymbol(SymbolAnalysisContext context)
     {
         var attributeSymbol = context.Compilation.GetTypeByMetadataName("Tapper.TranspilationSourceAttribute");
+        var jsonIgnoreAttribute = context.Compilation.GetTypeByMetadataName("System.Text.Json.Serialization.JsonIgnoreAttribute");
+        var messagePackIgnoreAttribute = context.Compilation.GetTypeByMetadataName("MessagePack.IgnoreMemberAttribute");
 
         var supportTypeSymbols = SupportTypes
             .Select(x => context.Compilation.GetTypeByMetadataName(x.FullName)!)
@@ -131,6 +133,13 @@ public class TapperAnalyzer : DiagnosticAnalyzer
 
             foreach (var member in namedTypeSymbol.GetPublicFieldsAndProperties().IgnoreStatic())
             {
+                if (member.GetAttributes().Any(x =>
+                    SymbolEqualityComparer.Default.Equals(x.AttributeClass, jsonIgnoreAttribute)
+                    || SymbolEqualityComparer.Default.Equals(x.AttributeClass, messagePackIgnoreAttribute)))
+                {
+                    continue;
+                }
+
                 foreach (var type in member.GetRelevantTypesFromMemberSymbol())
                 {
                     if (type is not INamedTypeSymbol memberNamedTypeSymbol)
