@@ -60,7 +60,7 @@ public static partial class RoslynExtensions
             return TargetTypes;
         }
 
-        var annotationSymbol = compilation.GetTypeByMetadataName("Tapper.TranspilationSourceAttribute");
+        var annotationSymbols = compilation.GetTypesByMetadataName("Tapper.TranspilationSourceAttribute");
 
         var namedTypes = includeReferencedAssemblies ? compilation.GetGlobalNamedTypeSymbols() : compilation.GetNamedTypeSymbols();
 
@@ -74,7 +74,18 @@ public static partial class RoslynExtensions
                     return false;
                 }
 
-                return attributes.Any(x => SymbolEqualityComparer.Default.Equals(x.AttributeClass, annotationSymbol));
+                foreach (var attribute in attributes)
+                {
+                    foreach (var annotationSymbol in annotationSymbols)
+                    {
+                        if (SymbolEqualityComparer.Default.Equals(attribute.AttributeClass, annotationSymbol))
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+                return false;
             })
             .ToArray();
 
