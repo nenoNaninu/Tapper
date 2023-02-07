@@ -127,12 +127,12 @@ file static class MessageTypeTranslatorHelper
         {
             foreach (var attr in memberSymbol.GetAttributes())
             {
-                if (SymbolEqualityComparer.Default.Equals(attr.AttributeClass, options.SpecialSymbols.JsonIgnoreAttribute))
+                if (options.SpecialSymbols.JsonIgnoreAttributes.Any(x => SymbolEqualityComparer.Default.Equals(attr.AttributeClass, x)))
                 {
                     return (false, string.Empty);
                 }
 
-                if (SymbolEqualityComparer.Default.Equals(attr.AttributeClass, options.SpecialSymbols.JsonPropertyNameAttribute))
+                if (options.SpecialSymbols.JsonPropertyNameAttributes.Any(x => SymbolEqualityComparer.Default.Equals(attr.AttributeClass, x)))
                 {
                     var name = attr.ConstructorArguments[0].Value!.ToString()!;
                     return (true, name);
@@ -143,12 +143,12 @@ file static class MessageTypeTranslatorHelper
         {
             foreach (var attr in memberSymbol.GetAttributes())
             {
-                if (SymbolEqualityComparer.Default.Equals(attr.AttributeClass, options.SpecialSymbols.MessagePackIgnoreMemberAttribute))
+                if (options.SpecialSymbols.MessagePackIgnoreMemberAttributes.Any(x => SymbolEqualityComparer.Default.Equals(attr.AttributeClass, x)))
                 {
                     return (false, string.Empty);
                 }
 
-                if (SymbolEqualityComparer.Default.Equals(attr.AttributeClass, options.SpecialSymbols.MessagePackKeyAttribute))
+                if (options.SpecialSymbols.MessagePackKeyAttributes.Any(x => SymbolEqualityComparer.Default.Equals(attr.AttributeClass, x)))
                 {
                     if (attr.ConstructorArguments[0].Type?.SpecialType == SpecialType.System_String)
                     {
