@@ -61,7 +61,7 @@ jobs:
         run: npm install -g yarn
 
       - name: Yarn install
-        run: yarn --cwd ./tests/TypeScriptTest/ install
+        run: yarn --cwd ./tests/TypeScriptTest/ install --frozen-lockfile
 
       - name: Yarn test
         run: yarn --cwd ./tests/TypeScriptTest/ test
