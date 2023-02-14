@@ -1,6 +1,5 @@
 import { MyEnum, Type2, Type3, Type4, Type5, Type6, Type7 } from './generated/json/Tapper.Tests.Server.Models';
 import { randomUUID } from 'crypto';
-import fetch from 'node-fetch';
 
 export const fetchType2 = async () => {
     const obj: Type2 = {
