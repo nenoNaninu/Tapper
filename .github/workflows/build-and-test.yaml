@@ -8,7 +8,7 @@ on:
 
 env:
   DOTNET_VERSION: "7.0.x"
-  NODE_VERSION: "16"
+  NODE_VERSION: "18"
   DOTNET_NOLOGO: true
 
 jobs:
