@@ -56,6 +56,10 @@ public class CompilationSingleton
             File.ReadAllText("../../../../Tapper.Test.SourceTypes/MessagePackAttributes.cs"),
             options);
 
+        var partialClassSyntax = CSharpSyntaxTree.ParseText(
+            File.ReadAllText("../../../../Tapper.Test.SourceTypes/PartialClass.cs"),
+            options);
+
         var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
             .WithNullableContextOptions(NullableContextOptions.Enable);
 
@@ -82,6 +86,7 @@ public class CompilationSingleton
                 inheritanceSyntax,
                 attributeAnnotatedSyntax,
                 messagePackAttributesSyntax,
+                partialClassSyntax
             },
             references: references,
             options: compilationOptions);
