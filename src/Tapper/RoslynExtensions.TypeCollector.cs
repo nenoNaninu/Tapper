@@ -87,6 +87,7 @@ public static partial class RoslynExtensions
 
                 return false;
             })
+            .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default)
             .ToArray();
 
         return TargetTypes;
