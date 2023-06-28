@@ -16,7 +16,7 @@ public class Logger : ILogger
         }
     }
 
-    public IDisposable BeginScope<TState>(TState state)
+    public IDisposable? BeginScope<TState>(TState state) where TState : notnull
     {
         return Disposable.Empty;
     }
