@@ -18,7 +18,7 @@ public class KeyAttribute : Attribute
 {
     public int? IntKey { get; private set; }
 
-    public string StringKey { get; private set; }
+    public string? StringKey { get; private set; }
 
     public KeyAttribute(int x)
     {
@@ -27,9 +27,11 @@ public class KeyAttribute : Attribute
 
     public KeyAttribute(string x)
     {
+        ArgumentNullException.ThrowIfNull(x);
         this.StringKey = x;
     }
 }
+
 
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
 public class IgnoreMemberAttribute : Attribute
