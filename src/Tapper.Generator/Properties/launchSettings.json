@@ -43,6 +43,5 @@
             "commandName": "Project",
             "commandLineArgs": "--project ..\\..\\..\\..\\..\\tests\\Tapper.Tests\\Tapper.Tests.csproj --output out2 -asm true --enum UnionPascal"
         }
-
     }
 }

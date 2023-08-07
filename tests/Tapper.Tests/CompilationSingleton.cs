@@ -60,6 +60,10 @@ public class CompilationSingleton
             File.ReadAllText("../../../../Tapper.Test.SourceTypes/PartialClass.cs"),
             options);
 
+        var nestedTypeSyntax = CSharpSyntaxTree.ParseText(
+            File.ReadAllText("../../../../Tapper.Test.SourceTypes/NestedType.cs"),
+            options);
+
         var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
             .WithNullableContextOptions(NullableContextOptions.Enable);
 
@@ -86,7 +90,8 @@ public class CompilationSingleton
                 inheritanceSyntax,
                 attributeAnnotatedSyntax,
                 messagePackAttributesSyntax,
-                partialClassSyntax
+                partialClassSyntax,
+                nestedTypeSyntax
             },
             references: references,
             options: compilationOptions);
