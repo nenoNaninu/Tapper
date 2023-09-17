@@ -100,5 +100,19 @@ export type Class2 = {
     id: string;
 }
 
+/** Transpiled from Tapper.Tests.AsmReference.SourceTypes2.NestedTypeParentRequest */
+export type NestedTypeParentRequest = {
+    /** Transpiled from System.Collections.Generic.IReadOnlyList<Tapper.Tests.AsmReference.SourceTypes2.NestedTypeParentRequest.NestedTypeNestedTypeParentRequestItem> */
+    items: NestedTypeNestedTypeParentRequestItem[];
+}
+
+/** Transpiled from Tapper.Tests.AsmReference.SourceTypes2.NestedTypeParentRequest.NestedTypeNestedTypeParentRequestItem */
+export type NestedTypeNestedTypeParentRequestItem = {
+    /** Transpiled from int */
+    value: number;
+    /** Transpiled from string? */
+    message?: string;
+}
+
 ";
 }

@@ -8,3 +8,11 @@ public class Class2
     public string? Name2 { get; init; }
     public Guid Id { get; set; }
 }
+
+[TranspilationSource]
+public record NestedTypeParentRequest
+    (IReadOnlyList<NestedTypeParentRequest.NestedTypeNestedTypeParentRequestItem> Items)
+{
+    [TranspilationSource]
+    public record NestedTypeNestedTypeParentRequestItem(int Value, string? Message);
+}
