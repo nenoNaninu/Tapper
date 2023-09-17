@@ -43,6 +43,11 @@ internal sealed class GlobalNamedTypeCollector : SymbolVisitor
     public override void VisitNamedType(INamedTypeSymbol symbol)
     {
         _namedTypeSymbols.Add(symbol);
+
+        foreach (var member in symbol.GetTypeMembers())
+        {
+            member.Accept(this);
+        }
     }
 
     public INamedTypeSymbol[] ToArray() => _namedTypeSymbols.ToArray();
