@@ -56,7 +56,7 @@ public class UnitTest1
         var startInfo = new ProcessStartInfo
         {
             FileName = "dotnet",
-            Arguments = $"run --project {generatorProject} -- --project {projectFullPath} --output {outputFullPath} -asm true"
+            Arguments = $"run --project {generatorProject} --framework net8.0 -- --project {projectFullPath} --output {outputFullPath} -asm true"
         };
 
         var process = new Process { StartInfo = startInfo };
