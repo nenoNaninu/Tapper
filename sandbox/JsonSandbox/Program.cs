@@ -24,7 +24,7 @@ Console.WriteLine(o2);
 
 public class C1
 {
-    public IReadOnlyDictionary<int, string> Array { get; set; }
+    public IReadOnlyDictionary<int, string>? Array { get; set; }
 }
 
 
