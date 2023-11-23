@@ -39,7 +39,7 @@ You can use the installed tools with the command `tapper`.
 
 ```bash
 # install
-# Tapper CLI (dotnet tool) requires .NET 7, but your app TFM can use .NET 6, etc.
+# Tapper CLI (dotnet tool) requires .NET 7 or .NET 8, but your app TFM can use .NET 6, etc.
 dotnet tool install --global Tapper.Generator
 tapper help
 
