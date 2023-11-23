@@ -15,17 +15,28 @@ jobs:
   build-and-test:
     name: build-and-test
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        DOTNET_VERSION: ["8.0.x", "7.0.x"]
+
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-version: ${{ matrix.DOTNET_VERSION }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
+
+      - if: matrix.DOTNET_VERSION == '7.0.x'
+        run: echo "DOTNET_TFM=net7.0" >> $GITHUB_ENV
+
+      - if: matrix.DOTNET_VERSION == '8.0.x'
+        run: echo "DOTNET_TFM=net8.0" >> $GITHUB_ENV
 
       - name: Restore dependencies
         run: dotnet restore
@@ -40,22 +51,22 @@ jobs:
         run: dotnet build ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore
 
       - name: Generate Code (json)
-        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --framework net8.0 --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json/
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --framework ${{ env.DOTNET_TFM }} --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json/
 
       - name: Generate Code (msgpack)
-        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --framework net8.0 --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/msgpack --serializer messagepack --naming-style none
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --framework ${{ env.DOTNET_TFM }} --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/msgpack --serializer messagepack --naming-style none
 
       - name: Generate Code (json-string-enum)
-        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --framework net8.0 --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json-string-enum --enum nameCamel
+        run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --framework ${{ env.DOTNET_TFM }} --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json-string-enum --enum nameCamel
 
       - name: Build test api server
         run: dotnet build ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-restore
 
       - name: Launch test server1
-        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-build --launch-profile Tapper.Tests.Server &
+        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --framework ${{ env.DOTNET_TFM }} --no-build --launch-profile Tapper.Tests.Server &
 
       - name: Launch test server2
-        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --no-build --launch-profile Tapper.Tests.Server-JsonStringEnum &
+        run: dotnet run --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --framework ${{ env.DOTNET_TFM }} --no-build --launch-profile Tapper.Tests.Server-JsonStringEnum &
 
       - name: Install yarn
         run: npm install -g yarn
