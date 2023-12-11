@@ -18,7 +18,7 @@
         <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.4" />
         <PackageVersion Include="coverlet.collector" Version="6.0.0" />
         <PackageVersion Include="ConsoleAppFramework" Version="4.2.4" />
-        <PackageVersion Include="MessagePack" Version="2.5.129" />
+        <PackageVersion Include="MessagePack" Version="2.5.140" />
         <PackageVersion Include="MessagePack.AspNetCoreMvcFormatter" Version="2.5.129" />
     </ItemGroup>
 </Project>
