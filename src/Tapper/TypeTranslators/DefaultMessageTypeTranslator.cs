@@ -16,35 +16,51 @@ internal class DefaultMessageTypeTranslator : ITypeTranslator
         var indent = options.GetIndentString();
         var newLineString = options.NewLine.ToNewLineString();
 
-        var members = typeSymbol.GetPublicFieldsAndProperties()
-            .IgnoreStatic()
-            .ToArray();
 
         codeWriter.Append($"/** Transpiled from {typeSymbol.ToDisplayString()} */{newLineString}");
-        codeWriter.Append($"export type {typeSymbol.Name} = {{{newLineString}");
+        codeWriter.Append($"export type {typeSymbol.Name} = ");
 
-        foreach (var member in members)
+        string? configuredType = MessageTypeTranslatorHelper.GetConfiguredType(typeSymbol);
+
+        if (configuredType is not null)
         {
-            var (memberTypeSymbol, isNullable) = MessageTypeTranslatorHelper.GetMemberTypeSymbol(member, options);
+            codeWriter.Append(configuredType);
+            codeWriter.Append(';');
+        }
+        else
+        {
+            codeWriter.Append('{');
+            codeWriter.Append(newLineString);
+            var members = typeSymbol.GetPublicFieldsAndProperties()
+                .IgnoreStatic()
+                .ToArray();
 
-            var (isValid, name) = MessageTypeTranslatorHelper.GetMemberName(member, options);
-
-            if (!isValid)
+            foreach (var member in members)
             {
-                continue;
+                var (memberTypeSymbol, isNullable) = MessageTypeTranslatorHelper.GetMemberTypeSymbol(member, options);
+
+                var (isValid, name) = MessageTypeTranslatorHelper.GetMemberName(member, options);
+
+                if (!isValid)
+                {
+                    continue;
+                }
+
+                // Add jsdoc comment
+                codeWriter.Append(
+                    $"{indent}/** Transpiled from {memberTypeSymbol.ToDisplayString()} */{newLineString}");
+                codeWriter.Append(
+                    $"{indent}{name}{(isNullable ? "?" : string.Empty)}: {TypeMapper.MapTo(memberTypeSymbol, options)};{newLineString}");
             }
 
-            // Add jsdoc comment
-            codeWriter.Append($"{indent}/** Transpiled from {memberTypeSymbol.ToDisplayString()} */{newLineString}");
-            codeWriter.Append($"{indent}{name}{(isNullable ? "?" : string.Empty)}: {TypeMapper.MapTo(memberTypeSymbol, options)};{newLineString}");
+            codeWriter.Append('}');
+
+            if (MessageTypeTranslatorHelper.IsSourceType(typeSymbol.BaseType, options))
+            {
+                codeWriter.Append($" & {typeSymbol.BaseType.Name};");
+            }
         }
 
-        codeWriter.Append('}');
-
-        if (MessageTypeTranslatorHelper.IsSourceType(typeSymbol.BaseType, options))
-        {
-            codeWriter.Append($" & {typeSymbol.BaseType.Name};");
-        }
 
         codeWriter.Append(newLineString);
     }
@@ -119,6 +135,15 @@ file static class MessageTypeTranslatorHelper
         }
 
         return false;
+    }
+
+    public static string? GetConfiguredType(INamedTypeSymbol typeSymbol)
+    {
+        var attributeData = typeSymbol.GetAttributes().FirstOrDefault(a => a.AttributeClass.Name == nameof(TranspilationSourceAttribute) && a.AttributeClass.ContainingNamespace?.Name == "Tapper");
+        if (attributeData is null) return null;
+        var argument = attributeData.NamedArguments
+            .FirstOrDefault(arg => arg.Key == nameof(TranspilationSourceAttribute.TypescriptType));
+        return argument.Value.Value as string;
     }
 
     public static (bool IsValid, string Name) GetMemberName(ISymbol memberSymbol, ITranspilationOptions options)
