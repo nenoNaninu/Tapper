@@ -10,7 +10,7 @@
     {
         "Dictionary<int, string>",
         "IDictionary<float, Guid>",
-        "IReadOnlyDictionary<string, DateTime>",
+        "IReadOnlyDictionary<Enum1, DateTime>",
     };
 
     static string Format(string source)
@@ -25,7 +25,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Tapper.Tests.SourceTypes;
+namespace Tapper.Test.SourceTypes;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 

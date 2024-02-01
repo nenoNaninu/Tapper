@@ -3,7 +3,7 @@
 // </auto-generated>
 #nullable enable
 
-namespace Tapper.Tests.SourceTypes;
+namespace Tapper.Test.SourceTypes;
 
 [TranspilationSource]
 public class ClassIncludePrimitiveFieldSystemBoolean

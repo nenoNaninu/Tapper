@@ -6,7 +6,7 @@ using System;
 using System.IO;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using Tapper.Tests.SourceTypes;
+using Tapper.Test.SourceTypes;
 using Tapper.TypeMappers;
 using Xunit;
 using Xunit.Abstractions;
@@ -91,7 +91,7 @@ public class DictionaryMapTest
     }
 
     [Fact]
-    public void Test_ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime()
+    public void Test_ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1DateTime()
     {
         var compilation = CompilationSingleton.Compilation;
 
@@ -108,7 +108,7 @@ public class DictionaryMapTest
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
-        var type = typeof(ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime);
+        var type = typeof(ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1DateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
 
         var writer = new CodeWriter();
@@ -116,7 +116,7 @@ public class DictionaryMapTest
         codeGenerator.AddType(typeSymbol, ref writer);
 
         var code = writer.ToString();
-        var gt = DictionaryTypeTranspilationAnswer.Dict[nameof(ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime)];
+        var gt = DictionaryTypeTranspilationAnswer.Dict[nameof(ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1DateTime)];
 
         _output.WriteLine(code);
         _output.WriteLine(gt);
@@ -194,7 +194,7 @@ public class DictionaryMapTest
     }
 
     [Fact]
-    public void Test_ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime()
+    public void Test_ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1DateTime()
     {
         var compilation = CompilationSingleton.Compilation;
 
@@ -211,7 +211,7 @@ public class DictionaryMapTest
 
         var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
 
-        var type = typeof(ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime);
+        var type = typeof(ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1DateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
 
         var writer = new CodeWriter();
@@ -219,7 +219,7 @@ public class DictionaryMapTest
         codeGenerator.AddType(typeSymbol, ref writer);
 
         var code = writer.ToString();
-        var gt = DictionaryTypeTranspilationAnswer.Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime)];
+        var gt = DictionaryTypeTranspilationAnswer.Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1DateTime)];
 
         _output.WriteLine(code);
         _output.WriteLine(gt);

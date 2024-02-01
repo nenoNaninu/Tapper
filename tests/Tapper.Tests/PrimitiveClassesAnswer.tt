@@ -56,7 +56,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
-using Tapper.Tests.SourceTypes;
+using Tapper.Test.SourceTypes;
 
 namespace Tapper.Tests;
 
@@ -67,7 +67,7 @@ public static class PrimitiveTypeTranspilationAnswer
     static PrimitiveTypeTranspilationAnswer()
     {
 <# foreach(var type in PrimitiveTypeMap){ #>
-        Dict[nameof(ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #>)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #> */
+        Dict[nameof(ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #>)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #> */
 export type ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #> = {
   /** Transpiled from <#= PrimitiveTypeNameMap[type.Key] #><#= type.Key.IsClass ? "?" : "" #> */
   FieldOf<#= type.Key.FullName.Replace(".", null) #><#= type.Key.IsClass ? "?" : "" #>: <#= type.Value #>;
@@ -76,7 +76,7 @@ export type ClassIncludePrimitiveField<#= type.Key.FullName.Replace(".", null) #
 <# } #>
 
 <# foreach(var type in PrimitiveTypeMap){ #>
-        Dict["ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #>"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #> */
+        Dict["ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #>"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #> */
 export type ClassIncludePrimitiveProperty<#= type.Key.FullName.Replace(".", null) #> = {
   /** Transpiled from <#= PrimitiveTypeNameMap[type.Key] #><#= type.Key.IsClass ? "?" : "" #> */
   PropertyOf<#= type.Key.FullName.Replace(".", null) #><#= type.Key.IsClass ? "?" : "" #>: <#= type.Value #>;

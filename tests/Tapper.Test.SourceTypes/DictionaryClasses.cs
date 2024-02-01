@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Tapper.Tests.SourceTypes;
+namespace Tapper.Test.SourceTypes;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
@@ -22,9 +22,9 @@ public class ClassIncludeDictionaryFieldIDictionaryfloatGuid
 }
 
 [TranspilationSource]
-public class ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime
+public class ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1DateTime
 {
-    public IReadOnlyDictionary<string, DateTime> FieldOfIReadOnlyDictionarystringDateTime;
+    public IReadOnlyDictionary<Enum1, DateTime> FieldOfIReadOnlyDictionaryEnum1DateTime;
 }
 
 [TranspilationSource]
@@ -40,9 +40,9 @@ public class ClassIncludeDictionaryPropertyIDictionaryfloatGuid
 }
 
 [TranspilationSource]
-public class ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime
+public class ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1DateTime
 {
-    public IReadOnlyDictionary<string, DateTime> PropertyOfIReadOnlyDictionarystringDateTime { get; set; }
+    public IReadOnlyDictionary<Enum1, DateTime> PropertyOfIReadOnlyDictionaryEnum1DateTime { get; set; }
 }
 
 

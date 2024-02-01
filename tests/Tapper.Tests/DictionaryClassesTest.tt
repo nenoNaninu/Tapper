@@ -10,7 +10,7 @@
     {
         { "Dictionary<int, string>", "{ [key in number]: string }" },
         { "IDictionary<float, Guid>", "{ [key in number]: string }" },
-        { "IReadOnlyDictionary<string, DateTime>", "{ [key in string]: number }"}
+        { "IReadOnlyDictionary<Enum1, DateTime>", "{ [key in Enum1]: number }"}
     };
 
     static string Format(string source)
@@ -26,7 +26,7 @@ using System;
 using System.IO;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using Tapper.Tests.SourceTypes;
+using Tapper.Test.SourceTypes;
 using Tapper.TypeMappers;
 using Xunit;
 using Xunit.Abstractions;

@@ -6,7 +6,7 @@ using System;
 using System.IO;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using Tapper.Tests.SourceTypes;
+using Tapper.Test.SourceTypes;
 using Tapper.TypeMappers;
 using Xunit;
 using Xunit.Abstractions;
