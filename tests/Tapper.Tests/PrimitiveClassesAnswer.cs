@@ -4,7 +4,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
-using Tapper.Tests.SourceTypes;
+using Tapper.Test.SourceTypes;
 
 namespace Tapper.Tests;
 
@@ -14,218 +14,218 @@ public static class PrimitiveTypeTranspilationAnswer
 
     static PrimitiveTypeTranspilationAnswer()
     {
-        Dict[nameof(ClassIncludePrimitiveFieldSystemBoolean)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemBoolean */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemBoolean)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemBoolean */
 export type ClassIncludePrimitiveFieldSystemBoolean = {
   /** Transpiled from bool */
   FieldOfSystemBoolean: boolean;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemByte)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemByte */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemByte)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemByte */
 export type ClassIncludePrimitiveFieldSystemByte = {
   /** Transpiled from byte */
   FieldOfSystemByte: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemSByte)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemSByte */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemSByte)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemSByte */
 export type ClassIncludePrimitiveFieldSystemSByte = {
   /** Transpiled from sbyte */
   FieldOfSystemSByte: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemChar)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemChar */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemChar)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemChar */
 export type ClassIncludePrimitiveFieldSystemChar = {
   /** Transpiled from char */
   FieldOfSystemChar: string;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemDecimal)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemDecimal */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemDecimal)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemDecimal */
 export type ClassIncludePrimitiveFieldSystemDecimal = {
   /** Transpiled from decimal */
   FieldOfSystemDecimal: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemDouble)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemDouble */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemDouble)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemDouble */
 export type ClassIncludePrimitiveFieldSystemDouble = {
   /** Transpiled from double */
   FieldOfSystemDouble: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemSingle)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemSingle */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemSingle)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemSingle */
 export type ClassIncludePrimitiveFieldSystemSingle = {
   /** Transpiled from float */
   FieldOfSystemSingle: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemInt32)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemInt32 */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemInt32)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemInt32 */
 export type ClassIncludePrimitiveFieldSystemInt32 = {
   /** Transpiled from int */
   FieldOfSystemInt32: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemUInt32)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemUInt32 */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemUInt32)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemUInt32 */
 export type ClassIncludePrimitiveFieldSystemUInt32 = {
   /** Transpiled from uint */
   FieldOfSystemUInt32: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemInt64)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemInt64 */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemInt64)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemInt64 */
 export type ClassIncludePrimitiveFieldSystemInt64 = {
   /** Transpiled from long */
   FieldOfSystemInt64: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemUInt64)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemUInt64 */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemUInt64)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemUInt64 */
 export type ClassIncludePrimitiveFieldSystemUInt64 = {
   /** Transpiled from ulong */
   FieldOfSystemUInt64: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemInt16)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemInt16 */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemInt16)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemInt16 */
 export type ClassIncludePrimitiveFieldSystemInt16 = {
   /** Transpiled from short */
   FieldOfSystemInt16: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemUInt16)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemUInt16 */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemUInt16)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemUInt16 */
 export type ClassIncludePrimitiveFieldSystemUInt16 = {
   /** Transpiled from ushort */
   FieldOfSystemUInt16: number;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemObject)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemObject */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemObject)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemObject */
 export type ClassIncludePrimitiveFieldSystemObject = {
   /** Transpiled from object? */
   FieldOfSystemObject?: any;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemString)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemString */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemString)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemString */
 export type ClassIncludePrimitiveFieldSystemString = {
   /** Transpiled from string? */
   FieldOfSystemString?: string;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemUri)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemUri */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemUri)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemUri */
 export type ClassIncludePrimitiveFieldSystemUri = {
   /** Transpiled from System.Uri? */
   FieldOfSystemUri?: string;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemGuid)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemGuid */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemGuid)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemGuid */
 export type ClassIncludePrimitiveFieldSystemGuid = {
   /** Transpiled from System.Guid */
   FieldOfSystemGuid: string;
 }
 ";
-        Dict[nameof(ClassIncludePrimitiveFieldSystemDateTime)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemDateTime */
+        Dict[nameof(ClassIncludePrimitiveFieldSystemDateTime)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitiveFieldSystemDateTime */
 export type ClassIncludePrimitiveFieldSystemDateTime = {
   /** Transpiled from System.DateTime */
   FieldOfSystemDateTime: (Date | string);
 }
 ";
 
-        Dict["ClassIncludePrimitivePropertySystemBoolean"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemBoolean */
+        Dict["ClassIncludePrimitivePropertySystemBoolean"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemBoolean */
 export type ClassIncludePrimitivePropertySystemBoolean = {
   /** Transpiled from bool */
   PropertyOfSystemBoolean: boolean;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemByte"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemByte */
+        Dict["ClassIncludePrimitivePropertySystemByte"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemByte */
 export type ClassIncludePrimitivePropertySystemByte = {
   /** Transpiled from byte */
   PropertyOfSystemByte: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemSByte"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemSByte */
+        Dict["ClassIncludePrimitivePropertySystemSByte"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemSByte */
 export type ClassIncludePrimitivePropertySystemSByte = {
   /** Transpiled from sbyte */
   PropertyOfSystemSByte: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemChar"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemChar */
+        Dict["ClassIncludePrimitivePropertySystemChar"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemChar */
 export type ClassIncludePrimitivePropertySystemChar = {
   /** Transpiled from char */
   PropertyOfSystemChar: string;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemDecimal"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemDecimal */
+        Dict["ClassIncludePrimitivePropertySystemDecimal"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemDecimal */
 export type ClassIncludePrimitivePropertySystemDecimal = {
   /** Transpiled from decimal */
   PropertyOfSystemDecimal: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemDouble"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemDouble */
+        Dict["ClassIncludePrimitivePropertySystemDouble"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemDouble */
 export type ClassIncludePrimitivePropertySystemDouble = {
   /** Transpiled from double */
   PropertyOfSystemDouble: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemSingle"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemSingle */
+        Dict["ClassIncludePrimitivePropertySystemSingle"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemSingle */
 export type ClassIncludePrimitivePropertySystemSingle = {
   /** Transpiled from float */
   PropertyOfSystemSingle: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemInt32"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemInt32 */
+        Dict["ClassIncludePrimitivePropertySystemInt32"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemInt32 */
 export type ClassIncludePrimitivePropertySystemInt32 = {
   /** Transpiled from int */
   PropertyOfSystemInt32: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemUInt32"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemUInt32 */
+        Dict["ClassIncludePrimitivePropertySystemUInt32"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemUInt32 */
 export type ClassIncludePrimitivePropertySystemUInt32 = {
   /** Transpiled from uint */
   PropertyOfSystemUInt32: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemInt64"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemInt64 */
+        Dict["ClassIncludePrimitivePropertySystemInt64"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemInt64 */
 export type ClassIncludePrimitivePropertySystemInt64 = {
   /** Transpiled from long */
   PropertyOfSystemInt64: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemUInt64"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemUInt64 */
+        Dict["ClassIncludePrimitivePropertySystemUInt64"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemUInt64 */
 export type ClassIncludePrimitivePropertySystemUInt64 = {
   /** Transpiled from ulong */
   PropertyOfSystemUInt64: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemInt16"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemInt16 */
+        Dict["ClassIncludePrimitivePropertySystemInt16"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemInt16 */
 export type ClassIncludePrimitivePropertySystemInt16 = {
   /** Transpiled from short */
   PropertyOfSystemInt16: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemUInt16"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemUInt16 */
+        Dict["ClassIncludePrimitivePropertySystemUInt16"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemUInt16 */
 export type ClassIncludePrimitivePropertySystemUInt16 = {
   /** Transpiled from ushort */
   PropertyOfSystemUInt16: number;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemObject"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemObject */
+        Dict["ClassIncludePrimitivePropertySystemObject"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemObject */
 export type ClassIncludePrimitivePropertySystemObject = {
   /** Transpiled from object? */
   PropertyOfSystemObject?: any;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemString"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemString */
+        Dict["ClassIncludePrimitivePropertySystemString"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemString */
 export type ClassIncludePrimitivePropertySystemString = {
   /** Transpiled from string? */
   PropertyOfSystemString?: string;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemUri"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemUri */
+        Dict["ClassIncludePrimitivePropertySystemUri"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemUri */
 export type ClassIncludePrimitivePropertySystemUri = {
   /** Transpiled from System.Uri? */
   PropertyOfSystemUri?: string;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemGuid"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemGuid */
+        Dict["ClassIncludePrimitivePropertySystemGuid"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemGuid */
 export type ClassIncludePrimitivePropertySystemGuid = {
   /** Transpiled from System.Guid */
   PropertyOfSystemGuid: string;
 }
 ";
-        Dict["ClassIncludePrimitivePropertySystemDateTime"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemDateTime */
+        Dict["ClassIncludePrimitivePropertySystemDateTime"] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludePrimitivePropertySystemDateTime */
 export type ClassIncludePrimitivePropertySystemDateTime = {
   /** Transpiled from System.DateTime */
   PropertyOfSystemDateTime: (Date | string);

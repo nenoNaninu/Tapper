@@ -51,7 +51,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
-using Tapper.Tests.SourceTypes;
+using Tapper.Test.SourceTypes;
 
 namespace Tapper.Tests;
 
@@ -62,7 +62,7 @@ public static class CollectionTypeTranspilationAnswer
     static CollectionTypeTranspilationAnswer()
     {
 <# foreach(var type in _collectionTypeMap){ #>
-        Dict[nameof(ClassIncludeCollectionField<#= Format(type.Key) #>)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionField<#= Format(type.Key) #> */
+        Dict[nameof(ClassIncludeCollectionField<#= Format(type.Key) #>)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeCollectionField<#= Format(type.Key) #> */
 export type ClassIncludeCollectionField<#= Format(type.Key) #> = {
   /** Transpiled from <#= _collectionType[type.Key] #> */
   FieldOf<#= Format(type.Key) #>: <#= type.Value #>;
@@ -71,7 +71,7 @@ export type ClassIncludeCollectionField<#= Format(type.Key) #> = {
 <# } #>
 
 <# foreach(var type in _collectionTypeMap){ #>
-        Dict[nameof(ClassIncludeCollectionProperty<#= Format(type.Key) #>)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeCollectionProperty<#= Format(type.Key) #> */
+        Dict[nameof(ClassIncludeCollectionProperty<#= Format(type.Key) #>)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeCollectionProperty<#= Format(type.Key) #> */
 export type ClassIncludeCollectionProperty<#= Format(type.Key) #> = {
   /** Transpiled from <#= _collectionType[type.Key] #> */
   PropertyOf<#= Format(type.Key) #>: <#= type.Value #>;
