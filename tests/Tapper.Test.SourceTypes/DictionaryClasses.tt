@@ -11,6 +11,7 @@
         "Dictionary<int, string>",
         "IDictionary<float, Guid>",
         "IReadOnlyDictionary<string, DateTime>",
+        "IReadOnlyDictionary<Enum1, long>",
     };
 
     static string Format(string source)

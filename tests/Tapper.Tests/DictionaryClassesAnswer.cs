@@ -32,6 +32,12 @@ export type ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime = {
   FieldOfIReadOnlyDictionarystringDateTime: Record<string, (Date | string)>;
 }
 ";
+        Dict[nameof(ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long */
+export type ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long = {
+  /** Transpiled from System.Collections.Generic.IReadOnlyDictionary<Tapper.Test.SourceTypes.Enum1, long> */
+  FieldOfIReadOnlyDictionaryEnum1long: Record<Enum1, number>;
+}
+";
 
         Dict[nameof(ClassIncludeDictionaryPropertyDictionaryintstring)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryPropertyDictionaryintstring */
 export type ClassIncludeDictionaryPropertyDictionaryintstring = {
@@ -49,6 +55,12 @@ export type ClassIncludeDictionaryPropertyIDictionaryfloatGuid = {
 export type ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime = {
   /** Transpiled from System.Collections.Generic.IReadOnlyDictionary<string, System.DateTime> */
   PropertyOfIReadOnlyDictionarystringDateTime: Record<string, (Date | string)>;
+}
+";
+        Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long */
+export type ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long = {
+  /** Transpiled from System.Collections.Generic.IReadOnlyDictionary<Tapper.Test.SourceTypes.Enum1, long> */
+  PropertyOfIReadOnlyDictionaryEnum1long: Record<Enum1, number>;
 }
 ";
     }

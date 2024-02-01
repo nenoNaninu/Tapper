@@ -10,7 +10,8 @@
     {
         { "Dictionary<int, string>", "Record<number, string>" },
         { "IDictionary<float, Guid>", "Record<number, string>" },
-        { "IReadOnlyDictionary<string, DateTime>", "Record<string, number>" }
+        { "IReadOnlyDictionary<string, DateTime>", "Record<string, number>" },
+        { "IReadOnlyDictionary<Enum1, long>", "Record<Enum1, number>" }
     };
 
     static string Format(string source)
