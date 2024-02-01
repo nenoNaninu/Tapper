@@ -8,9 +8,9 @@
 <#
     Dictionary<string, string> _dictionaryTypeMap = new()
     {
-        { "Dictionary<int, string>", "{ [key: number]: string }" },
-        { "IDictionary<float, Guid>", "{ [key: number]: string }" },
-        { "IReadOnlyDictionary<string, DateTime>", "{ [key: string]: (Date | string) }"}
+        { "Dictionary<int, string>", "{ [key in number]: string }" },
+        { "IDictionary<float, Guid>", "{ [key in number]: string }" },
+        { "IReadOnlyDictionary<string, DateTime>", "{ [key in string]: (Date | string) }"}
     };
 
     Dictionary<string, string> _dictonaryType = new()
