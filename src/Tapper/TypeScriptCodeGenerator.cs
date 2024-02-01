@@ -47,7 +47,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
 
         foreach (var groupingType in differentNamespaceTypes)
         {
-            writer.Append($"import {{ {string.Join(", ", groupingType.Select(x => x.Name))} }} from './{groupingType.Key.ToDisplayString()}';{_newLineString}");
+            writer.Append($"import type {{ {string.Join(", ", groupingType.Select(x => x.Name))} }} from './{groupingType.Key.ToDisplayString()}';{_newLineString}");
         }
 
         writer.Append(_newLineString);
