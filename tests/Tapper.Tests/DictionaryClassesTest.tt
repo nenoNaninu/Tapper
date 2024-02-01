@@ -8,9 +8,9 @@
 <#
     Dictionary<string, string> _dictionaryTypeMap = new()
     {
-        { "Dictionary<int, string>", "{ [key: number]: string }" },
-        { "IDictionary<float, Guid>", "{ [key: number]: string }" },
-        { "IReadOnlyDictionary<string, DateTime>", "{ [key: string]: number }"}
+        { "Dictionary<int, string>", "Record<number, string>" },
+        { "IDictionary<float, Guid>", "Record<number, string>" },
+        { "IReadOnlyDictionary<string, DateTime>", "Record<string, number>" }
     };
 
     static string Format(string source)

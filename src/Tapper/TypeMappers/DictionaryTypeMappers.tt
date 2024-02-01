@@ -41,7 +41,7 @@ public class <#= type.Name.Replace("`", null) #>TypeMapper : ITypeMapper
             var mapper0 = options.TypeMapperProvider.GetTypeMapper(namedTypeSymbol.TypeArguments[0]);
             var mapper1 = options.TypeMapperProvider.GetTypeMapper(namedTypeSymbol.TypeArguments[1]);
 
-            return $"{{ [key: {mapper0.MapTo(namedTypeSymbol.TypeArguments[0], options)}]: {mapper1.MapTo(namedTypeSymbol.TypeArguments[1], options)} }}";
+            return $"Record<{mapper0.MapTo(namedTypeSymbol.TypeArguments[0], options)}, {mapper1.MapTo(namedTypeSymbol.TypeArguments[1], options)}>";
         }
 
         throw new InvalidOperationException($"<#= type.Name.Replace("`", null) #>TypeMapper is not support {typeSymbol.ToDisplayString()}.");
