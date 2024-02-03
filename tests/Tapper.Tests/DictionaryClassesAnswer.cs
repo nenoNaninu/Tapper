@@ -4,7 +4,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
-using Tapper.Test.SourceTypes;
+using Tapper.Tests.SourceTypes;
 
 namespace Tapper.Tests;
 
@@ -14,19 +14,19 @@ public static class DictionaryTypeTranspilationAnswer
 
     static DictionaryTypeTranspilationAnswer()
     {
-        Dict[nameof(ClassIncludeDictionaryFieldDictionaryintstring)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryFieldDictionaryintstring */
+        Dict[nameof(ClassIncludeDictionaryFieldDictionaryintstring)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryFieldDictionaryintstring */
 export type ClassIncludeDictionaryFieldDictionaryintstring = {
   /** Transpiled from System.Collections.Generic.Dictionary<int, string> */
   FieldOfDictionaryintstring: Partial<Record<number, string>>;
 }
 ";
-        Dict[nameof(ClassIncludeDictionaryFieldIDictionaryfloatGuid)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryFieldIDictionaryfloatGuid */
+        Dict[nameof(ClassIncludeDictionaryFieldIDictionaryfloatGuid)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryFieldIDictionaryfloatGuid */
 export type ClassIncludeDictionaryFieldIDictionaryfloatGuid = {
   /** Transpiled from System.Collections.Generic.IDictionary<float, System.Guid> */
   FieldOfIDictionaryfloatGuid: Partial<Record<number, string>>;
 }
 ";
-        Dict[nameof(ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime */
+        Dict[nameof(ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime */
 export type ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime = {
   /** Transpiled from System.Collections.Generic.IReadOnlyDictionary<string, System.DateTime> */
   FieldOfIReadOnlyDictionarystringDateTime: Partial<Record<string, (Date | string)>>;
@@ -39,19 +39,19 @@ export type ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long = {
 }
 ";
 
-        Dict[nameof(ClassIncludeDictionaryPropertyDictionaryintstring)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryPropertyDictionaryintstring */
+        Dict[nameof(ClassIncludeDictionaryPropertyDictionaryintstring)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryPropertyDictionaryintstring */
 export type ClassIncludeDictionaryPropertyDictionaryintstring = {
   /** Transpiled from System.Collections.Generic.Dictionary<int, string> */
   PropertyOfDictionaryintstring: Partial<Record<number, string>>;
 }
 ";
-        Dict[nameof(ClassIncludeDictionaryPropertyIDictionaryfloatGuid)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryPropertyIDictionaryfloatGuid */
+        Dict[nameof(ClassIncludeDictionaryPropertyIDictionaryfloatGuid)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryPropertyIDictionaryfloatGuid */
 export type ClassIncludeDictionaryPropertyIDictionaryfloatGuid = {
   /** Transpiled from System.Collections.Generic.IDictionary<float, System.Guid> */
   PropertyOfIDictionaryfloatGuid: Partial<Record<number, string>>;
 }
 ";
-        Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime */
+        Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime */
 export type ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime = {
   /** Transpiled from System.Collections.Generic.IReadOnlyDictionary<string, System.DateTime> */
   PropertyOfIReadOnlyDictionarystringDateTime: Partial<Record<string, (Date | string)>>;

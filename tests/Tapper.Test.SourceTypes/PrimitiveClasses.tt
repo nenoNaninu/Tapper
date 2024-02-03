@@ -33,7 +33,7 @@
     };
 #>
 
-namespace Tapper.Test.SourceTypes;
+namespace Tapper.Tests.SourceTypes;
 
 <# foreach(var type in PrimitiveTypeMap){ #>
 [TranspilationSource]
