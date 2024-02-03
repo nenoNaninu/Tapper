@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using Tapper.Tests.SourceTypes;
+using Tapper.Test.SourceTypes;
 
 namespace Tapper.Tests;
 
@@ -32,7 +33,7 @@ export type ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime = {
   FieldOfIReadOnlyDictionarystringDateTime: Partial<Record<string, (Date | string)>>;
 }
 ";
-        Dict[nameof(ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long */
+        Dict[nameof(ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long */
 export type ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long = {
   /** Transpiled from System.Collections.Generic.IReadOnlyDictionary<Tapper.Test.SourceTypes.Enum1, long> */
   FieldOfIReadOnlyDictionaryEnum1long: Partial<Record<Enum1, number>>;
@@ -57,7 +58,7 @@ export type ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime = {
   PropertyOfIReadOnlyDictionarystringDateTime: Partial<Record<string, (Date | string)>>;
 }
 ";
-        Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long)] = @"/** Transpiled from Tapper.Test.SourceTypes.ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long */
+        Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long */
 export type ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long = {
   /** Transpiled from System.Collections.Generic.IReadOnlyDictionary<Tapper.Test.SourceTypes.Enum1, long> */
   PropertyOfIReadOnlyDictionaryEnum1long: Partial<Record<Enum1, number>>;
