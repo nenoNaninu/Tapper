@@ -33,14 +33,14 @@ public class ArraySegment1TypeMapper : ITypeMapper
 
     public ArraySegment1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.ArraySegment`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.ArraySegment`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -57,14 +57,14 @@ public class List1TypeMapper : ITypeMapper
 
     public List1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.List`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.List`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -81,14 +81,14 @@ public class LinkedList1TypeMapper : ITypeMapper
 
     public LinkedList1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.LinkedList`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.LinkedList`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -105,14 +105,14 @@ public class Queue1TypeMapper : ITypeMapper
 
     public Queue1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.Queue`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.Queue`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -129,14 +129,14 @@ public class Stack1TypeMapper : ITypeMapper
 
     public Stack1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.Stack`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.Stack`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -153,14 +153,14 @@ public class HashSet1TypeMapper : ITypeMapper
 
     public HashSet1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.HashSet`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.HashSet`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -177,14 +177,14 @@ public class IEnumerable1TypeMapper : ITypeMapper
 
     public IEnumerable1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.IEnumerable`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.IEnumerable`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -201,14 +201,14 @@ public class IReadOnlyCollection1TypeMapper : ITypeMapper
 
     public IReadOnlyCollection1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.IReadOnlyCollection`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.IReadOnlyCollection`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -225,14 +225,14 @@ public class IReadOnlyList1TypeMapper : ITypeMapper
 
     public IReadOnlyList1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.IReadOnlyList`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.IReadOnlyList`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -249,14 +249,14 @@ public class ICollection1TypeMapper : ITypeMapper
 
     public ICollection1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.ICollection`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.ICollection`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -273,14 +273,14 @@ public class IList1TypeMapper : ITypeMapper
 
     public IList1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.IList`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.IList`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
@@ -297,14 +297,14 @@ public class ISet1TypeMapper : ITypeMapper
 
     public ISet1TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.ISet`1")!;
+        Assign = compilation.GetTypeByMetadataName("System.Collections.Generic.ISet`1")!.GetUnboundedType();
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);

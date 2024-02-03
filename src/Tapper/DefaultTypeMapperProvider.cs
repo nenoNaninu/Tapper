@@ -6,10 +6,24 @@ using Tapper.TypeMappers;
 
 namespace Tapper;
 
+internal class GenericTypeParameterMapper : ITypeMapper
+{
+    public ITypeSymbol Assign { get; } = default!;
+
+    public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
+    {
+        if (typeSymbol is not ITypeParameterSymbol typeParameterSymbol)
+            throw new InvalidOperationException($"GenericTypeMapper does not support {typeSymbol.ToDisplayString()}.");
+
+        return typeParameterSymbol.Name;
+    }
+}
+
 public class DefaultTypeMapperProvider : ITypeMapperProvider
 {
     private readonly ArrayTypeMapper _arrayTypeMapper;
     private readonly TupleTypeMapper _tupleTypeMapper;
+    private readonly GenericTypeParameterMapper _genericTypeParameterMapper;
 
     private readonly IDictionary<ITypeSymbol, ITypeMapper> _mappers;
 
@@ -17,6 +31,7 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
     {
         _arrayTypeMapper = new ArrayTypeMapper(compilation);
         _tupleTypeMapper = new TupleTypeMapper();
+        _genericTypeParameterMapper = new GenericTypeParameterMapper();
 
         var dateTimeTypeMapper = new DateTimeTypeMapper(compilation);
         var dateTimeOffsetTypeMapper = new DateTimeOffsetTypeMapper(compilation);
@@ -27,7 +42,7 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
         var dictionaryTypeMappers = DictionaryTypeMappers.Create(compilation);
 
         var sourceTypeMapper = compilation.GetSourceTypes(includeReferencedAssemblies)
-            .Select(static x => new SourceTypeMapper(x));
+            .Select(static x => new SourceTypeMapper(x.GetUnboundedType()));
 
         var typeMappers = sourceTypeMapper.Concat(primitiveTypeMappers)
             .Concat(collectionTypeTypeMappers)
@@ -49,9 +64,12 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
             return _arrayTypeMapper;
         }
 
-        var sourceType = type is INamedTypeSymbol namedTypeSymbol && namedTypeSymbol.IsGenericType
-            ? namedTypeSymbol.ConstructedFrom
-            : type;
+        if (type is ITypeParameterSymbol)
+        {
+            return _genericTypeParameterMapper;
+        }
+
+        var sourceType = type.GetUnboundedType();
 
         if (_mappers.TryGetValue(sourceType, out var typeMapper))
         {

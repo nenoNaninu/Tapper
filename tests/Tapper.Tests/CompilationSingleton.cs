@@ -64,6 +64,10 @@ public class CompilationSingleton
             File.ReadAllText("../../../../Tapper.Test.SourceTypes/NestedType.cs"),
             options);
 
+        var genericClassSyntax = CSharpSyntaxTree.ParseText(
+            File.ReadAllText("../../../../Tapper.Test.SourceTypes/GenericClasses.cs"),
+            options);
+
         var compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
             .WithNullableContextOptions(NullableContextOptions.Enable);
 
@@ -91,7 +95,8 @@ public class CompilationSingleton
                 attributeAnnotatedSyntax,
                 messagePackAttributesSyntax,
                 partialClassSyntax,
-                nestedTypeSyntax
+                nestedTypeSyntax,
+                genericClassSyntax,
             },
             references: references,
             options: compilationOptions);

@@ -16,12 +16,13 @@ internal class DefaultMessageTypeTranslator : ITypeTranslator
         var indent = options.GetIndentString();
         var newLineString = options.NewLine.ToNewLineString();
 
-        var members = typeSymbol.GetPublicFieldsAndProperties()
+        var members = typeSymbol.OriginalDefinition.GetPublicFieldsAndProperties()
             .IgnoreStatic()
             .ToArray();
 
-        codeWriter.Append($"/** Transpiled from {typeSymbol.ToDisplayString()} */{newLineString}");
-        codeWriter.Append($"export type {typeSymbol.Name} = {{{newLineString}");
+
+        codeWriter.Append($"/** Transpiled from {typeSymbol.OriginalDefinition.ToDisplayString()} */{newLineString}");
+        codeWriter.Append($"export type {MessageTypeTranslatorHelper.GetUnboundedTypeName(typeSymbol)} = {{{newLineString}");
 
         foreach (var member in members)
         {
@@ -43,7 +44,7 @@ internal class DefaultMessageTypeTranslator : ITypeTranslator
 
         if (MessageTypeTranslatorHelper.IsSourceType(typeSymbol.BaseType, options))
         {
-            codeWriter.Append($" & {typeSymbol.BaseType.Name};");
+            codeWriter.Append($" & {MessageTypeTranslatorHelper.GetConcreteTypeName(typeSymbol.BaseType, options)};");
         }
 
         codeWriter.Append(newLineString);
@@ -52,6 +53,33 @@ internal class DefaultMessageTypeTranslator : ITypeTranslator
 
 file static class MessageTypeTranslatorHelper
 {
+    public static string GetConcreteTypeName(INamedTypeSymbol typeSymbol, ITranspilationOptions options)
+    {
+        var genericTypeArguments = "";
+        if (typeSymbol.IsGenericType)
+        {
+            var mappedGenericTypeArguments = typeSymbol.TypeArguments.Select(typeArg =>
+            {
+                var mapper = options.TypeMapperProvider.GetTypeMapper(typeArg);
+                return mapper.MapTo(typeArg, options);
+            });
+            genericTypeArguments = $"<{string.Join(", ", mappedGenericTypeArguments)}>";
+        }
+
+        return $"{typeSymbol.Name}{genericTypeArguments}";
+    }
+
+    public static string GetUnboundedTypeName(INamedTypeSymbol typeSymbol)
+    {
+        var genericTypeParameters = "";
+        if (typeSymbol.IsGenericType)
+        {
+            genericTypeParameters = $"<{string.Join(", ", typeSymbol.TypeParameters.Select(param => param.Name))}>";
+        }
+
+        return $"{typeSymbol.Name}{genericTypeParameters}";
+    }
+
     public static (ITypeSymbol TypeSymbol, bool IsNullable) GetMemberTypeSymbol(ISymbol symbol, ITranspilationOptions options)
     {
         if (symbol is IPropertySymbol propertySymbol)
@@ -62,10 +90,10 @@ file static class MessageTypeTranslatorHelper
             {
                 if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
                 {
-                    if (!namedTypeSymbol.IsGenericType)
-                    {
-                        return (typeSymbol, false);
-                    }
+                    //if (!namedTypeSymbol.IsGenericType)
+                    //{
+                    //    return (typeSymbol, false);
+                    //}
 
                     if (namedTypeSymbol.ConstructedFrom.SpecialType == SpecialType.System_Nullable_T)
                     {
@@ -87,10 +115,10 @@ file static class MessageTypeTranslatorHelper
             {
                 if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
                 {
-                    if (!namedTypeSymbol.IsGenericType)
-                    {
-                        return (typeSymbol, false);
-                    }
+                    //if (!namedTypeSymbol.IsGenericType)
+                    //{
+                    //    return (typeSymbol, false);
+                    //}
 
                     if (namedTypeSymbol.ConstructedFrom.SpecialType == SpecialType.System_Nullable_T)
                     {
@@ -112,7 +140,9 @@ file static class MessageTypeTranslatorHelper
     {
         if (typeSymbol is not null && typeSymbol.SpecialType != SpecialType.System_Object)
         {
-            if (options.SourceTypes.Contains(typeSymbol, SymbolEqualityComparer.Default))
+            var sourceTypeSymbol = typeSymbol.GetUnboundedType();
+
+            if (options.SourceTypes.Contains(sourceTypeSymbol, SymbolEqualityComparer.Default))
             {
                 return true;
             }
