@@ -25,7 +25,7 @@ public class Dictionary2TypeMapper : ITypeMapper
             var mapper0 = options.TypeMapperProvider.GetTypeMapper(namedTypeSymbol.TypeArguments[0]);
             var mapper1 = options.TypeMapperProvider.GetTypeMapper(namedTypeSymbol.TypeArguments[1]);
 
-            return $"Record<{mapper0.MapTo(namedTypeSymbol.TypeArguments[0], options)}, {mapper1.MapTo(namedTypeSymbol.TypeArguments[1], options)}>";
+            return $"Partial<Record<{mapper0.MapTo(namedTypeSymbol.TypeArguments[0], options)}, {mapper1.MapTo(namedTypeSymbol.TypeArguments[1], options)}>>";
         }
 
         throw new InvalidOperationException($"Dictionary2TypeMapper is not support {typeSymbol.ToDisplayString()}.");
@@ -50,7 +50,7 @@ public class IDictionary2TypeMapper : ITypeMapper
             var mapper0 = options.TypeMapperProvider.GetTypeMapper(namedTypeSymbol.TypeArguments[0]);
             var mapper1 = options.TypeMapperProvider.GetTypeMapper(namedTypeSymbol.TypeArguments[1]);
 
-            return $"Record<{mapper0.MapTo(namedTypeSymbol.TypeArguments[0], options)}, {mapper1.MapTo(namedTypeSymbol.TypeArguments[1], options)}>";
+            return $"Partial<Record<{mapper0.MapTo(namedTypeSymbol.TypeArguments[0], options)}, {mapper1.MapTo(namedTypeSymbol.TypeArguments[1], options)}>>";
         }
 
         throw new InvalidOperationException($"IDictionary2TypeMapper is not support {typeSymbol.ToDisplayString()}.");
@@ -75,7 +75,7 @@ public class IReadOnlyDictionary2TypeMapper : ITypeMapper
             var mapper0 = options.TypeMapperProvider.GetTypeMapper(namedTypeSymbol.TypeArguments[0]);
             var mapper1 = options.TypeMapperProvider.GetTypeMapper(namedTypeSymbol.TypeArguments[1]);
 
-            return $"Record<{mapper0.MapTo(namedTypeSymbol.TypeArguments[0], options)}, {mapper1.MapTo(namedTypeSymbol.TypeArguments[1], options)}>";
+            return $"Partial<Record<{mapper0.MapTo(namedTypeSymbol.TypeArguments[0], options)}, {mapper1.MapTo(namedTypeSymbol.TypeArguments[1], options)}>>";
         }
 
         throw new InvalidOperationException($"IReadOnlyDictionary2TypeMapper is not support {typeSymbol.ToDisplayString()}.");

@@ -8,10 +8,10 @@
 <#
     Dictionary<string, string> _dictionaryTypeMap = new()
     {
-        { "Dictionary<int, string>", "Record<number, string>" },
-        { "IDictionary<float, Guid>", "Record<number, string>" },
-        { "IReadOnlyDictionary<string, DateTime>", "Record<string, (Date | string)>" },
-        { "IReadOnlyDictionary<Enum1, long>", "Record<Enum1, number>" }
+        { "Dictionary<int, string>", "Partial<Record<number, string>>" },
+        { "IDictionary<float, Guid>", "Partial<Record<number, string>>" },
+        { "IReadOnlyDictionary<string, DateTime>", "Partial<Record<string, (Date | string)>>" },
+        { "IReadOnlyDictionary<Enum1, long>", "Partial<Record<Enum1, number>>" }
     };
 
     Dictionary<string, string> _dictonaryType = new()
