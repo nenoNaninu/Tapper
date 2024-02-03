@@ -42,6 +42,16 @@ namespace Tapper.Test.SourceTypes
     public class InheritedConcreteGenericClass : GenericClass2<bool, int>
     {
     }
+
+    [TranspilationSource]
+    public class InheritedGenericClassWithTheSameName<T>
+    {
+        public required T GenericProperty { get; set; }
+    }
+    [TranspilationSource]
+    public class InheritedGenericClassWithTheSameName : InheritedGenericClassWithTheSameName<string>
+    {
+    }
 }
 namespace Space1
 {

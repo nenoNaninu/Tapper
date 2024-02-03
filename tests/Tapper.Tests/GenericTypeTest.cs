@@ -273,4 +273,42 @@ export type InheritedConcreteGenericClass = {
 
         Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
     }
+
+    [Fact]
+    public void Test_InheritedGenericClassWithTheSameName()
+    {
+        var compilation = CompilationSingleton.Compilation;
+
+        var options = new TranspilationOptions(
+            compilation,
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false,
+            true
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+
+        var type = typeof(InheritedGenericClassWithTheSameName);
+        var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
+
+        var writer = new CodeWriter();
+
+        codeGenerator.AddType(typeSymbol, ref writer);
+
+        var code = writer.ToString();
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.InheritedGenericClassWithTheSameName */
+export type InheritedGenericClassWithTheSameName = {
+} & InheritedGenericClassWithTheSameName<string>;
+";
+
+        _output.WriteLine(code);
+        _output.WriteLine(gt);
+
+
+        Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
+    }
 }
