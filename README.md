@@ -143,9 +143,9 @@ When transpiling class, struct, and record, only `public` fields and properties 
 | ICollection\<T\> | T[] |
 | IList\<T\> | T[] |
 | ISet\<T\> | T[] |
-| Dictionary<TKey, TValue> |  { [key: TKey]: TValue } |
-| IDictionary<TKey, TValue> |  { [key: TKey]: TValue } |
-| IReadOnlyDictionary<TKey, TValue> |  { [key: TKey]: TValue } |
+| Dictionary<TKey, TValue> |  Partial<Record<TKey, TValue>> |
+| IDictionary<TKey, TValue> |  Partial<Record<TKey, TValue>> |
+| IReadOnlyDictionary<TKey, TValue> |  Partial<Record<TKey, TValue>> |
 | Tuple | [T1, T2, ...] | ❌ System.Text.Json |
 
 
