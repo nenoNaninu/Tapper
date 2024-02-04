@@ -7,6 +7,7 @@ using System.IO;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Tapper.Tests.SourceTypes;
+using Tapper.Test.SourceTypes;
 using Tapper.TypeMappers;
 using Xunit;
 using Xunit.Abstractions;
@@ -124,6 +125,40 @@ public class DictionaryMapTest
         Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
     }
 
+    [Fact]
+    public void Test_ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long()
+    {
+        var compilation = CompilationSingleton.Compilation;
+
+        var options = new TranspilationOptions(
+            compilation,
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false,
+            true
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+
+        var type = typeof(ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long);
+        var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
+
+        var writer = new CodeWriter();
+
+        codeGenerator.AddType(typeSymbol, ref writer);
+
+        var code = writer.ToString();
+        var gt = DictionaryTypeTranspilationAnswer.Dict[nameof(ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long)];
+
+        _output.WriteLine(code);
+        _output.WriteLine(gt);
+
+        Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
+    }
+
 
     [Fact]
     public void Test_ClassIncludeDictionaryPropertyDictionaryintstring()
@@ -220,6 +255,40 @@ public class DictionaryMapTest
 
         var code = writer.ToString();
         var gt = DictionaryTypeTranspilationAnswer.Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime)];
+
+        _output.WriteLine(code);
+        _output.WriteLine(gt);
+
+        Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
+    }
+
+    [Fact]
+    public void Test_ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long()
+    {
+        var compilation = CompilationSingleton.Compilation;
+
+        var options = new TranspilationOptions(
+            compilation,
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false,
+            true
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+
+        var type = typeof(ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long);
+        var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
+
+        var writer = new CodeWriter();
+
+        codeGenerator.AddType(typeSymbol, ref writer);
+
+        var code = writer.ToString();
+        var gt = DictionaryTypeTranspilationAnswer.Dict[nameof(ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long)];
 
         _output.WriteLine(code);
         _output.WriteLine(gt);

@@ -97,9 +97,9 @@
             <DependentUpon>CollectionClassesTest.tt</DependentUpon>
         </Compile>
         <Compile Update="DictionaryClassesAnswer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>DictionaryClassesAnswer.tt</DependentUpon>
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>DictionaryClassesAnswer.tt</DependentUpon>
         </Compile>
         <Compile Update="DictionaryClassesTest.cs">
             <DesignTime>True</DesignTime>

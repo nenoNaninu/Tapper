@@ -4,6 +4,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using Tapper.Test.SourceTypes;
 
 namespace Tapper.Tests.SourceTypes;
 
@@ -28,6 +29,12 @@ public class ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime
 }
 
 [TranspilationSource]
+public class ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long
+{
+    public IReadOnlyDictionary<Enum1, long> FieldOfIReadOnlyDictionaryEnum1long;
+}
+
+[TranspilationSource]
 public class ClassIncludeDictionaryPropertyDictionaryintstring
 {
     public Dictionary<int, string> PropertyOfDictionaryintstring { get; set; }
@@ -43,6 +50,12 @@ public class ClassIncludeDictionaryPropertyIDictionaryfloatGuid
 public class ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime
 {
     public IReadOnlyDictionary<string, DateTime> PropertyOfIReadOnlyDictionarystringDateTime { get; set; }
+}
+
+[TranspilationSource]
+public class ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long
+{
+    public IReadOnlyDictionary<Enum1, long> PropertyOfIReadOnlyDictionaryEnum1long { get; set; }
 }
 
 

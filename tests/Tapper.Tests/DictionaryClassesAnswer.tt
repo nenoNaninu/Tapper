@@ -8,16 +8,18 @@
 <#
     Dictionary<string, string> _dictionaryTypeMap = new()
     {
-        { "Dictionary<int, string>", "{ [key: number]: string }" },
-        { "IDictionary<float, Guid>", "{ [key: number]: string }" },
-        { "IReadOnlyDictionary<string, DateTime>", "{ [key: string]: (Date | string) }"}
+        { "Dictionary<int, string>", "Partial<Record<number, string>>" },
+        { "IDictionary<float, Guid>", "Partial<Record<number, string>>" },
+        { "IReadOnlyDictionary<string, DateTime>", "Partial<Record<string, (Date | string)>>" },
+        { "IReadOnlyDictionary<Enum1, long>", "Partial<Record<Enum1, number>>" }
     };
 
     Dictionary<string, string> _dictonaryType = new()
     {
         { "Dictionary<int, string>", "System.Collections.Generic.Dictionary<int, string>" },
         { "IDictionary<float, Guid>", "System.Collections.Generic.IDictionary<float, System.Guid>" },
-        { "IReadOnlyDictionary<string, DateTime>","System.Collections.Generic.IReadOnlyDictionary<string, System.DateTime>" },
+        { "IReadOnlyDictionary<string, DateTime>", "System.Collections.Generic.IReadOnlyDictionary<string, System.DateTime>" },
+        { "IReadOnlyDictionary<Enum1, long>","System.Collections.Generic.IReadOnlyDictionary<Tapper.Test.SourceTypes.Enum1, long>" }
     };
 
     static string Format(string source)
@@ -32,6 +34,7 @@
 using System;
 using System.Collections.Generic;
 using Tapper.Tests.SourceTypes;
+using Tapper.Test.SourceTypes;
 
 namespace Tapper.Tests;
 
