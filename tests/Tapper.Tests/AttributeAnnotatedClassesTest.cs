@@ -183,4 +183,40 @@ export type AttributeAnnotatedClass4 = {
 
         Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
     }
+
+    [Fact]
+    public void TestClassWithCustomTypescriptType()
+    {
+        var compilation = CompilationSingleton.Compilation;
+
+        var options = new TranspilationOptions(
+            compilation,
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            4,
+            false,
+            true
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+
+        var type = typeof(AttributeAnnotatedClass5);
+        var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
+
+        var writer = new CodeWriter();
+
+        codeGenerator.AddType(typeSymbol, ref writer);
+
+        var code = writer.ToString();
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.AttributeAnnotatedClass5 */
+export type AttributeAnnotatedClass5 = {color: 'blue'|'red'};
+";
+
+        _output.WriteLine(code);
+        _output.WriteLine(gt);
+
+        Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
+    }
 }

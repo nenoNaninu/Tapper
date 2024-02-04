@@ -39,3 +39,9 @@ public class AttributeAnnotatedClass4
     public int Value { get; }
     public required string Name { get; init; }
 }
+
+[TranspilationSource(TypescriptType = "{color: 'blue'|'red'}")]
+public class AttributeAnnotatedClass5
+{
+    public string Color { get; init; }
+}
