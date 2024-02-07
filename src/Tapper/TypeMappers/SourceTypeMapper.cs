@@ -15,7 +15,9 @@ internal class SourceTypeMapper : ITypeMapper
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
-        if (SymbolEqualityComparer.Default.Equals(typeSymbol.GetUnboundedType(), Assign))
+        var symbol = (typeSymbol as INamedTypeSymbol)?.ConstructedFrom ?? typeSymbol;
+
+        if (SymbolEqualityComparer.Default.Equals(symbol, Assign))
         {
             if (typeSymbol is INamedTypeSymbol namedTypeSymbol && namedTypeSymbol.IsGenericType)
             {

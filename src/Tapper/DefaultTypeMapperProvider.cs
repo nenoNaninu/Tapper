@@ -29,7 +29,7 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
         var dictionaryTypeMappers = DictionaryTypeMappers.Create(compilation);
 
         var sourceTypeMapper = compilation.GetSourceTypes(includeReferencedAssemblies)
-            .Select(static x => new SourceTypeMapper(x.GetUnboundedType()));
+            .Select(static x => new SourceTypeMapper(x));
 
         var typeMappers = sourceTypeMapper.Concat(primitiveTypeMappers)
             .Concat(collectionTypeTypeMappers)
@@ -56,7 +56,9 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
             return _genericTypeParameterMapper;
         }
 
-        var sourceType = type.GetUnboundedType();
+        var sourceType = type is INamedTypeSymbol namedTypeSymbol
+            ? namedTypeSymbol.ConstructedFrom
+            : type;
 
         if (_mappers.TryGetValue(sourceType, out var typeMapper))
         {

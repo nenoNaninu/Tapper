@@ -112,17 +112,4 @@ public static partial class RoslynExtensions
             yield return typeSymbol;
         }
     }
-
-    public static INamedTypeSymbol GetUnboundedType(this INamedTypeSymbol typeSymbol)
-    {
-        return typeSymbol.IsGenericType
-            ? typeSymbol.ConstructUnboundGenericType()
-            : typeSymbol;
-    }
-    public static ITypeSymbol GetUnboundedType(this ITypeSymbol typeSymbol)
-    {
-        return typeSymbol is INamedTypeSymbol namedTypeSymbol 
-            ? GetUnboundedType(namedTypeSymbol)
-            : typeSymbol;
-    }
 }

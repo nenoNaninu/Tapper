@@ -16,13 +16,13 @@ internal class DefaultMessageTypeTranslator : ITypeTranslator
         var indent = options.GetIndentString();
         var newLineString = options.NewLine.ToNewLineString();
 
-        var members = typeSymbol.OriginalDefinition.GetPublicFieldsAndProperties()
+        var members = typeSymbol.GetPublicFieldsAndProperties()
             .IgnoreStatic()
             .ToArray();
 
 
         codeWriter.Append($"/** Transpiled from {typeSymbol.OriginalDefinition.ToDisplayString()} */{newLineString}");
-        codeWriter.Append($"export type {MessageTypeTranslatorHelper.GetUnboundedTypeName(typeSymbol)} = {{{newLineString}");
+        codeWriter.Append($"export type {MessageTypeTranslatorHelper.GetGenericTypeName(typeSymbol)} = {{{newLineString}");
 
         foreach (var member in members)
         {
@@ -69,7 +69,7 @@ file static class MessageTypeTranslatorHelper
         return $"{typeSymbol.Name}{genericTypeArguments}";
     }
 
-    public static string GetUnboundedTypeName(INamedTypeSymbol typeSymbol)
+    public static string GetGenericTypeName(INamedTypeSymbol typeSymbol)
     {
         var genericTypeParameters = "";
         if (typeSymbol.IsGenericType)
@@ -90,11 +90,6 @@ file static class MessageTypeTranslatorHelper
             {
                 if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
                 {
-                    //if (!namedTypeSymbol.IsGenericType)
-                    //{
-                    //    return (typeSymbol, false);
-                    //}
-
                     if (namedTypeSymbol.ConstructedFrom.SpecialType == SpecialType.System_Nullable_T)
                     {
                         return (namedTypeSymbol.TypeArguments[0], true);
@@ -115,11 +110,6 @@ file static class MessageTypeTranslatorHelper
             {
                 if (typeSymbol is INamedTypeSymbol namedTypeSymbol)
                 {
-                    //if (!namedTypeSymbol.IsGenericType)
-                    //{
-                    //    return (typeSymbol, false);
-                    //}
-
                     if (namedTypeSymbol.ConstructedFrom.SpecialType == SpecialType.System_Nullable_T)
                     {
                         return (namedTypeSymbol.TypeArguments[0], true);
@@ -140,9 +130,7 @@ file static class MessageTypeTranslatorHelper
     {
         if (typeSymbol is not null && typeSymbol.SpecialType != SpecialType.System_Object)
         {
-            var sourceTypeSymbol = typeSymbol.GetUnboundedType();
-
-            if (options.SourceTypes.Contains(sourceTypeSymbol, SymbolEqualityComparer.Default))
+            if (options.SourceTypes.Contains(typeSymbol.ConstructedFrom, SymbolEqualityComparer.Default))
             {
                 return true;
             }

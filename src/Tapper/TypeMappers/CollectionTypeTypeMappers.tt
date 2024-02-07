@@ -58,14 +58,14 @@ public class <#= type.Name.Replace("`", null) #>TypeMapper : ITypeMapper
 
     public <#= type.Name.Replace("`", null) #>TypeMapper(Compilation compilation)
     {
-        Assign = compilation.GetTypeByMetadataName("<#= type.FullName #>")!.GetUnboundedType();
+        Assign = compilation.GetTypeByMetadataName("<#= type.FullName #>")!;
     }
 
     public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol is INamedTypeSymbol namedTypeSymbol
             && namedTypeSymbol.IsGenericType
-            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.GetUnboundedType(), Assign))
+            && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
         {
             var typeArgument = namedTypeSymbol.TypeArguments[0];
             var mapper = options.TypeMapperProvider.GetTypeMapper(typeArgument);
