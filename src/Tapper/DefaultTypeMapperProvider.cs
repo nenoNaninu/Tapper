@@ -56,7 +56,7 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
             return _genericTypeParameterMapper;
         }
 
-        var sourceType = type is INamedTypeSymbol namedTypeSymbol
+        var sourceType = type is INamedTypeSymbol namedTypeSymbol && namedTypeSymbol.IsGenericType
             ? namedTypeSymbol.ConstructedFrom
             : type;
 
