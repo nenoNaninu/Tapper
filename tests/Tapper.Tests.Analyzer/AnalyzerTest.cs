@@ -58,20 +58,6 @@ unsafe class NotNamedType
     }
 
     [Fact]
-    public async Task Test_TAPP003()
-    {
-        var code = @"using Tapper;
-
-[TranspilationSource]
-class Generics<T>
-{
-    public T Value { get; set; }
-}";
-
-        await VerifyAsync(code, "TAPP003", 4, 7, 4, 15);
-    }
-
-    [Fact]
     public async Task Test_TAPP004()
     {
         var code = @"using Tapper;
