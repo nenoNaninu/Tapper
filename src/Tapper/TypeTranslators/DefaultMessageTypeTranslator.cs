@@ -22,7 +22,7 @@ internal class DefaultMessageTypeTranslator : ITypeTranslator
 
 
         codeWriter.Append($"/** Transpiled from {typeSymbol.ToDisplayString()} */{newLineString}");
-        codeWriter.Append($"export type {MessageTypeTranslatorHelper.GetUnboundTypeName(typeSymbol)} = {{{newLineString}");
+        codeWriter.Append($"export type {MessageTypeTranslatorHelper.GetTypeDefinitionString(typeSymbol)} = {{{newLineString}");
 
         foreach (var member in members)
         {
@@ -53,6 +53,16 @@ internal class DefaultMessageTypeTranslator : ITypeTranslator
 
 file static class MessageTypeTranslatorHelper
 {
+    public static string GetTypeDefinitionString(INamedTypeSymbol typeSymbol)
+    {
+        if (typeSymbol.IsGenericType)
+        {
+            return $"{typeSymbol.Name}<{string.Join(", ", typeSymbol.TypeParameters.Select(param => param.Name))}>";
+        }
+
+        return typeSymbol.Name;
+    }
+
     public static string GetConstructedTypeName(INamedTypeSymbol typeSymbol, ITranspilationOptions options)
     {
         if (typeSymbol.IsGenericType)
@@ -66,17 +76,7 @@ file static class MessageTypeTranslatorHelper
             return $"{typeSymbol.Name}<{string.Join(", ", mappedGenericTypeArguments)}>";
         }
 
-        return $"{typeSymbol.Name}";
-    }
-
-    public static string GetUnboundTypeName(INamedTypeSymbol typeSymbol)
-    {
-        if (typeSymbol.IsGenericType)
-        {
-            return $"{typeSymbol.Name}<{string.Join(", ", typeSymbol.TypeParameters.Select(param => param.Name))}>";
-        }
-
-        return $"{typeSymbol.Name}";
+        return typeSymbol.Name;
     }
 
     public static (ITypeSymbol TypeSymbol, bool IsNullable) GetMemberTypeSymbol(ISymbol symbol, ITranspilationOptions options)
