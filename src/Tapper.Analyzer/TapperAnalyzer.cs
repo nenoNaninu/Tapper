@@ -28,15 +28,6 @@ public class TapperAnalyzer : DiagnosticAnalyzer
         isEnabledByDefault: true,
         description: "Some members are not a named type.");
 
-    private static readonly DiagnosticDescriptor GenericTypeProhibitionRule = new DiagnosticDescriptor(
-        id: "TAPP003",
-        title: "It is prohibited to apply the TranspilationSourceAttribute to generic types",
-        messageFormat: "It is prohibited to apply the TranspilationSourceAttribute to generic types. {0} is generic type.",
-        category: "Usage",
-        defaultSeverity: DiagnosticSeverity.Warning,
-        isEnabledByDefault: true,
-        description: "It is prohibited to apply the TranspilationSourceAttribute to generic types.");
-
     private static readonly DiagnosticDescriptor UnsupportedTypeRule = new DiagnosticDescriptor(
         id: "TAPP004",
         title: "Unsupported type",
@@ -46,7 +37,7 @@ public class TapperAnalyzer : DiagnosticAnalyzer
         isEnabledByDefault: true,
         description: "Unsupported type.");
 
-    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(AnnotationRule, NamedTypeRule, GenericTypeProhibitionRule, UnsupportedTypeRule);
+    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(AnnotationRule, NamedTypeRule, UnsupportedTypeRule);
 
     public override void Initialize(AnalysisContext context)
     {
@@ -124,13 +115,6 @@ public class TapperAnalyzer : DiagnosticAnalyzer
                 return;
             }
 
-            if (namedTypeSymbol.IsGenericType)
-            {
-                context.ReportDiagnostic(Diagnostic.Create(
-                    GenericTypeProhibitionRule, namedTypeSymbol.Locations[0], namedTypeSymbol.ToDisplayString()));
-                return;
-            }
-
             foreach (var member in namedTypeSymbol.GetPublicFieldsAndProperties().IgnoreStatic())
             {
                 if (member.GetAttributes().Any(x =>
@@ -142,6 +126,11 @@ public class TapperAnalyzer : DiagnosticAnalyzer
 
                 foreach (var type in member.GetRelevantTypesFromMemberSymbol())
                 {
+                    if (type is ITypeParameterSymbol)
+                    {
+                        continue;
+                    }
+
                     if (type is not INamedTypeSymbol memberNamedTypeSymbol)
                     {
                         context.ReportDiagnostic(Diagnostic.Create(
@@ -176,7 +165,7 @@ public class TapperAnalyzer : DiagnosticAnalyzer
                     }
 
                     context.ReportDiagnostic(Diagnostic.Create(
-                        AnnotationRule, member.Locations[0], type.ToDisplayString()));
+                        AnnotationRule, member.Locations[0], sourceType.ToDisplayString()));
                 }
             }
         }
