@@ -72,4 +72,29 @@ class NotSupport
 
         await VerifyAsync(code, "TAPP004", 7, 28, 7, 38);
     }
+
+    [Fact]
+    public async Task Test_GenericType()
+    {
+        var code = """
+using Tapper;
+using System;
+
+public class GenericClass1<T>
+{
+    public string StringProperty { get; set; }
+    public T GenericProperty { get; set; }
+}
+
+[TranspilationSource]
+public class NestedGenericClass<T1, T2>
+{
+    public string StringProperty { get; set; }
+    public T1 GenericProperty { get; set; }
+    public GenericClass1<T1> GenericClass1Property { get; set; }
+}
+""";
+
+        await VerifyAsync(code, "TAPP001", 15, 30, 15, 51);
+    }
 }
