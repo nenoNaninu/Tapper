@@ -124,13 +124,6 @@ public class TapperAnalyzer : DiagnosticAnalyzer
                 return;
             }
 
-            if (namedTypeSymbol.IsGenericType)
-            {
-                context.ReportDiagnostic(Diagnostic.Create(
-                    GenericTypeProhibitionRule, namedTypeSymbol.Locations[0], namedTypeSymbol.ToDisplayString()));
-                return;
-            }
-
             foreach (var member in namedTypeSymbol.GetPublicFieldsAndProperties().IgnoreStatic())
             {
                 if (member.GetAttributes().Any(x =>
@@ -142,6 +135,11 @@ public class TapperAnalyzer : DiagnosticAnalyzer
 
                 foreach (var type in member.GetRelevantTypesFromMemberSymbol())
                 {
+                    if (type is ITypeParameterSymbol)
+                    {
+                        continue;
+                    }
+
                     if (type is not INamedTypeSymbol memberNamedTypeSymbol)
                     {
                         context.ReportDiagnostic(Diagnostic.Create(
@@ -176,7 +174,7 @@ public class TapperAnalyzer : DiagnosticAnalyzer
                     }
 
                     context.ReportDiagnostic(Diagnostic.Create(
-                        AnnotationRule, member.Locations[0], type.ToDisplayString()));
+                        AnnotationRule, member.Locations[0], sourceType.ToDisplayString()));
                 }
             }
         }
