@@ -16,7 +16,7 @@
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
         <PackageVersion Include="xunit" Version="2.7.0" />
         <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.7" />
-        <PackageVersion Include="coverlet.collector" Version="6.0.1" />
+        <PackageVersion Include="coverlet.collector" Version="6.0.2" />
         <PackageVersion Include="ConsoleAppFramework" Version="4.2.4" />
         <PackageVersion Include="MessagePack" Version="2.5.140" />
         <PackageVersion Include="MessagePack.AspNetCoreMvcFormatter" Version="2.5.140" />
