@@ -1,8 +1,5 @@
 # Tapper
 
-[![NuGet](https://img.shields.io/nuget/v/Tapper.Attributes.svg)](https://www.nuget.org/packages/Tapper.Attributes)
-[![build-and-test](https://github.com/nenoNaninu/Tapper/actions/workflows/build-and-test.yaml/badge.svg?branch=main)](https://github.com/nenoNaninu/Tapper/actions/workflows/build-and-test.yaml)
-
 Tapper is a library/CLI tool to transpile C# type (class, struct, record, enum) into TypeScript type (type, enum).
 Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and make TypeScript code easily follow changes in C# code.
 
