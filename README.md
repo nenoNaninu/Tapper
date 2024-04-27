@@ -27,6 +27,7 @@ Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and m
   - [Transpile the Types Contained in Referenced Assemblies](#transpile-the-types-contained-in-referenced-assemblies)
 - [Analyzer](#analyzer)
 - [Unity Support](#unity-support)
+- [Related Work](#related-work)
 
 ## Packages
 
@@ -513,3 +514,8 @@ Use this project file as an argument to `--project`.
 ```bash
 tapper --project path/to/Assembly-CSharp.csproj --output outdir
 ```
+
+## Related Work
+
+- [nenoNaninu/TypedSignalR.Client.TypeScript](https://github.com/nenoNaninu/TypedSignalR.Client.TypeScript)
+  - TypeScript source generator to provide strongly typed SignalR clients by analyzing C# type definitions.
