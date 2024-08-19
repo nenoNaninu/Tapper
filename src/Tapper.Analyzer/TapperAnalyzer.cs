@@ -69,6 +69,7 @@ public class TapperAnalyzer : DiagnosticAnalyzer
         typeof(Guid),
         typeof(DateTime),
         typeof(DateTimeOffset),
+        typeof(TimeSpan),
         typeof(Nullable<>),
         // Collection
         typeof(Array),
