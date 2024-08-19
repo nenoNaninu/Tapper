@@ -122,6 +122,12 @@ export type ClassIncludePrimitiveFieldSystemDateTime = {
   FieldOfSystemDateTime: (Date | string);
 }
 ";
+        Dict[nameof(ClassIncludePrimitiveFieldSystemTimeSpan)] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitiveFieldSystemTimeSpan */
+export type ClassIncludePrimitiveFieldSystemTimeSpan = {
+  /** Transpiled from System.TimeSpan */
+  FieldOfSystemTimeSpan: string;
+}
+";
 
         Dict["ClassIncludePrimitivePropertySystemBoolean"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemBoolean */
 export type ClassIncludePrimitivePropertySystemBoolean = {
@@ -229,6 +235,12 @@ export type ClassIncludePrimitivePropertySystemGuid = {
 export type ClassIncludePrimitivePropertySystemDateTime = {
   /** Transpiled from System.DateTime */
   PropertyOfSystemDateTime: (Date | string);
+}
+";
+        Dict["ClassIncludePrimitivePropertySystemTimeSpan"] = @"/** Transpiled from Tapper.Tests.SourceTypes.ClassIncludePrimitivePropertySystemTimeSpan */
+export type ClassIncludePrimitivePropertySystemTimeSpan = {
+  /** Transpiled from System.TimeSpan */
+  PropertyOfSystemTimeSpan: string;
 }
 ";
     }

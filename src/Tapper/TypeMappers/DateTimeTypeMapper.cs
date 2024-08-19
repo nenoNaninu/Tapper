@@ -57,3 +57,29 @@ internal class DateTimeOffsetTypeMapper : ITypeMapper
     }
 }
 
+internal class TimeSpanTypeMapper : ITypeMapper
+{
+    public ITypeSymbol Assign { get; }
+
+    public TimeSpanTypeMapper(Compilation compilation)
+    {
+        Assign = compilation.GetTypeByMetadataName("System.TimeSpan")!;
+    }
+
+    public string MapTo(ITypeSymbol typeSymbol, ITranspilationOptions options)
+    {
+        if (SymbolEqualityComparer.Default.Equals(typeSymbol, Assign))
+        {
+            if (options.SerializerOption == SerializerOption.MessagePack)
+            {
+                return "number";
+            }
+            else
+            {
+                return "string";
+            }
+        }
+
+        throw new InvalidOperationException($"TimeSpanTypeMapper is not support {typeSymbol.ToDisplayString()}.");
+    }
+}

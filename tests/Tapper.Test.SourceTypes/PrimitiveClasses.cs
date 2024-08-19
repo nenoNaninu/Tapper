@@ -114,6 +114,12 @@ public class ClassIncludePrimitiveFieldSystemDateTime
 }
 
 [TranspilationSource]
+public class ClassIncludePrimitiveFieldSystemTimeSpan
+{
+    public System.TimeSpan FieldOfSystemTimeSpan;
+}
+
+[TranspilationSource]
 public class ClassIncludePrimitivePropertySystemBoolean
 {
     public System.Boolean PropertyOfSystemBoolean { get; set; }
@@ -219,5 +225,11 @@ public class ClassIncludePrimitivePropertySystemGuid
 public class ClassIncludePrimitivePropertySystemDateTime
 {
     public System.DateTime PropertyOfSystemDateTime { get; set; }
+}
+
+[TranspilationSource]
+public class ClassIncludePrimitivePropertySystemTimeSpan
+{
+    public System.TimeSpan PropertyOfSystemTimeSpan { get; set; }
 }
 

@@ -30,6 +30,7 @@
         { typeof(Uri), "string" },
         { typeof(Guid), "string" },
         { typeof(DateTime), "Date" },
+        { typeof(TimeSpan), "string" },
     };
 #>
 

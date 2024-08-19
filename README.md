@@ -132,6 +132,7 @@ When transpiling class, struct, and record, only `public` fields and properties 
 | Guid |  string  | Compatible with TypeScript's `crypto.randomUUID()`. | 
 | DateTime | `(Date \| string)` or `Date` | Json: `(Date \| string)`,  MessagePack: `Date`. |
 | DateTimeOffset | `(Date \| string)` or `[Date, number]` | Json: `(Date \| string)`,  MessagePack: `[Date, number]`. note [#41](https://github.com/nenoNaninu/Tapper/pull/41) |
+| TimeSpan | `string` or `number` | Json: `string`,  MessagePack: `number`. |
 | System.Nullable\<T\>| (T \| undefined) |
 | byte[] | string or Uint8Array | JSON: `string` (base64), MessagePack `Uint8Array`. |
 | T[] | T[] | 
