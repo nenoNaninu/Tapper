@@ -35,7 +35,7 @@ jobs:
       - name: dotnet pack Tapper.Generator
         run: dotnet pack -c Release --output ${{ github.workspace }}/artifacts -p:Version=${{ env.RELEASE_VERSION }} ./src/Tapper.Generator/Tapper.Generator.csproj
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: Packages
           path: ${{ github.workspace }}/artifacts
