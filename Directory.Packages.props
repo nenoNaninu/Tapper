@@ -19,6 +19,6 @@
         <PackageVersion Include="coverlet.collector" Version="6.0.2" />
         <PackageVersion Include="ConsoleAppFramework" Version="4.2.4" />
         <PackageVersion Include="MessagePack" Version="2.5.187" />
-        <PackageVersion Include="MessagePack.AspNetCoreMvcFormatter" Version="2.5.172" />
+        <PackageVersion Include="MessagePack.AspNetCoreMvcFormatter" Version="2.5.187" />
     </ItemGroup>
 </Project>
