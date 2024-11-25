@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Testing;
 using Microsoft.CodeAnalysis.Testing;
-using Microsoft.CodeAnalysis.Testing.Verifiers;
 using Tapper.Analyzer;
 using Xunit;
 
@@ -12,7 +11,7 @@ public class AnalyzerTest
 {
     static async Task VerifyAsync(string testCode, string id, int startLine, int startColumn, int endLine, int endColumn)
     {
-        await new CSharpAnalyzerTest<TapperAnalyzer, XUnitVerifier>
+        await new CSharpAnalyzerTest<TapperAnalyzer, DefaultVerifier>
         {
             ReferenceAssemblies = ReferenceAssemblies.Default,
             ExpectedDiagnostics = { new DiagnosticResult(id, DiagnosticSeverity.Warning)
