@@ -7,7 +7,6 @@ on:
     branches: [main]
 
 env:
-  DOTNET_VERSION: "8.0.x"
   NODE_VERSION: "18"
   DOTNET_NOLOGO: true
 
@@ -17,26 +16,27 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        DOTNET_VERSION: ["8.0.x", "7.0.x"]
+        DOTNET_VERSION: ["9.0.x", "8.0.x"]
 
     steps:
       - uses: actions/checkout@v4
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{ matrix.DOTNET_VERSION }}
+          dotnet-version: 9.0.x
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - if: matrix.DOTNET_VERSION == '7.0.x'
-        run: echo "DOTNET_TFM=net7.0" >> $GITHUB_ENV
-
       - if: matrix.DOTNET_VERSION == '8.0.x'
         run: echo "DOTNET_TFM=net8.0" >> $GITHUB_ENV
+
+      - if: matrix.DOTNET_VERSION == '9.0.x'
+        run: echo "DOTNET_TFM=net9.0" >> $GITHUB_ENV
 
       - name: Restore dependencies
         run: dotnet restore
@@ -48,7 +48,7 @@ jobs:
         run: dotnet test --no-restore
 
       - name: Build Tapper.Generator.csproj
-        run: dotnet build ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore
+        run: dotnet build ./src/Tapper.Generator/Tapper.Generator.csproj --framework ${{ env.DOTNET_TFM }} --no-restore
 
       - name: Generate Code (json)
         run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --framework ${{ env.DOTNET_TFM }} --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json/
