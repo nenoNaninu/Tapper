@@ -39,7 +39,7 @@ jobs:
         run: echo "DOTNET_TFM=net9.0" >> $GITHUB_ENV
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore --use-current-runtime
 
       - name: Build Tapper.csproj
         run: dotnet build ./src/Tapper/Tapper.csproj --framework ${{ env.DOTNET_TFM }} --no-restore
