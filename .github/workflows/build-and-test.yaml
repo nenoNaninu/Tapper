@@ -7,6 +7,7 @@ on:
     branches: [main]
 
 env:
+  DOTNET_VERSION: "9.0.x"
   NODE_VERSION: "18"
   DOTNET_NOLOGO: true
 
