@@ -48,7 +48,7 @@ jobs:
         run: dotnet test --no-restore
 
       - name: Build Tapper.Generator.csproj
-        run: dotnet build ./src/Tapper.Generator/Tapper.Generator.csproj --no-restore
+        run: dotnet build ./src/Tapper.Generator/Tapper.Generator.csproj --framework ${{ env.DOTNET_TFM }} --no-restore
 
       - name: Generate Code (json)
         run: dotnet run --project ./src/Tapper.Generator/Tapper.Generator.csproj --framework ${{ env.DOTNET_TFM }} --no-build -- --project ./tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj --output ./tests/TypeScriptTest/src/generated/json/
