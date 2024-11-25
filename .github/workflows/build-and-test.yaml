@@ -42,10 +42,10 @@ jobs:
         run: dotnet restore
 
       - name: Build Tapper.csproj
-        run: dotnet build ./src/Tapper/Tapper.csproj --no-restore
+        run: dotnet build ./src/Tapper/Tapper.csproj --framework ${{ env.DOTNET_TFM }} --no-restore
 
       - name: Test
-        run: dotnet test --no-restore
+        run: dotnet test --framework ${{ env.DOTNET_TFM }} --no-restore
 
       - name: Build Tapper.Generator.csproj
         run: dotnet build ./src/Tapper.Generator/Tapper.Generator.csproj --framework ${{ env.DOTNET_TFM }} --no-restore
