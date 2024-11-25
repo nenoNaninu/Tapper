@@ -27,6 +27,10 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
     </ItemGroup>
 
+    <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+        <PackageReference Include="System.Text.Json" />
+    </ItemGroup>
+
     <ItemGroup>
         <None Include="TypeMappers\CollectionTypeTypeMappers.cs">
             <DependentUpon>CollectionTypeTypeMappers.tt</DependentUpon>
