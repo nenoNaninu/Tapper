@@ -488,10 +488,10 @@ export type Type4 = {
 ### Transpile the Types Contained in Referenced Assemblies
 
 By default, only types defined in the project specified by the `--project` option are targeted for transpiling.
-By passing the `-asm true` option, types contained in project/package reference assemblies will also be targeted for transpiling.
+By passing the `--asm true` option, types contained in project/package reference assemblies will also be targeted for transpiling.
 
 ```bash
-tapper --project path/to/Xxx.csproj --output outdir -asm true
+tapper --project path/to/Xxx.csproj --output outdir --asm true
 ```
 
 ## Analyzer
