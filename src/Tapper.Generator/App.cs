@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Cocona;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Logging;
 using Microsoft.CodeAnalysis;
@@ -11,34 +12,33 @@ using Microsoft.Extensions.Logging;
 
 namespace Tapper;
 
-public class App : ConsoleAppBase
+public class App : CoconaConsoleAppBase
 {
-    private readonly ILogger<App> _logger;
+    private readonly Microsoft.Extensions.Logging.ILogger _logger;
 
-    public App(ILogger<App> logger)
+    public App(ILoggerFactory loggerFactory)
     {
-        _logger = logger;
+        _logger = loggerFactory.CreateLogger("Tapper");
     }
 
-    [RootCommand]
     public async Task Transpile(
-        [Option("p", "Path to the project file (XXX.csproj)")]
+        [Option('p', Description = "Path to the project file (Xxx.csproj)")]
         string project,
-        [Option("o", "Output directory")]
+        [Option('o', Description = "Output directory")]
         string output,
-        [Option("eol", "lf / crlf / cr")]
+        [Option("eol", Description ="lf / crlf / cr")]
         NewLineOption newLine = NewLineOption.Lf,
-        [Option("i", "Indent size")]
+        [Option('i', Description ="Indent size")]
         int indent = 4,
-        [Option("asm", "The flag whether to extend the transpile target to the referenced assembly.")]
+        [Option("asm", Description ="The flag whether to extend the transpile target to the referenced assembly.")]
         bool assemblies = false,
-        [Option("s", "JSON (default) / MessagePack : The output type will be suitable for the selected serializer.")]
+        [Option('s', Description ="JSON / MessagePack : The output type will be suitable for the selected serializer.")]
         SerializerOption serializer = SerializerOption.Json,
-        [Option("n", "camelCase (default) / PascalCase / none (The name in C# is used as it is.)")]
+        [Option('n', Description ="camelCase / PascalCase / none (The name in C# is used as it is.)")]
         NamingStyle namingStyle = NamingStyle.CamelCase,
-        [Option("en", "value (default) / name / nameCamel / NamePascal / union / unionCamel / UnionPascal")]
+        [Option(Description ="value / name / nameCamel / NamePascal / union / unionCamel / UnionPascal")]
         EnumStyle @enum = EnumStyle.Value,
-        [Option("attr", "The flag whether attributes such as JsonPropertyName should affect transpilation.")]
+        [Option("attr", Description ="The flag whether attributes such as JsonPropertyName should affect transpilation.")]
         bool attribute = true)
     {
         _logger.Log(LogLevel.Information, "Start loading the csproj of {path}.", Path.GetFullPath(project));
