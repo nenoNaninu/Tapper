@@ -5,6 +5,7 @@
         <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
     </PropertyGroup>
     <ItemGroup>
+        <PackageVersion Include="Cocona" Version="2.2.0" />
         <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
         <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.8.0" />
         <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.8.0" />
@@ -19,7 +20,6 @@
         <PackageVersion Include="xunit" Version="2.9.2" />
         <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
         <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-        <PackageVersion Include="ConsoleAppFramework" Version="4.2.4" />
         <PackageVersion Include="MessagePack" Version="2.5.187" />
         <PackageVersion Include="MessagePack.AspNetCoreMvcFormatter" Version="2.5.172" />
     </ItemGroup>

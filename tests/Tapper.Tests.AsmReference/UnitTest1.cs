@@ -52,11 +52,11 @@ public class UnitTest1
 
     private static async Task ExecCommand(string generatorProject, string projectFullPath, string outputFullPath, ITestOutputHelper outputHelper)
     {
-        outputHelper.WriteLine($"run --project {generatorProject} --framework net8.0 -- --project {projectFullPath} --output {outputFullPath} -asm true");
+        outputHelper.WriteLine($"run --project {generatorProject} --framework net8.0 -- --project {projectFullPath} --output {outputFullPath} --asm true");
         var startInfo = new ProcessStartInfo
         {
             FileName = "dotnet",
-            Arguments = $"run --project {generatorProject} --framework net8.0 -- --project {projectFullPath} --output {outputFullPath} -asm true"
+            Arguments = $"run --project {generatorProject} --framework net8.0 -- --project {projectFullPath} --output {outputFullPath} --asm true"
         };
 
         var process = new Process { StartInfo = startInfo };
