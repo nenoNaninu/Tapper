@@ -44,11 +44,11 @@ You can use the installed tools with the command `tapper`.
 ```bash
 # install
 # Tapper CLI (dotnet tool) requires .NET 7 or .NET 8, but your app TFM can use .NET 6, etc.
-dotnet tool install --global Tapper.Generator
-tapper help
+$ dotnet tool install --global Tapper.Generator
+$ tapper help
 
 # update
-dotnet tool update --global Tapper.Generator
+$ dotnet tool update --global Tapper.Generator
 ```
 
 ## Getting Started
@@ -57,8 +57,8 @@ First, add the following packages to your project.
 Tapper.Analyzer is optional, but recommended.
 
 ```bash
-dotnet add package Tapper.Attributes
-dotnet add package Tapper.Analyzer (optional, but recommended.)
+$ dotnet add package Tapper.Attributes
+$ dotnet add package Tapper.Analyzer (optional, but recommended.)
 ```
 
 Next, apply the `[TranspilationSource]` Attribute to the C# type definition.
@@ -81,7 +81,7 @@ public class SampleType
 Then execute the command as follows.
 
 ```bash
-tapper --project path/to/XXX.csproj --output outdir
+$ tapper --project path/to/XXX.csproj --output outdir
 ```
 
 TypeScript source code is generated in the directory specified by `--output`.
@@ -292,7 +292,7 @@ For `none`, the property name in C# is used.
 The default is the standard naming style for TypeScript.
 
 ```bash
-tapper --project path/to/Xxx.csproj --output outdir --naming-style camelCase
+$ tapper --project path/to/Xxx.csproj --output outdir --naming-style camelCase
 ```
 
 ### Enum Style
@@ -303,9 +303,9 @@ For example, `System.Text.Json` serializes an enum as a integer by default (not 
 To serialize an enum as a string, you must pass `JsonStringEnumConverter` as an option to `JsonSerializer`.
 
 ```bash
-tapper --project path/to/Xxx.csproj --output outdir --enum value
-tapper --project path/to/Xxx.csproj --output outdir --enum name
-tapper --project path/to/Xxx.csproj --output outdir --enum union
+$ tapper --project path/to/Xxx.csproj --output outdir --enum value
+$ tapper --project path/to/Xxx.csproj --output outdir --enum name
+$ tapper --project path/to/Xxx.csproj --output outdir --enum union
 ```
 
 ```cs
@@ -354,7 +354,7 @@ You can specify which one to use by passing the `--serializer` option.
 The default is `json`.
 
 ```bash
-tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none
+$ tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none
 ```
 
 Also, it is supposed that the following serializers are used.
@@ -374,7 +374,7 @@ It is recommended to use `[MessagePackObject(true)]`.
 Also, in that case, set `--naming-style` to `none`.
 
 ```bash
-tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none
+$ tapper --project path/to/Xxx.csproj --output outdir --serializer MessagePack --naming-style none
 ```
 
 ```cs
@@ -491,7 +491,7 @@ By default, only types defined in the project specified by the `--project` optio
 By passing the `--asm true` option, types contained in project/package reference assemblies will also be targeted for transpiling.
 
 ```bash
-tapper --project path/to/Xxx.csproj --output outdir --asm true
+$ tapper --project path/to/Xxx.csproj --output outdir --asm true
 ```
 
 ## Analyzer
@@ -513,7 +513,7 @@ It is in the same hierarchy as Assets.
 Use this project file as an argument to `--project`.
 
 ```bash
-tapper --project path/to/Assembly-CSharp.csproj --output outdir
+$ tapper --project path/to/Assembly-CSharp.csproj --output outdir
 ```
 
 ## Related Work
