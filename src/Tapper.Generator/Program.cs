@@ -1,16 +1,13 @@
 using Cocona;
 using Microsoft.Build.Locator;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 using Tapper;
+using Tapper.Logging;
 
 MSBuildLocator.RegisterDefaults();
 
 var builder = CoconaApp.CreateBuilder();
 
-builder.Logging
-    .AddConsole(options => options.FormatterName = CliConsoleFormatter.FormatterName)
-    .AddConsoleFormatter<CliConsoleFormatter, ConsoleFormatterOptions>();
+builder.Logging.AddSimpleConsoleApp();
 
 var app = builder.Build();
 
