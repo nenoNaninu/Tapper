@@ -12,8 +12,8 @@
         <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" />
         <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Analyzer.Testing" Version="1.1.2" />
         <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
-        <PackageVersion Include="Microsoft.Extensions.Logging" Version="9.0.0" />
-        <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.1" />
+        <PackageVersion Include="Microsoft.Extensions.Logging" Version="9.0.1" />
+        <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.2" />
         <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
         <PackageVersion Include="Microsoft.Build" Version="17.11.4" />
         <PackageVersion Include="Microsoft.Build.Locator" Version="1.7.8" />
