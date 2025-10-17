@@ -1,3 +1,5 @@
+using System;
+
 namespace Tapper.Tests.AsmReference.SourceTypes1;
 
 [TranspilationSource]

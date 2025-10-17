@@ -1,6 +1,8 @@
+using System;
 using System.Buffers;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Tapper.Tests.Server.Models;
 
 namespace Tapper.Tests.Server.Controllers;
