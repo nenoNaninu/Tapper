@@ -3,7 +3,6 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-        <Nullable>enable</Nullable>
         <RootNamespace>Tapper</RootNamespace>
         <PackAsTool>true</PackAsTool>
         <ToolCommandName>tapper</ToolCommandName>
