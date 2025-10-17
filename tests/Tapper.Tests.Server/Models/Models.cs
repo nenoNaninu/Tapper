@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using MessagePack;
 
 namespace Tapper.Tests.Server.Models;
