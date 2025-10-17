@@ -1,6 +1,4 @@
-using System;
 using Tapper.Test.SourceTypes;
-using Tapper.Test.SourceTypes.Space3;
 using Xunit;
 
 namespace Tapper.Tests;

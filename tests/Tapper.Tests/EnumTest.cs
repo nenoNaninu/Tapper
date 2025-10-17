@@ -1,4 +1,3 @@
-using System;
 using Tapper.Test.SourceTypes;
 using Xunit;
 

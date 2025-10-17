@@ -2,8 +2,6 @@
 
 //using System;
 //using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using Tapper;
 //using SampleTypes.Structs;
 

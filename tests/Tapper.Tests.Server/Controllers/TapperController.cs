@@ -1,4 +1,3 @@
-using System.Buffers;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Tapper.Tests.Server.Models;

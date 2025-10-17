@@ -30,8 +30,6 @@
 //}
 
 
-using System;
-using System.Collections.Generic;
 using Tapper;
 
 namespace Space1

@@ -1,4 +1,3 @@
-using System;
 using Tapper.TypeTranslators;
 
 namespace Tapper;

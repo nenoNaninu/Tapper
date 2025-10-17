@@ -1,7 +1,5 @@
-using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Microsoft.CodeAnalysis;
 using Tapper.TypeMappers;
 
