@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/sandbox/">
+    <Project Path="sandbox/JsonSandbox/JsonSandbox.csproj" />
+    <Project Path="sandbox/MessagePackSandbox/MessagePackSandbox.csproj" />
+    <Project Path="sandbox/SampleTypes/SampleTypes.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Tapper.Analyzer/Tapper.Analyzer.csproj" />
+    <Project Path="src/Tapper.Attributes/Tapper.Attributes.csproj" />
+    <Project Path="src/Tapper.Generator/Tapper.Generator.csproj" />
+    <Project Path="src/Tapper/Tapper.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Tapper.Test.SourceTypes/Tapper.Test.SourceTypes.csproj" />
+    <Project Path="tests/Tapper.Tests.Analyzer/Tapper.Tests.Analyzer.csproj" />
+    <Project Path="tests/Tapper.Tests.AsmReference.SourceTypes1/Tapper.Tests.AsmReference.SourceTypes1.csproj" />
+    <Project Path="tests/Tapper.Tests.AsmReference.SourceTypes2/Tapper.Tests.AsmReference.SourceTypes2.csproj" />
+    <Project Path="tests/Tapper.Tests.AsmReference/Tapper.Tests.AsmReference.csproj" />
+    <Project Path="tests/Tapper.Tests.Server/Tapper.Tests.Server.csproj" />
+    <Project Path="tests/Tapper.Tests/Tapper.Tests.csproj" />
+  </Folder>
+</Solution>
