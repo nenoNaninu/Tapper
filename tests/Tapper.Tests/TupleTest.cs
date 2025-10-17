@@ -1,6 +1,5 @@
 using Tapper.Test.SourceTypes.Tuple;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Tapper.Tests;
 

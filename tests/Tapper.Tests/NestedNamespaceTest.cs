@@ -1,7 +1,6 @@
 using System;
 using Tapper.Test.SourceTypes.Space3;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Tapper.Tests;
 
