@@ -10,7 +10,6 @@ using Tapper.Tests.SourceTypes;
 using Tapper.Test.SourceTypes;
 using Tapper.TypeMappers;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Tapper.Tests;
 

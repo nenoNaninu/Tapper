@@ -17,11 +17,10 @@
         <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.10" />
         <PackageVersion Include="Microsoft.Build" Version="17.11.4" />
         <PackageVersion Include="Microsoft.Build.Locator" Version="1.7.8" />
-        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
         <PackageVersion Include="System.Formats.Asn1" Version="9.0.10" />
         <PackageVersion Include="System.Text.Json" Version="9.0.10" />
-        <PackageVersion Include="xunit" Version="2.9.3" />
-        <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.2" />
+        <PackageVersion Include="xunit.v3" Version="3.1.0" />
+        <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
         <PackageVersion Include="coverlet.collector" Version="6.0.4" />
         <PackageVersion Include="MessagePack" Version="3.1.4" />
         <PackageVersion Include="MessagePack.AspNetCoreMvcFormatter" Version="3.1.4" />

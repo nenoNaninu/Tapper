@@ -9,7 +9,6 @@ using Microsoft.CodeAnalysis.CSharp;
 using Tapper.Tests.SourceTypes;
 using Tapper.TypeMappers;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Tapper.Tests;
 
