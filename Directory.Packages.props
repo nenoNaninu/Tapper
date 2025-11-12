@@ -6,20 +6,20 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageVersion Include="Cocona" Version="2.2.0" />
-        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
-        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.8.0" />
-        <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.8.0" />
-        <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.14.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.14.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" />
         <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Analyzer.Testing" Version="1.1.2" />
-        <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
-        <PackageVersion Include="Microsoft.Extensions.Logging" Version="9.0.10" />
-        <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.10" />
-        <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.10" />
-        <PackageVersion Include="Microsoft.Build" Version="17.11.4" />
-        <PackageVersion Include="Microsoft.Build.Locator" Version="1.7.8" />
-        <PackageVersion Include="System.Formats.Asn1" Version="9.0.10" />
-        <PackageVersion Include="System.Text.Json" Version="9.0.10" />
-        <PackageVersion Include="xunit.v3" Version="3.1.0" />
+        <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
+        <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.0" />
+        <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.0" />
+        <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.0" />
+        <PackageVersion Include="Microsoft.Build" Version="17.11.48" />
+        <PackageVersion Include="Microsoft.Build.Locator" Version="1.10.12" />
+        <PackageVersion Include="System.Formats.Asn1" Version="10.0.0" />
+        <PackageVersion Include="System.Text.Json" Version="10.0.0" />
+        <PackageVersion Include="xunit.v3" Version="3.2.0" />
         <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
         <PackageVersion Include="coverlet.collector" Version="6.0.4" />
         <PackageVersion Include="MessagePack" Version="3.1.4" />
