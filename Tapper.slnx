@@ -4,11 +4,6 @@
     <Project Path="sandbox/MessagePackSandbox/MessagePackSandbox.csproj" />
     <Project Path="sandbox/SampleTypes/SampleTypes.csproj" />
   </Folder>
-  <Folder Name="/Solution Items/">
-    <File Path=".editorconfig" />
-    <File Path="Directory.Build.props" />
-    <File Path="Directory.Packages.props" />
-  </Folder>
   <Folder Name="/src/">
     <Project Path="src/Tapper.Analyzer/Tapper.Analyzer.csproj" />
     <Project Path="src/Tapper.Attributes/Tapper.Attributes.csproj" />
