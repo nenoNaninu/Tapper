@@ -29,7 +29,7 @@ public class GenericTypeTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(GenericClass1<>);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -71,7 +71,7 @@ export type GenericClass1<T> = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(GenericClass2<,>);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -115,7 +115,7 @@ export type GenericClass2<T1, T2> = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(NestedGenericClass<,>);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -161,7 +161,7 @@ export type NestedGenericClass<T1, T2> = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(DeeplyNestedGenericClass<,,>);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -211,7 +211,7 @@ export type DeeplyNestedGenericClass<A, B, C> = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(InheritedGenericClass2<,>);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -251,7 +251,7 @@ export type InheritedGenericClass2<T1, T2> = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(InheritedConcreteGenericClass);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -289,7 +289,7 @@ export type InheritedConcreteGenericClass = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(InheritedGenericClassWithTheSameName);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

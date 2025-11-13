@@ -13,20 +13,15 @@ public class Transpiler
     private readonly ILogger _logger;
     private readonly ICodeGenerator _codeGenerator;
 
-    public Transpiler(
-        Compilation compilation,
-        ITranspilationOptions options,
-        ILogger logger)
+    public Transpiler(ITranspilationOptions options, ILogger logger)
     {
         _newLine = options.NewLine.ToNewLineString();
         _logger = logger;
 
-        _codeGenerator = new TypeScriptCodeGenerator(
-            compilation,
-            options
-        );
+        _targetTypes = options.SourceTypes.ToArray();
 
-        _targetTypes = compilation.GetSourceTypes(options.ReferencedAssembliesTranspilation);
+        _codeGenerator = new TypeScriptCodeGenerator(options);
+
         _targetTypeLookupTable = _targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
     }
 

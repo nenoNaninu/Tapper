@@ -28,7 +28,7 @@ public class TupleTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(SimpleTupleClass);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -67,7 +67,7 @@ export type SimpleTupleClass = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(TupleClassIncludeNullable);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -106,7 +106,7 @@ export type TupleClassIncludeNullable = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(TupleClassNullableField);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -144,7 +144,7 @@ export type TupleClassNullableField = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(TupleClassIncludeCustomType);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

@@ -32,7 +32,7 @@ public class AttributeAnnotatedClassesTest
     //            true
     //        );
 
-    //        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+    //        var codeGenerator = new TypeScriptCodeGenerator(options);
 
     //        var type = typeof(AttributeAnnotatedClass1);
     //        var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -72,7 +72,7 @@ public class AttributeAnnotatedClassesTest
     //            true
     //        );
 
-    //        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+    //        var codeGenerator = new TypeScriptCodeGenerator(options);
 
     //        var type = typeof(AttributeAnnotatedClass2);
     //        var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -114,7 +114,7 @@ public class AttributeAnnotatedClassesTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(AttributeAnnotatedClass3);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -153,7 +153,7 @@ export type AttributeAnnotatedClass3 = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(AttributeAnnotatedClass4);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
