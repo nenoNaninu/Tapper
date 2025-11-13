@@ -14,7 +14,7 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
 
     private readonly IDictionary<ITypeSymbol, ITypeMapper> _mappers;
 
-    public DefaultTypeMapperProvider(Compilation compilation, bool includeReferencedAssemblies)
+    public DefaultTypeMapperProvider(Compilation compilation, IEnumerable<INamedTypeSymbol> sourceTypes)
     {
         _arrayTypeMapper = new ArrayTypeMapper(compilation);
         _tupleTypeMapper = new TupleTypeMapper();
@@ -29,17 +29,16 @@ public class DefaultTypeMapperProvider : ITypeMapperProvider
         var collectionTypeTypeMappers = CollectionTypeTypeMappers.Create(compilation);
         var dictionaryTypeMappers = DictionaryTypeMappers.Create(compilation);
 
-        var sourceTypeMapper = compilation.GetSourceTypes(includeReferencedAssemblies)
-            .Select(static x => new SourceTypeMapper(x));
-
-        var typeMappers = sourceTypeMapper.Concat(primitiveTypeMappers)
+        var typeMappers = sourceTypes
+            .Select(static x => new SourceTypeMapper(x))
+            .Concat(primitiveTypeMappers)
             .Concat(collectionTypeTypeMappers)
             .Concat(dictionaryTypeMappers)
             .Concat(new ITypeMapper[] { dateTimeTypeMapper, dateTimeOffsetTypeMapper, timeSpanTypeMapper, nullableStructTypeMapper });
 
         _mappers = typeMappers.ToDictionary<ITypeMapper, ITypeSymbol>(x => x.Assign, SymbolEqualityComparer.Default);
     }
-
+    
     public ITypeMapper GetTypeMapper(ITypeSymbol type)
     {
         if (type.IsTupleType)

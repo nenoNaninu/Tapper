@@ -29,7 +29,7 @@ public class NestedNamespaceTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(NastingNamespaceType);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

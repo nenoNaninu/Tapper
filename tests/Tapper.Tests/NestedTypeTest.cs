@@ -30,7 +30,7 @@ public class NestedTypeTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(NestedClassParent);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -69,7 +69,7 @@ export type NestedClassParent = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(NestedClassParent.NestedClassChild);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -110,7 +110,7 @@ export type NestedClassChild = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(NestedRecordParent);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -149,7 +149,7 @@ export type NestedRecordParent = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(NestedRecordParent.NestedRecordChild);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

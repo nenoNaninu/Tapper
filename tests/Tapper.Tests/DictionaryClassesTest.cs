@@ -38,7 +38,7 @@ public class DictionaryMapTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(ClassIncludeDictionaryFieldDictionaryintstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -72,7 +72,7 @@ public class DictionaryMapTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(ClassIncludeDictionaryFieldIDictionaryfloatGuid);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -106,7 +106,7 @@ public class DictionaryMapTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(ClassIncludeDictionaryFieldIReadOnlyDictionarystringDateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -140,7 +140,7 @@ public class DictionaryMapTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(ClassIncludeDictionaryFieldIReadOnlyDictionaryEnum1long);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -175,7 +175,7 @@ public class DictionaryMapTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(ClassIncludeDictionaryPropertyDictionaryintstring);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -209,7 +209,7 @@ public class DictionaryMapTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(ClassIncludeDictionaryPropertyIDictionaryfloatGuid);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -243,7 +243,7 @@ public class DictionaryMapTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(ClassIncludeDictionaryPropertyIReadOnlyDictionarystringDateTime);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -277,7 +277,7 @@ public class DictionaryMapTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(ClassIncludeDictionaryPropertyIReadOnlyDictionaryEnum1long);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
