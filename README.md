@@ -19,6 +19,7 @@ Using this tool can reduce serialization bugs (type mismatch, typos, etc.) and m
 - [Options](#options)
   - [Naming Style](#naming-style)
   - [Enum Style](#enum-style)
+  - [Nullable Style](#nullable-style)
   - [Serializer](#serializer)
     - [MessagePack](#messagepack)
   - [Serializer Attributes Support](#serializer-attributes-support)
@@ -133,7 +134,7 @@ When transpiling class, struct, and record, only `public` fields and properties 
 | DateTime | `(Date \| string)` or `Date` | Json: `(Date \| string)`,  MessagePack: `Date`. |
 | DateTimeOffset | `(Date \| string)` or `[Date, number]` | Json: `(Date \| string)`,  MessagePack: `[Date, number]`. note [#41](https://github.com/nenoNaninu/Tapper/pull/41) |
 | TimeSpan | `string` or `number` | Json: `string`,  MessagePack: `number`. |
-| System.Nullable\<T\>| (T \| undefined) |
+| System.Nullable\<T\>| (T \| undefined) or (T \| null) |
 | byte[] | string or Uint8Array | JSON: `string` (base64), MessagePack `Uint8Array`. |
 | T[] | T[] | 
 | System.Array | any[] | ❌ System.Text.Json |
@@ -344,6 +345,28 @@ export type MyEnum = "Zero" | "One" | "Two" | "Four";
 
 // --enum unionCamel
 export type MyEnum = "zero" | "one" | "two" | "four";
+```
+
+### Nullable Style
+
+You can select whether nullable members are represented with `undefined` or `null`.
+The default is `undefined`, which keeps nullable reference types as optional properties.
+
+```bash
+$ tapper --project path/to/Xxx.csproj --output outdir --nullable undefined
+$ tapper --project path/to/Xxx.csproj --output outdir --nullable null
+```
+
+When `--nullable null` is selected, nullable members are emitted as explicit unions.
+
+```ts
+// default (--nullable undefined)
+name?: T;
+value: T | undefined;
+
+// --nullable null
+name: T | null;
+value: T | null;
 ```
 
 ### Serializer

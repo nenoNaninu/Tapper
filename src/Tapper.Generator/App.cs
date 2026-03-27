@@ -38,6 +38,8 @@ public class App : CoconaConsoleAppBase
         NamingStyle namingStyle = NamingStyle.CamelCase,
         [Option(Description ="Enum representation style")]
         EnumStyle @enum = EnumStyle.Value,
+        [Option("nullable", Description ="Nullable representation style. 'undefined' keeps optional properties, 'null' emits explicit null unions.")]
+        NullableStrategy nullable = NullableStrategy.Undefined,
         [Option("attr", Description ="The flag whether attributes such as JsonPropertyName should affect transpilation.")]
         bool attribute = true)
     {
@@ -49,7 +51,7 @@ public class App : CoconaConsoleAppBase
         {
             var compilation = await this.CreateCompilationAsync(project);
 
-            await TranspileCore(compilation, output, newLine, indent, assemblies, serializer, namingStyle, @enum, attribute);
+            await TranspileCore(compilation, output, newLine, indent, assemblies, serializer, namingStyle, @enum, nullable, attribute);
 
             _logger.Log(LogLevel.Information, "======== Transpilation is completed. ========");
             _logger.Log(LogLevel.Information, "Please check the output folder: {output}", output);
@@ -88,6 +90,7 @@ public class App : CoconaConsoleAppBase
         SerializerOption serializerOption,
         NamingStyle namingStyle,
         EnumStyle enumStyle,
+        NullableStrategy nullableStrategy,
         bool enableAttributeReference)
     {
         var options = new TranspilationOptions(
@@ -98,7 +101,8 @@ public class App : CoconaConsoleAppBase
             newLine,
             indent,
             referencedAssembliesTranspilation,
-            enableAttributeReference
+            enableAttributeReference,
+            nullableStrategy
         );
 
         var transpiler = new Transpiler(compilation, options, _logger);

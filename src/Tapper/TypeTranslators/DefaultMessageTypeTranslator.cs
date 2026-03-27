@@ -37,7 +37,15 @@ internal class DefaultMessageTypeTranslator : ITypeTranslator
 
             // Add jsdoc comment
             codeWriter.Append($"{indent}/** Transpiled from {memberTypeSymbol.ToDisplayString()} */{newLineString}");
-            codeWriter.Append($"{indent}{name}{(isNullable ? "?" : string.Empty)}: {TypeMapper.MapTo(memberTypeSymbol, options)};{newLineString}");
+            var optionalMarker = isNullable && options.UseOptionalPropertyForNullableReferenceTypes() ? "?" : string.Empty;
+            var typeDefinition = TypeMapper.MapTo(memberTypeSymbol, options);
+
+            if (isNullable && !options.UseOptionalPropertyForNullableReferenceTypes())
+            {
+                typeDefinition = $"({typeDefinition} | {options.GetNullableUnionLiteral()})";
+            }
+
+            codeWriter.Append($"{indent}{name}{optionalMarker}: {typeDefinition};{newLineString}");
         }
 
         codeWriter.Append('}');
