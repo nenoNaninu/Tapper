@@ -16,7 +16,7 @@
         <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.0" />
         <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.0" />
         <PackageVersion Include="Microsoft.Build" Version="17.11.48" />
-        <PackageVersion Include="Microsoft.Build.Locator" Version="1.10.12" />
+        <PackageVersion Include="Microsoft.Build.Locator" Version="1.11.2" />
         <PackageVersion Include="System.Formats.Asn1" Version="10.0.0" />
         <PackageVersion Include="System.Text.Json" Version="10.0.0" />
         <PackageVersion Include="xunit.v3" Version="3.2.0" />
