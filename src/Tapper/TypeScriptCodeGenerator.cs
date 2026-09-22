@@ -40,6 +40,7 @@ public class TypeScriptCodeGenerator : ICodeGenerator
         var differentNamespaceTypes = memberTypes
             .Concat(baseTypes)
             .OfType<INamedTypeSymbol>()
+            .Select(x => x.IsGenericType ? x.OriginalDefinition : x) 
             .Where(x => !SymbolEqualityComparer.Default.Equals(x.ContainingNamespace, types.Key)
                 && _sourceTypes.Contains(x, SymbolEqualityComparer.Default))
             .Distinct<INamedTypeSymbol>(SymbolEqualityComparer.Default)
