@@ -2,7 +2,9 @@ using System.Text.Json.Serialization;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Xunit;
-[assembly: CollectionBehavior(DisableTestParallelization = true)]
+using Xunit.Sdk;
+using Xunit.v3;
+[assembly: Parallelization(Mode = ParallelMode.None)]
 
 namespace Tapper.Tests;
 public class CompilationSingleton

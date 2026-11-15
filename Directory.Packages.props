@@ -19,9 +19,8 @@
         <PackageVersion Include="Microsoft.Build.Locator" Version="1.10.12" />
         <PackageVersion Include="System.Formats.Asn1" Version="10.0.15" />
         <PackageVersion Include="System.Text.Json" Version="10.0.15" />
-        <PackageVersion Include="xunit.v3" Version="3.2.0" />
-        <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
-        <PackageVersion Include="coverlet.collector" Version="6.0.4" />
+        <PackageVersion Include="xunit.v3" Version="4.0.3" />
+        <PackageVersion Include="coverlet.MTP" Version="10.1.0" />
         <PackageVersion Include="MessagePack" Version="3.1.4" />
         <PackageVersion Include="MessagePack.AspNetCoreMvcFormatter" Version="3.1.4" />
     </ItemGroup>
