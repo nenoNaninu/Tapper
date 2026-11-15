@@ -11,14 +11,12 @@
         <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.14.0" />
         <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" />
         <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Analyzer.Testing" Version="1.1.2" />
-        <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.15" />
-        <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.15" />
-        <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.15" />
-        <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.15" />
+        <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0" />
+        <PackageVersion Include="Microsoft.Extensions.Logging" Version="11.0.0" />
+        <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="11.0.0" />
+        <PackageVersion Include="Microsoft.Extensions.Hosting" Version="11.0.0" />
         <PackageVersion Include="Microsoft.Build" Version="17.11.48" />
         <PackageVersion Include="Microsoft.Build.Locator" Version="1.10.12" />
-        <PackageVersion Include="System.Formats.Asn1" Version="10.0.15" />
-        <PackageVersion Include="System.Text.Json" Version="10.0.15" />
         <PackageVersion Include="xunit.v3" Version="4.0.3" />
         <PackageVersion Include="coverlet.MTP" Version="10.1.0" />
         <PackageVersion Include="MessagePack" Version="3.1.4" />
