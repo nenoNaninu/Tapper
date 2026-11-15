@@ -6,20 +6,21 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageVersion Include="Cocona" Version="2.2.0" />
-        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
-        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.14.0" />
-        <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.14.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="5.0.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="5.0.0" />
         <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" />
         <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Analyzer.Testing" Version="1.1.2" />
         <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0" />
         <PackageVersion Include="Microsoft.Extensions.Logging" Version="11.0.0" />
         <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="11.0.0" />
         <PackageVersion Include="Microsoft.Extensions.Hosting" Version="11.0.0" />
-        <PackageVersion Include="Microsoft.Build" Version="17.11.48" />
-        <PackageVersion Include="Microsoft.Build.Locator" Version="1.10.12" />
+        <PackageVersion Include="Microsoft.Build" Version="18.0.2" />
+        <PackageVersion Include="Microsoft.Build.Framework" Version="18.0.2" />
+        <PackageVersion Include="Microsoft.Build.Locator" Version="1.11.2" />
         <PackageVersion Include="xunit.v3" Version="4.0.3" />
         <PackageVersion Include="coverlet.MTP" Version="10.1.0" />
-        <PackageVersion Include="MessagePack" Version="3.1.4" />
-        <PackageVersion Include="MessagePack.AspNetCoreMvcFormatter" Version="3.1.4" />
+        <PackageVersion Include="MessagePack" Version="3.1.12" />
+        <PackageVersion Include="MessagePack.AspNetCoreMvcFormatter" Version="3.1.12" />
     </ItemGroup>
 </Project>
