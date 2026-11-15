@@ -8,6 +8,7 @@
     <File Path=".editorconfig" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Tapper.Analyzer/Tapper.Analyzer.csproj" />
