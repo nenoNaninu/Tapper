@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: "18"
+  NODE_VERSION: "26"
   DOTNET_NOLOGO: true
 
 jobs:
