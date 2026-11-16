@@ -16,10 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Tapper.Generator\Tapper.Generator.csproj" />
-    </ItemGroup>
-    
-    <ItemGroup>
         <Compile Include="..\Tapper.Tests\Logger.cs" LinkBase="" />
     </ItemGroup>
 
