@@ -36,7 +36,7 @@ internal class TupleTypeMapper : ITypeMapper
             {
                 // Reference type
                 var mapper = options.TypeMapperProvider.GetTypeMapper(typeSymbol);
-                return $"({mapper.MapTo(typeSymbol, options)} | undefined)";
+                return $"({mapper.MapTo(typeSymbol, options)} | {options.GetNullableUnionLiteral()})";
             }
         }
         else

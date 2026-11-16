@@ -16,6 +16,7 @@ public interface ITranspilationOptions
     int Indent { get; }
     bool ReferencedAssembliesTranspilation { get; }
     bool EnableAttributeReference { get; }
+    NullableStrategy NullableStrategy { get; }
 }
 
 public enum SerializerOption
@@ -47,6 +48,12 @@ public enum NewLineOption
     Lf,
     Crlf,
     Cr,
+}
+
+public enum NullableStrategy
+{
+    Undefined, // default
+    Null,
 }
 
 public static class OptionExtensions
@@ -93,5 +100,20 @@ public static class OptionExtensions
             EnumStyle.NameCamel or EnumStyle.UnionCamel => $"{char.ToLower(text[0])}{text[1..]}",
             _ => text,
         };
+    }
+
+    public static string GetNullableUnionLiteral(this ITranspilationOptions options)
+    {
+        return options.NullableStrategy switch
+        {
+            NullableStrategy.Undefined => "undefined",
+            NullableStrategy.Null => "null",
+            _ => throw new InvalidOperationException("Invalid NullableStrategy."),
+        };
+    }
+
+    public static bool UseOptionalPropertyForNullableReferenceTypes(this ITranspilationOptions options)
+    {
+        return options.NullableStrategy == NullableStrategy.Undefined;
     }
 }

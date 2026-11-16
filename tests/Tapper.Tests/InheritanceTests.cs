@@ -169,4 +169,44 @@ export type CustomType2 = {
 
         Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
     }
+
+    [Fact]
+    public void Test_NullableReferenceAsNull()
+    {
+        var compilation = CompilationSingleton.Compilation;
+
+        var options = new TranspilationOptions(
+            compilation,
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false,
+            true,
+            NullableStrategy.Null
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+
+        var type = typeof(InheritanceClass2);
+        var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
+
+        var writer = new CodeWriter();
+
+        codeGenerator.AddType(typeSymbol, ref writer);
+
+        var code = writer.ToString();
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.InheritanceClass2 */
+export type InheritanceClass2 = {
+  /** Transpiled from string? */
+  InheritanceString2: (string | null);
+} & InheritanceClass0;
+";
+
+        _output.WriteLine(code);
+        _output.WriteLine(gt);
+
+        Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
+    }
 }

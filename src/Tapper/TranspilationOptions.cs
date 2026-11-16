@@ -25,6 +25,8 @@ public class TranspilationOptions : ITranspilationOptions
 
     public bool EnableAttributeReference { get; }
 
+    public NullableStrategy NullableStrategy { get; }
+
     public TranspilationOptions(
         Compilation compilation,
         SerializerOption serializerOption,
@@ -33,7 +35,8 @@ public class TranspilationOptions : ITranspilationOptions
         NewLineOption newLineOption,
         int indent,
         bool referencedAssembliesTranspilation,
-        bool enableAttributeReference)
+        bool enableAttributeReference,
+        NullableStrategy nullableStrategy = NullableStrategy.Undefined)
         : this(
               compilation,
               new DefaultTypeMapperProvider(compilation, referencedAssembliesTranspilation),
@@ -43,7 +46,8 @@ public class TranspilationOptions : ITranspilationOptions
               newLineOption,
               indent,
               referencedAssembliesTranspilation,
-              enableAttributeReference)
+              enableAttributeReference,
+              nullableStrategy)
     {
     }
 
@@ -56,7 +60,8 @@ public class TranspilationOptions : ITranspilationOptions
         NewLineOption newLineOption,
         int indent,
         bool referencedAssembliesTranspilation,
-        bool enableAttributeReference)
+        bool enableAttributeReference,
+        NullableStrategy nullableStrategy = NullableStrategy.Undefined)
     {
         TypeMapperProvider = typeMapperProvider;
         SpecialSymbols = new SpecialSymbols(compilation);
@@ -68,5 +73,6 @@ public class TranspilationOptions : ITranspilationOptions
         Indent = indent;
         ReferencedAssembliesTranspilation = referencedAssembliesTranspilation;
         EnableAttributeReference = enableAttributeReference;
+        NullableStrategy = nullableStrategy;
     }
 }

@@ -19,7 +19,7 @@ public class NullableStructTypeMapper : ITypeMapper
             && SymbolEqualityComparer.Default.Equals(namedTypeSymbol.ConstructedFrom, Assign))
         {
             var mapper = options.TypeMapperProvider.GetTypeMapper(namedTypeSymbol.TypeArguments[0]);
-            return $"({mapper.MapTo(namedTypeSymbol.TypeArguments[0], options)} | undefined)";
+            return $"({mapper.MapTo(namedTypeSymbol.TypeArguments[0], options)} | {options.GetNullableUnionLiteral()})";
         }
 
         throw new InvalidOperationException($"NullableStructTypeMapper is not support {typeSymbol.ToDisplayString()}.");

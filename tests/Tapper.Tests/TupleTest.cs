@@ -168,4 +168,46 @@ export type TupleClassIncludeCustomType = {
 
         Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
     }
+
+    [Fact]
+    public void Test_TupleClassNullableAsNull()
+    {
+        var compilation = CompilationSingleton.Compilation;
+
+        var options = new TranspilationOptions(
+            compilation,
+            SerializerOption.Json,
+            NamingStyle.None,
+            EnumStyle.Value,
+            NewLineOption.Lf,
+            2,
+            false,
+            true,
+            NullableStrategy.Null
+        );
+
+        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+
+        var type = typeof(TupleClassIncludeCustomType);
+        var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
+
+        var writer = new CodeWriter();
+
+        codeGenerator.AddType(typeSymbol, ref writer);
+
+        var code = writer.ToString();
+        var gt = @"/** Transpiled from Tapper.Test.SourceTypes.Tuple.TupleClassIncludeCustomType */
+export type TupleClassIncludeCustomType = {
+  /** Transpiled from (int?, Tapper.Test.SourceTypes.Tuple.CustomType, System.DateTime) */
+  TapluField: ([(number | null), CustomType, (Date | string)] | null);
+  /** Transpiled from (int, Tapper.Test.SourceTypes.Tuple.CustomType?, System.DateTime?) */
+  TapluPropery: [number, (CustomType | null), ((Date | string) | null)];
+}
+";
+
+        _output.WriteLine(code);
+        _output.WriteLine(gt);
+
+        Assert.Equal(gt, code, ignoreLineEndingDifferences: true);
+    }
 }
