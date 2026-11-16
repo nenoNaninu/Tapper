@@ -29,7 +29,7 @@ public class EnumTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(Enum1);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -72,7 +72,7 @@ public class EnumTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -114,7 +114,7 @@ public class EnumTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -156,7 +156,7 @@ public class EnumTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(Enum2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

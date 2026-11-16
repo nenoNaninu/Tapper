@@ -28,7 +28,7 @@ public class InheritanceTests
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(InheritanceClass0);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -67,7 +67,7 @@ export type InheritanceClass0 = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(InheritanceClass1);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -106,7 +106,7 @@ export type InheritanceClass1 = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(InheritanceClass2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;
@@ -145,7 +145,7 @@ export type InheritanceClass2 = {
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(Space2.CustomType2);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

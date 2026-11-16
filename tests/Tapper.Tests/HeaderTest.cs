@@ -31,7 +31,7 @@ public class HeaderTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var targetTypes = compilation.GetSourceTypes(false);
         var targetTypeLookupTable = targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);
@@ -77,7 +77,7 @@ import type { CustomType4 } from './Tapper.Test.SourceTypes.Space2';
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var targetTypes = compilation.GetSourceTypes(false);
         var targetTypeLookupTable = targetTypes.ToLookup<INamedTypeSymbol, INamespaceSymbol>(static x => x.ContainingNamespace, SymbolEqualityComparer.Default);

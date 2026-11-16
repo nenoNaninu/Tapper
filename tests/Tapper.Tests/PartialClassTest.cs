@@ -28,7 +28,7 @@ public class PartialClassTest
             true
         );
 
-        var codeGenerator = new TypeScriptCodeGenerator(compilation, options);
+        var codeGenerator = new TypeScriptCodeGenerator(options);
 
         var type = typeof(PartialClass);
         var typeSymbol = compilation.GetTypeByMetadataName(type.FullName!)!;

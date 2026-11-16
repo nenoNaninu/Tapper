@@ -101,7 +101,7 @@ public class App : CoconaConsoleAppBase
             enableAttributeReference
         );
 
-        var transpiler = new Transpiler(compilation, options, _logger);
+        var transpiler = new Transpiler(options, _logger);
 
         var generatedSourceCodes = transpiler.Transpile();
 

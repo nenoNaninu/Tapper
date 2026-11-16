@@ -35,16 +35,17 @@ public class TranspilationOptions : ITranspilationOptions
         bool referencedAssembliesTranspilation,
         bool enableAttributeReference)
         : this(
-              compilation,
-              new DefaultTypeMapperProvider(compilation, referencedAssembliesTranspilation),
-              serializerOption,
-              namingStyle,
-              enumStyle,
-              newLineOption,
-              indent,
-              referencedAssembliesTranspilation,
-              enableAttributeReference)
+            new SpecialSymbols(compilation),
+            compilation.GetSourceTypes(referencedAssembliesTranspilation),
+            serializerOption,
+            namingStyle,
+            enumStyle,
+            newLineOption,
+            indent,
+            referencedAssembliesTranspilation,
+            enableAttributeReference)
     {
+        TypeMapperProvider = new DefaultTypeMapperProvider(compilation, SourceTypes);
     }
 
     public TranspilationOptions(
@@ -56,11 +57,34 @@ public class TranspilationOptions : ITranspilationOptions
         NewLineOption newLineOption,
         int indent,
         bool referencedAssembliesTranspilation,
-        bool enableAttributeReference)
+        bool enableAttributeReference) 
+        : this(
+            new SpecialSymbols(compilation),
+            compilation.GetSourceTypes(referencedAssembliesTranspilation),
+            serializerOption,
+            namingStyle,
+            enumStyle,
+            newLineOption,
+            indent,
+            referencedAssembliesTranspilation,
+            enableAttributeReference)
     {
         TypeMapperProvider = typeMapperProvider;
-        SpecialSymbols = new SpecialSymbols(compilation);
-        SourceTypes = compilation.GetSourceTypes(referencedAssembliesTranspilation);
+    }
+    
+    private TranspilationOptions(
+        SpecialSymbols specialSymbols,
+        IReadOnlyList<INamedTypeSymbol> sourceTypes,
+        SerializerOption serializerOption,
+        NamingStyle namingStyle,
+        EnumStyle enumStyle,
+        NewLineOption newLineOption,
+        int indent,
+        bool referencedAssembliesTranspilation,
+        bool enableAttributeReference)
+    {
+        SpecialSymbols = specialSymbols;
+        SourceTypes = sourceTypes;
         SerializerOption = serializerOption;
         NamingStyle = namingStyle;
         EnumStyle = enumStyle;
